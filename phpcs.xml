@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<ruleset name="DCDC_WordPress">
+	<description>WordPress Coding Standards</description>
+
+	<!-- Use WordPress as a base -->
+	<rule ref="WordPress">
+		<!-- Allow: while ( have_posts() ) : the_post(); -->
+		<exclude name="Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace"/>
+
+		<!-- Disable overly picky rules -->
+		<exclude name="WordPress.WP.CapitalPDangit"/>
+		<exclude name="WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize"/>
+		<exclude name="WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize"/>
+	</rule>
+</ruleset>
