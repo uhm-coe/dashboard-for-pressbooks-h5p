@@ -12,3 +12,25 @@
  * @link    https://github.com/uhm-coe/pressbooks-h5p-dashboard
  * @package pressbooks-h5p-dashboard
  */
+
+namespace Pressbooks_H5P_Dashboard;
+
+/**
+ * Include dependencies.
+ */
+require_once dirname( __FILE__ ) . '/src/abstract-class-static-instance.php';
+require_once dirname( __FILE__ ) . '/src/class-plugin.php';
+require_once dirname( __FILE__ ) . '/src/class-admin-tools.php';
+
+/**
+ * Helper function to always return the path to the plugin's entry point. Used
+ * when locating asset paths using plugins_url().
+ */
+function plugin_root() {
+	return __FILE__;
+}
+
+/**
+ * Instantiate plugin (register hooks).
+ */
+Plugin::get_instance();
