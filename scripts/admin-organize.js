@@ -6,8 +6,6 @@
 ( function( $ ) {
 
 	const h5p_ids = JSON.parse( Data.h5p_ids );
-console.log(h5p_ids);
-
 	const $tables = $( 'table.front-matter, table.chapters, table.back-matter');
 	const heading = '<th role="columnheader">' + Data.column_heading_h5p + '</th>';
 
