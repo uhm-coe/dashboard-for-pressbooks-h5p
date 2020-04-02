@@ -20,6 +20,7 @@ namespace Pressbooks_H5P_Dashboard;
  */
 require_once dirname( __FILE__ ) . '/src/abstract-class-static-instance.php';
 require_once dirname( __FILE__ ) . '/src/class-plugin.php';
+require_once dirname( __FILE__ ) . '/src/class-data.php';
 require_once dirname( __FILE__ ) . '/src/class-admin-tools.php';
 require_once dirname( __FILE__ ) . '/src/class-settings.php';
 require_once dirname( __FILE__ ) . '/src/class-hide-h5p-for-anonymous-users.php';
