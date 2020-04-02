@@ -9,6 +9,8 @@
 
 namespace Pressbooks_H5P_Dashboard;
 
+use Pressbooks_H5P_Dashboard\Hide_H5P_For_Anonymous_Users;
+
 /**
  * Main plugin class. Activates/deactivates the plugin, and registers all hooks.
  */
@@ -31,6 +33,11 @@ class Plugin extends Static_Instance {
 		// Create plugin options and settings page.
 		add_action( 'admin_menu', array( Settings::get_instance(), 'admin_menu__add_options_page' ), 10, 1 );
 		add_action( 'admin_init', array( Settings::get_instance(), 'admin_init__register_settings' ), 10, 1 );
+
+		// Load custom javascript for hiding H5P Content from anonymous users.
+		add_action( 'wp_enqueue_scripts', array( Hide_H5P_For_Anonymous_Users::get_instance(), 'enqueue_scripts' ), 10, 1 );
+		add_filter( 'body_class', array( Hide_H5P_For_Anonymous_Users::get_instance(), 'body_class__add_anonymous' ), 10, 1 );
+
 	}
 
 	/**

@@ -1,0 +1,2 @@
+body.anonymous .h5p-iframe-wrapper{position:relative}body.anonymous .h5p-restricted-message{position:absolute;width:100%;top:33%;text-align:center;z-index:1}body.anonymous .h5p-restricted-message a{background-color:#d0ece9;border-bottom:none;border-radius:4px;display:inline-block;padding:8px 30px 12px}body.anonymous .h5p-restricted-message a:hover,body.anonymous .h5p-restricted-message a:focus{background-color:#36499b;color:#fff}body.anonymous iframe.h5p-iframe{filter:blur(5px);pointer-events:none;z-index:0}
+/*# sourceMappingURL=hide-h5p-for-anonymous-users.css.map */

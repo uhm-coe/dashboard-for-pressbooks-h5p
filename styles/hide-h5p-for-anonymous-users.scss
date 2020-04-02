@@ -1,0 +1,34 @@
+// Colors.
+$white:             #fff;
+$deepBlue:          #36499b;
+$lightBlue:         #d0ece9;
+
+// Blur H5P Content for anonymous users, and center the log in button over it.
+body.anonymous {
+	.h5p-iframe-wrapper {
+		position: relative;
+	}
+	.h5p-restricted-message {
+		position: absolute;
+		width: 100%;
+		top: 33%;
+		text-align: center;
+		z-index: 1;
+		a {
+			background-color: $lightBlue;
+			border-bottom: none;
+			border-radius: 4px;
+			display: inline-block;
+			padding: 8px 30px 12px;
+			&:hover, &:focus {
+				background-color: $deepBlue;
+				color: $white;
+			}
+		}
+	}
+	iframe.h5p-iframe {
+		filter: blur(5px);
+		pointer-events: none;
+		z-index: 0;
+	}
+}

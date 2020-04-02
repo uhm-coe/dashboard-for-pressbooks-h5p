@@ -22,6 +22,7 @@ require_once dirname( __FILE__ ) . '/src/abstract-class-static-instance.php';
 require_once dirname( __FILE__ ) . '/src/class-plugin.php';
 require_once dirname( __FILE__ ) . '/src/class-admin-tools.php';
 require_once dirname( __FILE__ ) . '/src/class-settings.php';
+require_once dirname( __FILE__ ) . '/src/class-hide-h5p-for-anonymous-users.php';
 
 /**
  * Helper function to always return the path to the plugin's entry point. Used
