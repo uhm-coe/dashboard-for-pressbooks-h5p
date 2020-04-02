@@ -44,7 +44,7 @@ class Admin_Tools extends Static_Instance {
 			array(
 				'baseurl'            => get_bloginfo( 'url' ),
 				'h5p_url'            => admin_url( 'admin.php?page=h5p&task=show' ),
-				'h5p_ids'            => wp_json_encode( $h5p_ids ),
+				'h5p_ids'            => $h5p_ids,
 				'column_heading_h5p' => esc_html__( 'H5P Content', 'pressbooks-h5p-dashboard' ),
 			)
 		);

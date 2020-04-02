@@ -5,7 +5,6 @@
 /* global Data, tippy, jQuery */
 ( function( $ ) {
 
-	const h5p_ids = JSON.parse( Data.h5p_ids );
 	const $tables = $( 'table.front-matter, table.chapters, table.back-matter');
 	const heading = '<th role="columnheader">' + Data.column_heading_h5p + '</th>';
 
@@ -17,11 +16,11 @@
 		let badge = '—';
 
 		const chapter_id = $( this ).parent( 'tr' ).attr( 'id' ).replace( 'chapter_', '' );
-		const count  = h5p_ids.hasOwnProperty( chapter_id ) ? Object.keys( h5p_ids[ chapter_id ] ).length : 0;
+		const count  = Data.h5p_ids.hasOwnProperty( chapter_id ) ? Object.keys( Data.h5p_ids[ chapter_id ] ).length : 0;
 		if ( count > 0 ) {
 			let tooltip = '<ol>';
-			for ( const h5p_id in h5p_ids[ chapter_id ] ) {
-				tooltip += "<li><a target='_blank' href='" + Data.h5p_url + "&id=" + h5p_id + "'>" + h5p_ids[ chapter_id ][ h5p_id ] + "</a></li>";
+			for ( const h5p_id in Data.h5p_ids[ chapter_id ] ) {
+				tooltip += "<li><a target='_blank' href='" + Data.h5p_url + "&id=" + h5p_id + "'>" + Data.h5p_ids[ chapter_id ][ h5p_id ] + "</a></li>";
 			}
 			tooltip += '</ol>';
 			badge = '<button class="button-primary" data-tippy-content="' + tooltip + '">' + count + '</button>';
