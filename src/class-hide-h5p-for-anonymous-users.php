@@ -28,7 +28,7 @@ class Hide_H5P_For_Anonymous_Users extends Static_Instance {
 			wp_enqueue_script( 'p22d/hide-h5p-for-anonymous-users', plugins_url( 'scripts/hide-h5p-for-anonymous-users.js', plugin_root() ), array( 'jquery' ), '0.1.0', true );
 			wp_localize_script(
 				'p22d/hide-h5p-for-anonymous-users',
-				'p22d',
+				'Data',
 				array(
 					'loginUrl'           => wp_login_url( get_the_permalink() ),
 					'msgLogInToComplete' => esc_html__( 'Log in to complete this activity', 'p22d' ),

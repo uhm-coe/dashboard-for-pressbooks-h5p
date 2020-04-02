@@ -82,7 +82,7 @@ class Settings extends Static_Instance {
 			'pressbooks_h5p_dashboard_group',
 			'pressbooks_h5p_dashboard',
 			array(
-				'default' => $this->sanitized_defaults(),
+				'default'           => $this->sanitized_defaults(),
 				'sanitize_callback' => array( $this, 'sanitized_defaults' ),
 			)
 		);
@@ -106,9 +106,9 @@ class Settings extends Static_Instance {
 	/**
 	 * Sanitized the provided options, or return default options if none provided.
 	 *
-	 * @param  array  $options User-submitted plugin options.
+	 * @param  array $options User-submitted plugin options.
 	 *
-	 * @return array           Sanitized plugin options.
+	 * @return array          Sanitized plugin options.
 	 */
 	public function sanitized_defaults( $options = array() ) {
 		// hide_h5p_for_anonymous_users: bool; default to false.
