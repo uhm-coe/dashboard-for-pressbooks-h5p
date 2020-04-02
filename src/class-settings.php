@@ -19,7 +19,7 @@ class Settings extends Static_Instance {
 	 *
 	 * @var array
 	 */
-	private static $options;
+	private $options;
 
 	/**
 	 * Get a plugin option by name.
@@ -29,11 +29,11 @@ class Settings extends Static_Instance {
 	 * @return mixed          Option value, or null if option not found.
 	 */
 	public function get( $option = '' ) {
-		if ( ! isset( self::$options ) ) {
-			self::$options = get_option( 'pressbooks_h5p_dashboard', $this->sanitized_defaults() );
+		if ( ! isset( $this->options ) ) {
+			$this->options = get_option( 'pressbooks_h5p_dashboard', $this->sanitized_defaults() );
 		}
 
-		return self::$options[ $option ] ?? null;
+		return $this->options[ $option ] ?? null;
 	}
 
 	/**
