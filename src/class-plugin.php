@@ -24,8 +24,13 @@ class Plugin extends Static_Instance {
 		/**
 		 * Register hooks.
 		 */
+
 		// Add H5P data column to the Pressbooks Organize page.
 		add_action( 'admin_enqueue_scripts', array( Admin_Tools::get_instance(), 'admin_enqueue_scripts__add_h5p_data' ), 10, 1 );
+
+		// Create plugin options and settings page.
+		add_action( 'admin_menu', array( Settings::get_instance(), 'admin_menu__add_options_page' ), 10, 1 );
+		add_action( 'admin_init', array( Settings::get_instance(), 'admin_init__register_settings' ), 10, 1 );
 	}
 
 	/**
