@@ -26,6 +26,14 @@ require_once dirname( __FILE__ ) . '/src/class-extend-pressbooks-organize.php';
 require_once dirname( __FILE__ ) . '/src/class-hide-h5p-for-anonymous-users.php';
 
 /**
+ * Set the plugin version (used to cache bust and force asset reload of all
+ * enqueued scripts and styles).
+ */
+function plugin_version() {
+	return '0.1.0';
+}
+
+/**
  * Helper function to always return the path to the plugin's entry point. Used
  * when locating asset paths using plugins_url().
  */

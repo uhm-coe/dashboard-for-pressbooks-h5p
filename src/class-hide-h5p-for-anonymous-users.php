@@ -25,7 +25,7 @@ class Hide_H5P_For_Anonymous_Users extends Static_Instance {
 		$settings = Settings::get_instance();
 		if ( ! is_user_logged_in() && $settings->get( 'hide_h5p_for_anonymous_users' ) ) {
 			wp_enqueue_style( 'p22d/hide-h5p-for-anonymous-users', plugins_url( '/styles/hide-h5p-for-anonymous-users.css', plugin_root() ), array(), '0.1.0' );
-			wp_enqueue_script( 'p22d/hide-h5p-for-anonymous-users', plugins_url( 'scripts/hide-h5p-for-anonymous-users.js', plugin_root() ), array( 'jquery' ), '0.1.0', true );
+			wp_enqueue_script( 'p22d/hide-h5p-for-anonymous-users', plugins_url( 'scripts/hide-h5p-for-anonymous-users.js', plugin_root() ), array( 'jquery' ), plugin_version(), true );
 			wp_localize_script(
 				'p22d/hide-h5p-for-anonymous-users',
 				'Data',
