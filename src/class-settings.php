@@ -75,7 +75,7 @@ class Settings extends Static_Instance {
 	/**
 	 * Create settings sections and fields.
 	 *
-	 * Action: admin_init
+	 * @hook admin_init
 	 */
 	public function admin_init__register_settings() {
 		register_setting(

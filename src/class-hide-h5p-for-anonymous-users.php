@@ -19,7 +19,7 @@ class Hide_H5P_For_Anonymous_Users extends Static_Instance {
 	/**
 	 * If the option is enabled, load the assets for hiding H5P Content.
 	 *
-	 * Action: enqueue_scripts
+	 * @hook enqueue_scripts
 	 */
 	public function enqueue_scripts() {
 		$settings = Settings::get_instance();

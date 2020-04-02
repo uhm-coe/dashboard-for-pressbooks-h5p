@@ -62,7 +62,7 @@ class Plugin extends Static_Instance {
 	/**
 	 * Load translated strings from *.mo files in /languages.
 	 *
-	 * Action: plugins_loaded
+	 * @hook plugins_loaded
 	 */
 	public function load_textdomain() {
 		load_plugin_textdomain(
