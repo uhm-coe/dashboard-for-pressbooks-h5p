@@ -12,9 +12,9 @@ namespace Pressbooks_H5P_Dashboard;
 use Pressbooks_H5P_Dashboard\Data;
 
 /**
- * Contains features added in the WordPress Dashboard.
+ * Contains modifications of Pressbooks Organize WordPress Dashboard widget.
  */
-class Admin_Tools extends Static_Instance {
+class Extend_Pressbooks_Organize extends Static_Instance {
 	/**
 	 * Load the javascript that annotates the Pressbooks Organize page with
 	 * embedded H5P details.
@@ -40,7 +40,7 @@ class Admin_Tools extends Static_Instance {
 		wp_enqueue_style( 'tippy.js@6/themes/light-border', 'https://unpkg.com/tippy.js@6/themes/light-border.css', array(), '6', 'all' );
 
 		// Load javascript that creates the H5P Content column.
-		wp_enqueue_script( 'pressbooks-h5p-dashboard/admin-organize', plugins_url( 'scripts/admin-organize.js', plugin_root() ), array(), '0.1.0', true );
+		wp_enqueue_script( 'pressbooks-h5p-dashboard/admin-organize', plugins_url( 'scripts/extend-pressbooks-organize.js', plugin_root() ), array(), '0.1.0', true );
 		wp_localize_script(
 			'pressbooks-h5p-dashboard/admin-organize',
 			'Data',
