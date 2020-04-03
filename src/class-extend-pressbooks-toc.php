@@ -24,7 +24,7 @@ class Extend_Pressbooks_TOC extends Static_Instance {
 	public function enqueue_scripts() {
 		// Only load on a single page or if Pressbooks first post id is set.
 		// Note: this is the logic Pressbooks uses to render the TOC.
-		if ( ! is_single() || ( function_exists( 'pb_get_first_post_id' ) && ! pb_get_first_post_id() ) ) {
+		if ( ! is_single() && ! ( function_exists( 'pb_get_first_post_id' ) && pb_get_first_post_id() ) ) {
 			return;
 		}
 
@@ -50,7 +50,6 @@ class Extend_Pressbooks_TOC extends Static_Instance {
 				);
 			}
 		}
-
 
 		// Load tippy.js (tooltips) from CDN.
 		// See: https://atomiks.github.io/tippyjs/v6/getting-started/.
