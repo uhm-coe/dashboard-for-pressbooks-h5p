@@ -60,6 +60,7 @@ class Data extends Static_Instance {
 					$h5p_by_chapter[ $chapter->ID ][ $h5p_id ] = array(
 						'title'   => $h5p['title'],
 						'library' => str_replace( 'H5P.', '', $h5p['library']['name'] ),
+						'passing' => json_decode( $h5p['params'] ?? '{}' )->behaviour->passPercentage ?? 0,
 					);
 				}
 			}
@@ -90,6 +91,7 @@ class Data extends Static_Instance {
 					$h5p_by_chapter[ $chapter->ID ][ $h5p_id ] = array(
 						'title'   => $h5p['title'],
 						'library' => str_replace( 'H5P.', '', $h5p['library']['name'] ),
+						'passing' => json_decode( $h5p['params'] ?? '{}' )->behaviour->passPercentage ?? 0,
 					);
 				}
 			}
