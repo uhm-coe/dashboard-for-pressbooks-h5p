@@ -4,6 +4,8 @@ $lightRed:   #dc3545;
 $red:        #c82333;
 $lightGreen: #28a745;
 $green:      #218838;
+$blue:       #0062cc;
+$lightBlue:  #007bff;
 
 // Blur H5P Content for anonymous users, and center the log in button over it.
 .toc {
@@ -17,10 +19,13 @@ $green:      #218838;
 			background-color: $lightGreen;
 			&:hover { background-color: $green; color: $white; }
 		}
-
 		&.not-done {
 			background-color: $lightRed;
 			&:hover { background-color: $red; color: $white; }
+		}
+		&.anonymous {
+			background-color: $lightBlue;
+			&:hover { background-color: $blue; color: $white; }
 		}
 
 		& + div[data-tippy-root] {

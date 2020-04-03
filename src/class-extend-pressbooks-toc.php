@@ -64,9 +64,12 @@ class Extend_Pressbooks_TOC extends Static_Instance {
 			'p22d/extend-pressbooks-toc',
 			'Data',
 			array(
-				'h5p_ids'     => $h5p_ids,
-				'h5p_results' => $h5p_results,
-				'msgYourH5PResults' => __( 'Your H5P Results', 'p22d' ),
+				'h5p_ids'           => $h5p_ids,
+				'h5p_results'       => $h5p_results,
+				'isLoggedIn'        => is_user_logged_in(),
+				'loginUrl'          => wp_login_url( get_the_permalink() ),
+				'msgYourH5PResults' => esc_html__( 'Your H5P Results', 'p22d' ),
+				'msgLogInToSee'     => esc_html__( 'Sign in to see your results', 'p22d' ),
 			)
 		);
 	}
