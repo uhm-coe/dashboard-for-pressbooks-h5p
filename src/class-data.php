@@ -57,7 +57,10 @@ class Data extends Static_Instance {
 					if ( ! isset( $h5p_by_chapter[ $chapter->ID ] ) ) {
 						$h5p_by_chapter[ $chapter->ID ] = array();
 					}
-					$h5p_by_chapter[ $chapter->ID ][ $h5p_id ] = $h5p['title'] . ' (' . str_replace( 'H5P.', '', $h5p['library']['name'] ) . ')';
+					$h5p_by_chapter[ $chapter->ID ][ $h5p_id ] = array(
+						'title'   => $h5p['title'],
+						'library' => str_replace( 'H5P.', '', $h5p['library']['name'] ),
+					);
 				}
 			}
 
@@ -84,7 +87,10 @@ class Data extends Static_Instance {
 					if ( ! isset( $h5p_by_chapter[ $chapter->ID ] ) ) {
 						$h5p_by_chapter[ $chapter->ID ] = array();
 					}
-					$h5p_by_chapter[ $chapter->ID ][ $h5p_id ] = $h5p['title'] . ' (' . str_replace( 'H5P.', '', $h5p['library']['name'] ) . ')';
+					$h5p_by_chapter[ $chapter->ID ][ $h5p_id ] = array(
+						'title'   => $h5p['title'],
+						'library' => str_replace( 'H5P.', '', $h5p['library']['name'] ),
+					);
 				}
 			}
 		}
