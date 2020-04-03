@@ -13,7 +13,7 @@
 		const count = Data.h5p_ids.hasOwnProperty( chapter_id ) ? Object.keys( Data.h5p_ids[ chapter_id ] ).length : 0;
 		if ( count > 0 ) {
 			let completed = 0;
-			let tooltip   = '<ol>';
+			let tooltip   = '<p>' + Data.msgYourH5PResults + ':</p><ol>';
 			for ( const h5p_id in Data.h5p_ids[ chapter_id ] ) {
 				// Calculate score; mark completed if result exists and
 				// score > max_score * passing_percentage.

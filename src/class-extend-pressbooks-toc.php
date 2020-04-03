@@ -66,6 +66,7 @@ class Extend_Pressbooks_TOC extends Static_Instance {
 			array(
 				'h5p_ids'     => $h5p_ids,
 				'h5p_results' => $h5p_results,
+				'msgYourH5PResults' => __( 'Your H5P Results', 'p22d' ),
 			)
 		);
 	}
