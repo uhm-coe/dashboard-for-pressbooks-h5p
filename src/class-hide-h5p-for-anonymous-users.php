@@ -31,7 +31,7 @@ class Hide_H5P_For_Anonymous_Users extends Static_Instance {
 				'Data',
 				array(
 					'loginUrl'           => wp_login_url( get_the_permalink() ),
-					'msgLogInToComplete' => esc_html__( 'Log in to complete this activity', 'p22d' ),
+					'msgLogInToComplete' => esc_html__( 'Sign in to complete this activity', 'p22d' ),
 				)
 			);
 		}
