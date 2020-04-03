@@ -21,6 +21,13 @@ class Data extends Static_Instance {
 	private $chapters_with_h5p;
 
 	/**
+	 * Cached H5P results by user id.
+	 *
+	 * @var array
+	 */
+	private $h5p_results;
+
+	/**
 	 * Returns H5P ids grouped by the post_id they are embedded on.
 	 *
 	 * @return array Post ID keys with an array of H5P ids under each.
@@ -101,5 +108,55 @@ class Data extends Static_Instance {
 		$this->chapters_with_h5p = $h5p_by_chapter;
 
 		return $this->chapters_with_h5p;
+	}
+
+	public function get_my_h5p_results() {
+		$H5P_Plugin_Admin = \H5P_Plugin_Admin::get_instance();
+
+		// Return nothing for anonymous users.
+		// if ( ! is_user_logged_in() ) {
+		// 	return array();
+		// }
+
+		$user_id = 81;//get_current_user_id();
+
+		// Return cached value if it exists.
+		if ( isset( $this->h5p_results[ $user_id ] ) ) {
+			return $this->h5p_results[ $user_id ];
+		}
+
+		/**
+		 * H5P get_results returns an array of:
+		 *   stdClass Object(
+		 *     [id]            => 123
+		 *     [content_id]    => 123
+		 *     [content_title] => Title
+		 *     [score]         => 1
+		 *     [max_score]     => 1
+		 *     [opened]        => 1234567890 (unit timestamp)
+		 *     [finished]      => 1234567890 (unix timestamp)
+		 *     [time]          => 0
+		 *   )
+		 */
+		$my_h5p_results = array_filter(
+			$H5P_Plugin_Admin->get_results( null, $user_id, 0, PHP_INT_MAX ),
+			function ( $result ) {
+				// Skip invalid results.
+				return isset(
+					$result->id,
+					$result->content_id,
+					$result->content_title,
+					$result->score,
+					$result->max_score,
+					$result->opened,
+					$result->finished
+				);
+			}
+		);
+
+		// Save value to cache.
+		$this->h5p_results[ $user_id ] = $my_h5p_results;
+
+		return $my_h5p_results;
 	}
 }

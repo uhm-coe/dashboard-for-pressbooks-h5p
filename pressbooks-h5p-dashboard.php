@@ -23,6 +23,7 @@ require_once dirname( __FILE__ ) . '/src/class-plugin.php';
 require_once dirname( __FILE__ ) . '/src/class-settings.php';
 require_once dirname( __FILE__ ) . '/src/class-data.php';
 require_once dirname( __FILE__ ) . '/src/class-extend-pressbooks-organize.php';
+require_once dirname( __FILE__ ) . '/src/class-extend-pressbooks-toc.php';
 require_once dirname( __FILE__ ) . '/src/class-hide-h5p-for-anonymous-users.php';
 
 /**

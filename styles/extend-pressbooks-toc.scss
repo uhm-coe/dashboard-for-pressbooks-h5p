@@ -1,0 +1,34 @@
+// Colors.
+$white:      #fff;
+$lightRed:   #dc3545;
+$red:        #c82333;
+$lightGreen: #28a745;
+$green:      #218838;
+
+// Blur H5P Content for anonymous users, and center the log in button over it.
+.toc {
+	.h5p-results {
+		border-radius: 20px;
+		width: 2rem;
+		height: 2rem;
+		color: $white;
+
+		&.done {
+			background-color: $lightGreen;
+			&:hover { background-color: $green; color: $white; }
+		}
+
+		&.not-done {
+			background-color: $lightRed;
+			&:hover { background-color: $red; color: $white; }
+		}
+
+		& + div[data-tippy-root] {
+			ol {
+				margin-left: 0;
+				padding-left: 25px;
+				list-style-type: none;
+			}
+		}
+	}
+}
