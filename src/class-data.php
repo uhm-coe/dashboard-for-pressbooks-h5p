@@ -114,11 +114,11 @@ class Data extends Static_Instance {
 		$H5P_Plugin_Admin = \H5P_Plugin_Admin::get_instance();
 
 		// Return nothing for anonymous users.
-		// if ( ! is_user_logged_in() ) {
-		// 	return array();
-		// }
+		if ( ! is_user_logged_in() ) {
+			return array();
+		}
 
-		$user_id = 81;//get_current_user_id();
+		$user_id = get_current_user_id();
 
 		// Return cached value if it exists.
 		if ( isset( $this->h5p_results[ $user_id ] ) ) {
