@@ -45,7 +45,6 @@ class Extend_Pressbooks_Organize extends Static_Instance {
 			'p22d/extend-pressbooks-organize',
 			'Data',
 			array(
-				'baseurl'            => get_bloginfo( 'url' ),
 				'h5p_url'            => admin_url( 'admin.php?page=h5p&task=show' ),
 				'h5p_ids'            => $h5p_ids,
 				'column_heading_h5p' => esc_html__( 'H5P Content', 'pressbooks-h5p-dashboard' ),
