@@ -24,9 +24,11 @@ $green:      #218838;
 		}
 
 		& + div[data-tippy-root] {
+			.tippy-content > * {
+				padding-left: 25px;
+			}
 			ol {
 				margin-left: 0;
-				padding-left: 25px;
 				list-style-type: none;
 			}
 		}
