@@ -22,25 +22,27 @@
 			tooltip += '<p>' + Data.msgYourH5PResults + ':</p>';
 			tooltip += '<ol>';
 			for ( const h5p_id in Data.h5p_ids[ chapter_id ] ) {
+				const h5p = Data.h5p_ids[ chapter_id ][ h5p_id ];
 				// Calculate score; mark completed if result exists and
 				// score > max_score * passing_percentage.
 				let score = '—';
 				if ( Data.h5p_results.hasOwnProperty( h5p_id ) ) {
-					score = Math.round( Data.h5p_results[ h5p_id ]['score'] / Data.h5p_results[ h5p_id ]['max_score'] * 100 ) + '%';
-					if ( Data.h5p_results[ h5p_id ]['score'] >= Data.h5p_results[ h5p_id ]['max_score'] * Data.h5p_ids[ chapter_id ][ h5p_id ]['passing'] / 100 ) {
+					const result = Data.h5p_results[ h5p_id ];
+					score = Math.round( result.score / result.max_score * 100 ) + '%';
+					if ( result.score >= result.max_score * h5p.passing / 100 ) {
 						completed++;
 					}
 				}
-				tooltip += "<li>" + Data.h5p_ids[ chapter_id ][ h5p_id ]['title'] + ': ' + score + "</li>";
+				tooltip += "<li>" + h5p.title + ': ' + score + "</li>";
 			}
 			tooltip += '</ol>';
 
 			// Build the badge: green checkmark if finished; red with remaining count
 			// if not; blue with total count if user is anonymous (results unable to
 			// be collected).
-			const finished = count - completed < 1;
-			const label    = finished ? '✓' : count - completed;
-			let badgeClasses = [ 'h5p-results' ];
+			const finished     = count - completed < 1;
+			const label        = finished ? '✓' : count - completed;
+			const badgeClasses = [ 'h5p-results' ];
 			if ( ! Data.isLoggedIn ) {
 				badgeClasses.push( 'anonymous' );
 			} else if ( finished ) {

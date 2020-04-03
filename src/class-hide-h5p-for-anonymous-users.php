@@ -37,6 +37,15 @@ class Hide_H5P_For_Anonymous_Users extends Static_Instance {
 		}
 	}
 
+	/**
+	 * Add "anonymous" to body classes (for detection in css and js).
+	 *
+	 * @hook body_class
+	 *
+	 * @param  array $classes An array of body class names.
+	 *
+	 * @return array          An array of body class names.
+	 */
 	public function body_class__add_anonymous( $classes ) {
 		if ( ! is_user_logged_in() ) {
 			$classes = array_merge( $classes, array( 'anonymous' ) );

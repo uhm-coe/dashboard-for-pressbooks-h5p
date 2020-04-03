@@ -20,7 +20,8 @@
 		if ( count > 0 ) {
 			let tooltip = '<ol>';
 			for ( const h5p_id in Data.h5p_ids[ chapter_id ] ) {
-				tooltip += "<li><a target='_blank' href='" + Data.h5p_url + "&id=" + h5p_id + "'>" + Data.h5p_ids[ chapter_id ][ h5p_id ]['title'] + ' (' + Data.h5p_ids[ chapter_id ][ h5p_id ]['library'] + ")</a></li>";
+				const h5p = Data.h5p_ids[ chapter_id ][ h5p_id ];
+				tooltip  += "<li><a target='_blank' href='" + Data.h5p_url + "&id=" + h5p_id + "'>" + h5p.title + ' (' + h5p.library + ")</a></li>";
 			}
 			tooltip += '</ol>';
 			badge = '<button class="button-primary" data-tippy-content="' + tooltip + '">' + count + '</button>';

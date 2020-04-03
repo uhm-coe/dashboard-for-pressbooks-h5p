@@ -34,7 +34,7 @@ class Data extends Static_Instance {
 	 */
 	public function get_chapters_with_h5p() {
 		global $wpdb;
-		$H5P_Plugin = \H5P_Plugin::get_instance();
+		$H5P_Plugin = \H5P_Plugin::get_instance(); // phpcs:ignore WordPress.NamingConventions.ValidVariableName
 
 		// Return cached value if it exists.
 		if ( isset( $this->chapters_with_h5p ) ) {
@@ -59,7 +59,7 @@ class Data extends Static_Instance {
 					$h5p_by_chapter[ $chapter->ID ] = array();
 				}
 
-				$h5p = $H5P_Plugin->get_content( $h5p_id );
+				$h5p = $H5P_Plugin->get_content( $h5p_id ); // phpcs:ignore WordPress.NamingConventions.ValidVariableName
 				if ( ! empty( $h5p['title'] ) && ! empty( $h5p['library']['name'] ) ) {
 					if ( ! isset( $h5p_by_chapter[ $chapter->ID ] ) ) {
 						$h5p_by_chapter[ $chapter->ID ] = array();
@@ -90,7 +90,7 @@ class Data extends Static_Instance {
 				}
 
 				// Get H5P content details.
-				$h5p = $H5P_Plugin->get_content( $h5p_id );
+				$h5p = $H5P_Plugin->get_content( $h5p_id ); // phpcs:ignore WordPress.NamingConventions.ValidVariableName
 				if ( ! empty( $h5p['title'] ) && ! empty( $h5p['library']['name'] ) ) {
 					if ( ! isset( $h5p_by_chapter[ $chapter->ID ] ) ) {
 						$h5p_by_chapter[ $chapter->ID ] = array();
@@ -110,8 +110,13 @@ class Data extends Static_Instance {
 		return $this->chapters_with_h5p;
 	}
 
+	/**
+	 * Get the current user's results on all H5P content they've attempted.
+	 *
+	 * @return array Current user's H5P results.
+	 */
 	public function get_my_h5p_results() {
-		$H5P_Plugin_Admin = \H5P_Plugin_Admin::get_instance();
+		$H5P_Plugin_Admin = \H5P_Plugin_Admin::get_instance(); // phpcs:ignore WordPress.NamingConventions.ValidVariableName
 
 		// Return nothing for anonymous users.
 		if ( ! is_user_logged_in() ) {
@@ -139,7 +144,7 @@ class Data extends Static_Instance {
 		 *   )
 		 */
 		$my_h5p_results = array_filter(
-			$H5P_Plugin_Admin->get_results( null, $user_id, 0, PHP_INT_MAX ),
+			$H5P_Plugin_Admin->get_results( null, $user_id, 0, PHP_INT_MAX ), // phpcs:ignore WordPress.NamingConventions.ValidVariableName
 			function ( $result ) {
 				// Skip invalid results.
 				return isset(
