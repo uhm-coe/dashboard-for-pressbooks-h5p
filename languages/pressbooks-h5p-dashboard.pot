@@ -1,0 +1,76 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Pressbooks H5P Dashboard\n"
+"POT-Creation-Date: 2020-04-03 10:44-1000\n"
+"PO-Revision-Date: 2020-04-03 10:44-1000\n"
+"Last-Translator: University of Hawaii <dcdc@hawaii.edu>\n"
+"Language-Team: University of Hawaii <dcdc@hawaii.edu>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.12\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: pressbooks-h5p-dashboard.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: src/class-extend-pressbooks-organize.php:50
+msgid "H5P Content"
+msgstr ""
+
+#: src/class-extend-pressbooks-toc.php:71
+msgid "Your H5P Results"
+msgstr ""
+
+#: src/class-extend-pressbooks-toc.php:72
+msgid "Sign in to see your results"
+msgstr ""
+
+#: src/class-hide-h5p-for-anonymous-users.php:34
+msgid "Sign in to complete this activity"
+msgstr ""
+
+#: src/class-settings.php:46 src/class-settings.php:60
+msgid "Pressbooks H5P Dashboard Settings"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+#: src/class-settings.php:47
+msgid "Pressbooks H5P Dashboard"
+msgstr ""
+
+#: src/class-settings.php:99
+msgid "H5P Visibility"
+msgstr ""
+
+#: src/class-settings.php:134
+msgid "Hide H5P Content for anonymous users"
+msgstr ""
+
+#: src/class-settings.php:136
+msgid ""
+"Note: with this setting enabled, embedded H5P Content will be blurred out on "
+"the page, with a login button in the center. Enable this to discourage users "
+"from interacting with H5P Content anonymously, since no progress or results "
+"are stored for users who are not logged in."
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/uhm-coe/pressbooks-h5p-dashboard"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"This plugin generates summaries of H5P content and results in a Pressbooks "
+"book."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Paul Ryan <prar@hawaii.edu>"
+msgstr ""

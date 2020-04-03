@@ -37,6 +37,9 @@ class Plugin extends Static_Instance {
 		add_action( 'admin_menu', array( Settings::get_instance(), 'admin_menu__add_options_page' ), 10, 1 );
 		add_action( 'admin_init', array( Settings::get_instance(), 'admin_init__register_settings' ), 10, 1 );
 
+		// Enable localization. Translation files stored in /languages.
+		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
+
 		// Load custom javascript for hiding H5P Content from anonymous users.
 		add_action( 'wp_enqueue_scripts', array( Hide_H5P_For_Anonymous_Users::get_instance(), 'enqueue_scripts' ), 10, 1 );
 		add_filter( 'body_class', array( Hide_H5P_For_Anonymous_Users::get_instance(), 'body_class__add_anonymous' ), 10, 1 );
@@ -69,7 +72,7 @@ class Plugin extends Static_Instance {
 	 */
 	public function load_textdomain() {
 		load_plugin_textdomain(
-			'pressbooks-h5p-dashboard',
+			'p22d',
 			false,
 			basename( dirname( plugin_root() ) ) . '/languages'
 		);
