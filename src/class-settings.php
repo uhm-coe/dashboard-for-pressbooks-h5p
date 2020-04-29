@@ -137,4 +137,71 @@ class Settings extends Static_Instance {
 		<?php
 	}
 
+	/**
+	 * Show notice on the plugin settings page if dependencies are missing.
+	 *
+	 * @hook admin_notices
+	 */
+	public function admin_notices__dependency_check() {
+		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+		if ( isset( $screen->id ) && 'settings_page_pressbooks-h5p-dashboard' === $screen->id ) {
+			// Show notice if Pressbooks or H5P aren't activated.
+			$is_pressbooks_installed = file_exists( WP_PLUGIN_DIR . '/pressbooks/pressbooks.php' );
+			$is_pressbooks_active    = is_plugin_active( 'pressbooks/pressbooks.php' );
+			$is_h5p_installed        = file_exists( WP_PLUGIN_DIR . '/h5p/h5p.php' );
+			$is_h5p_active           = is_plugin_active( 'h5p/h5p.php' );
+			if ( ! $is_pressbooks_active || ! $is_h5p_active ) {
+				?>
+				<div class='notice notice-warning is-dismissible'>
+					<h2 class="notice-title"><?php esc_html_e( 'Missing Required Dependencies', 'p22d' ); ?></h2>
+					<p><?php esc_html_e( 'The following plugins need to be activated for this plugin to work:', 'p22d' ); ?></p>
+					<ol>
+						<li>
+							<a target="_blank" href="<?php esc_attr_e( 'https://docs.pressbooks.org/installation/' ); ?>"><?php esc_html_e( 'Pressbooks', 'p22d' ); ?></a>
+							<?php if ( $is_pressbooks_installed ) : ?>
+								<span class="badge badge-success"><span class="dashicons dashicons-yes"></span> Installed</span>
+							<?php else : ?>
+								<span class="badge badge-warning"><span class="dashicons dashicons-no"></span> Not Installed</span>
+							<?php endif; ?>
+							<?php if ( $is_pressbooks_active ) : ?>
+								<span class="badge badge-success"><span class="dashicons dashicons-yes"></span> Active</span>
+							<?php else : ?>
+								<span class="badge badge-warning"><span class="dashicons dashicons-no"></span> Not Active</span>
+							<?php endif; ?>
+						</li>
+						<li>
+							<a target="_blank" href="<?php esc_attr_e( 'https://h5p.org/documentation/setup/wordpress' ); ?>"><?php esc_html_e( 'H5P', 'p22d' ); ?></a>
+							<?php if ( $is_h5p_installed ) : ?>
+								<span class="badge badge-success"><span class="dashicons dashicons-yes"></span> Installed</span>
+							<?php else : ?>
+								<span class="badge badge-warning"><span class="dashicons dashicons-no"></span> Not Installed</span>
+							<?php endif; ?>
+							<?php if ( $is_h5p_active ) : ?>
+								<span class="badge badge-success"><span class="dashicons dashicons-yes"></span> Active</span>
+							<?php else : ?>
+								<span class="badge badge-warning"><span class="dashicons dashicons-no"></span> Not Active</span>
+							<?php endif; ?>
+						</li>
+					</ol>
+				</div>
+				<?php
+			}
+		}
+	}
+
+	/**
+	 * Load the styles for the plugin settings page.
+	 *
+	 * @hook admin_enqueue_scripts
+	 *
+	 * @param  string $hook_suffix The current admin page.
+	 */
+	public function admin_enqueue_scripts( $hook_suffix ) {
+		// Skip loading if not on plugin settings page.
+		if ( 'settings_page_pressbooks-h5p-dashboard' !== $hook_suffix ) {
+			return;
+		}
+
+		wp_enqueue_style( 'p22d/settings', plugins_url( 'styles/settings.css', plugin_root() ), array(), plugin_version(), 'all' );
+	}
 }

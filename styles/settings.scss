@@ -1,0 +1,28 @@
+// Styles for plugin settings page.
+body.settings_page_pressbooks-h5p-dashboard {
+	.notice {
+		a {
+			margin-right: 6px;
+			font-weight: 600;
+		}
+	}
+
+	.badge {
+		display: inline-block;
+		padding: 2px 6px 2px 3px;
+		font-weight: 600;
+		line-height: 20px;
+		color: #fff;
+		text-align: center;
+		background-color: #6a737d;
+		border-radius: 3px;
+
+		&.badge-success {
+			background-color: #2cbe4e;
+		}
+
+		&.badge-warning {
+			background-color: #cb2431;
+		}
+	}
+}
