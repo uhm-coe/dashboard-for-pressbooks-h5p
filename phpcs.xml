@@ -2,6 +2,10 @@
 <ruleset name="DCDC_WordPress">
 	<description>WordPress Coding Standards</description>
 
+	<!-- Limit scanning to php files (default is inc, php, js, and css; phpcs chokes on minified css/js). -->
+	<!-- See: https://github.com/PHPCompatibility/PHPCompatibilityWP/issues/5#issuecomment-418719249 -->
+	<arg name="extensions" value="php,inc"/>
+
 	<!-- Use WordPress as a base -->
 	<rule ref="WordPress">
 		<!-- Allow: while ( have_posts() ) : the_post(); -->
