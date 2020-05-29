@@ -288,8 +288,8 @@ class Dashboard_Widget extends Static_Instance {
 		$filter  = $this->get_option( 'filter' );
 		$filters = $this->get_filters();
 		if ( ! empty( $filters[ $filter ] ) ) {
+			global $wpdb;
 			if ( 'registered' === $filters[ $filter ]['type'] ) {
-				global $wpdb;
 				$users_too_old = $wpdb->get_col( $wpdb->prepare(
 					"SELECT ID FROM $wpdb->users WHERE user_registered < FROM_UNIXTIME(%d)",
 					$filters[ $filter ]['time']
@@ -298,7 +298,7 @@ class Dashboard_Widget extends Static_Instance {
 			} elseif ( 'signed_in' === $filters[ $filter ]['type'] ) {
 				$args['meta_query'] = array(
 					array(
-            'key'     => 'pressbooks_h5p_dashboard_last_login',
+            'key'     => $wpdb->get_blog_prefix() . 'pressbooks_h5p_dashboard_last_login',
             'value'   => $filters[ $filter ]['time'],
             'type'    => 'UNSIGNED',
             'compare' => '>=',

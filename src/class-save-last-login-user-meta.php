@@ -23,7 +23,7 @@ class Save_Last_Login_User_Meta extends Static_Instance {
 	 * @param  WP_User $user       WP_User object of the logged-in user.
 	 */
 	public function update( $user_login, $user ) {
-		update_user_meta( $user->ID, 'pressbooks_h5p_dashboard_last_login', time() );
+		update_user_option( $user->ID, 'pressbooks_h5p_dashboard_last_login', time() );
 	}
 
 }
