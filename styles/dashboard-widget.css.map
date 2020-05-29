@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAGC,qDAA+B,CAC9B,MAAM,CAAE,CAAC,CAIV,qFACsB,CACrB,cAAc,CAAE,KAAK,CAGtB,sCAAgB,CACf,WAAW,CAAE,GAAG,CAEjB,kCAAY,CACX,aAAa,CAAE,GAAG",
+"mappings": "AAGC,qDAA+B,CAC9B,MAAM,CAAE,CAAC,CAIV,qFACsB,CACrB,cAAc,CAAE,KAAK,CAGtB,sCAAgB,CACf,WAAW,CAAE,GAAG,CAEjB,kCAAY,CACX,aAAa,CAAE,GAAG,CAInB,2CAAqB,CACpB,UAAU,CAAE,IAAI",
 "sources": ["dashboard-widget.scss"],
 "names": [],
 "file": "dashboard-widget.css"

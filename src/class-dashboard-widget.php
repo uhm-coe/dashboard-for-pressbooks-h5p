@@ -310,12 +310,11 @@ class Dashboard_Widget extends Static_Instance {
 		// Get matching users.
 		$users = new \WP_User_Query( $args );
 
-		// Get H5P data.
-		$data    = Data::get_instance();
-		$h5p_ids = $data->get_chapters_with_h5p();
-		$num_h5p = array_sum( array_map( function ( $h5p_ids_in_chapter ) {
+		// Get total count of H5P content.
+		$data      = Data::get_instance();
+		$total_h5p = array_sum( array_map( function ( $h5p_ids_in_chapter ) {
 			return count( $h5p_ids_in_chapter );
-		}, $h5p_ids ) );
+		}, $data->get_chapters_with_h5p() ) );
 
 		?>
 		<div class="users">
@@ -324,7 +323,7 @@ class Dashboard_Widget extends Static_Instance {
 			</div>
 
 			<?php $this->render_pager( $page, $per_page, $users->total_users, 'top', $search ); ?>
-			<table class="wp-list-table widefat fixed striped" cellspacing="0">
+			<table class="wp-list-table widefat striped" cellspacing="0">
 				<thead>
 					<tr>
 						<th class="manage-column column-username" scope="col">User</th>
@@ -333,7 +332,7 @@ class Dashboard_Widget extends Static_Instance {
 				</thead>
 				<tbody>
 					<?php foreach ( $users->results as $user ) : ?>
-						<?php $results = $data->get_h5p_results_by_user_id( $user->ID ); ?>
+						<?php $results = array_filter( $data->get_h5p_results_by_user_id( $user->ID ), function ( $result ) { return $result->score > 0; } ); ?>
 						<tr>
 							<td class="column-username">
 								<?php echo get_avatar( $user->ID, 32 ); ?>
@@ -341,7 +340,7 @@ class Dashboard_Widget extends Static_Instance {
 								<?php echo esc_html( $user->user_email ); ?>
 							</td>
 							<td class="column-results num">
-								<button class="button-primary" data-tippy-content=""><?php echo esc_html( count( $results ) . ' / ' . $num_h5p ); ?></button>
+								<button class="button-primary" data-tippy-content="<?php echo esc_attr( $this->render_user_tooltip( $user, $results ) ); ?>"><?php echo esc_html( count( $results ) . ' / ' . $total_h5p ); ?></button>
 							</td>
 						</tr>
 					<?php endforeach; ?>
@@ -351,6 +350,74 @@ class Dashboard_Widget extends Static_Instance {
 		</div>
 
 		<?php
+	}
+
+
+	/**
+	 * Generate the markup for the tippy tooltip for each user in the widget.
+	 *
+	 * @param  WP_User &$user               WP_User object for the user (passed by reference).
+	 * @param  array   &$results            H5P results for the user (passed by reference).
+	 *
+	 * @return string            HTML for the tooltip.
+	 */
+	public function render_user_tooltip( &$user, &$results ) {
+		$data               = Data::get_instance();
+		$h5p_ids_by_chapter = $data->get_chapters_with_h5p();
+
+		$chapter_data = array();
+		foreach ( $data->get_book_structure() as $section => $parts ) {
+			if ( '__order' === $section ) {
+				// Skip __order section (long array indicating book ordering).
+				continue;
+			}
+			foreach ( $parts as $part ) {
+				if ( ! empty( $part['chapters'] ) ) {
+					foreach ( $part['chapters'] as $chapter ) {
+						if ( ! empty( $h5p_ids_by_chapter[ $chapter['ID'] ] ) ) {
+							$h5p_ids = array_keys( $h5p_ids_by_chapter[ $chapter['ID'] ] );
+							$passed  = array_filter(
+								$results,
+								function ( $result ) use ( $h5p_ids ) {
+									return in_array( $result->content_id, $h5p_ids );
+								}
+							);
+							$chapter_data[ $chapter['ID'] ] = array(
+								'parent'     => $part['post_title'] ?? '—',
+								'title'      => $chapter['post_title'] ?? '—',
+								'h5p_passed' => count( $passed ),
+								'h5p_total'  => count( $h5p_ids_by_chapter[ $chapter['ID'] ] ),
+							);
+						}
+					}
+				}
+			}
+		}
+
+		ob_start();
+		?>
+		<h1><?php echo $user->user_nicename; ?></h1>
+		<table class="wp-list-table striped">
+			<thead>
+				<tr>
+					<th><strong>Part</strong></th>
+					<th>Chapter</th>
+					<th>Score</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach ( $chapter_data as $chapter_id => $data ) : ?>
+					<tr>
+						<td><strong><?php echo esc_html( $data['parent'] ); ?></strong></td>
+						<td><?php echo esc_html( $data['title'] ); ?></td>
+						<td><?php echo esc_html( $data['h5p_passed'] ); ?>/<?php echo esc_html( $data['h5p_total'] ); ?></td>
+					</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+		<?php
+
+		return ob_get_clean();
 	}
 
 

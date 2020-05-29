@@ -17,4 +17,9 @@
 	.search-box {
 		margin-bottom: 9px;
 	}
+
+	// Left align table cells in tooltips.
+	.tippy-content table {
+		text-align: left;
+	}
 }
