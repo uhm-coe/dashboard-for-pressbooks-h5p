@@ -28,18 +28,25 @@ class Data extends Static_Instance {
 	private $h5p_results;
 
 	/**
+	 * Cached value of pb_get_book_structure() from Pressbooks.
+	 *
+	 * @var  array
+	 */
+	private $book_structure;
+
+	/**
 	 * Returns H5P ids grouped by the post_id they are embedded on.
 	 *
 	 * @return array Post ID keys with an array of H5P ids under each.
 	 */
 	public function get_chapters_with_h5p() {
-		global $wpdb;
-		$H5P_Plugin = \H5P_Plugin::get_instance(); // phpcs:ignore WordPress.NamingConventions.ValidVariableName
-
 		// Return cached value if it exists.
 		if ( isset( $this->chapters_with_h5p ) ) {
 			return $this->chapters_with_h5p;
 		}
+
+		global $wpdb;
+		$H5P_Plugin = \H5P_Plugin::get_instance(); // phpcs:ignore WordPress.NamingConventions.ValidVariableName
 
 		$h5p_by_chapter = array();
 
@@ -182,5 +189,29 @@ class Data extends Static_Instance {
 		$this->h5p_results[ $user_id ] = $my_h5p_results;
 
 		return $my_h5p_results;
+	}
+
+
+	/**
+	 * Wrapper for Pressbooks' pb_get_book_structure(). See
+	 * https://docs.pressbooks.org/book-themes/.
+	 *
+	 * @return array Array of sections, parts, and chapters in sorted order.
+	 */
+	public function get_book_structure() {
+		// Return cached value if it exists.
+		if ( isset( $this->book_structure ) ) {
+			return $this->book_structure;
+		}
+
+		$book_structure = array();
+		if ( function_exists( 'pb_get_book_structure' ) ) {
+			$book_structure = pb_get_book_structure();
+		}
+
+		// Save value to cache.
+		$this->book_structure = $book_structure;
+
+		return $book_structure;
 	}
 }
