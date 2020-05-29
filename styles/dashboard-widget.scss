@@ -14,12 +14,22 @@
 	.tablenav-pages {
 		margin-left: 9px;
 	}
-	.search-box {
-		margin-bottom: 9px;
-	}
 
 	// Left align table cells in tooltips.
 	.tippy-content table {
 		text-align: left;
+	}
+
+	// Fix search box on top of user list at mobile screen sizes.
+	@media screen and (max-width: 782px) {
+		.tablenav {
+			height: 40px;
+		}
+		.users {
+			padding-bottom: 62px;
+		}
+		.search-box {
+			height: auto;
+		}
 	}
 }
