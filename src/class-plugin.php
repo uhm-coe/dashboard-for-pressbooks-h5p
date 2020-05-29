@@ -44,10 +44,12 @@ class Plugin extends Static_Instance {
 		// Add admin styles for the plugin settings page.
 		add_action( 'admin_enqueue_scripts', array( Settings::get_instance(), 'admin_enqueue_scripts' ), 10, 1 );
 
+		// Update pressbooks_h5p_dashboard_last_login user meta on login.
+		add_action( 'wp_login', array( Save_Last_Login_User_Meta::get_instance(), 'update' ), 10, 2 );
+
 		// Load custom javascript for hiding H5P Content from anonymous users.
 		add_action( 'wp_enqueue_scripts', array( Hide_H5P_For_Anonymous_Users::get_instance(), 'enqueue_scripts' ), 10, 1 );
 		add_filter( 'body_class', array( Hide_H5P_For_Anonymous_Users::get_instance(), 'body_class__add_anonymous' ), 10, 1 );
-
 	}
 
 	/**
