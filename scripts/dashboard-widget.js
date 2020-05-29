@@ -68,14 +68,20 @@
 		return false;
 	});
 
-	// Load tooltips.
-	tippy('[data-tippy-content]', {
-		trigger: 'click',
-		allowHTML: true,
-		placement: 'left',
-		theme: 'light-border',
-		interactive: true,
-	} );
+	initTooltips();
+
+	/**
+	 * Load tooltips.
+	 */
+	function initTooltips() {
+		tippy('[data-tippy-content]', {
+			trigger: 'click',
+			allowHTML: true,
+			placement: 'left',
+			theme: 'light-border',
+			interactive: true,
+		} );
+	}
 
 	/**
 	 * Render the user list.
@@ -92,6 +98,7 @@
 			if ( response.success ) {
 				// Render.
 				$( '.users', $widget ).html( response.html );
+				initTooltips();
 			}
 		} ).fail( function () {
 		} ).always( function () {
