@@ -39,7 +39,7 @@ class Extend_Pressbooks_TOC extends Static_Instance {
 		foreach ( $data->get_my_h5p_results() as $result ) {
 			if (
 				! isset( $h5p_results[ $result->content_id ] ) ||
-				$result->score > $h5p_results[ $result->content_id ]
+				$result->score > $h5p_results[ $result->content_id ]['score']
 			) {
 				$h5p_results[ $result->content_id ] = array(
 					'title'     => $result->content_title,
