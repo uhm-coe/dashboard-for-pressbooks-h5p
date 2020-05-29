@@ -1,0 +1,20 @@
+// Styles for dashboard widget.
+#p22d_dashboard_widget {
+	// Fix spinner alignment.
+	.postbox-title-action .spinner {
+		margin: 0;
+	}
+
+	// Fix alignment of pager page input text.
+	.search-box input,
+	.tablenav-pages input {
+		vertical-align: unset;
+	}
+
+	.tablenav-pages {
+		margin-left: 9px;
+	}
+	.search-box {
+		margin-bottom: 9px;
+	}
+}

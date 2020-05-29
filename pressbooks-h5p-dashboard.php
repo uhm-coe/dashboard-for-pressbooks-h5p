@@ -24,6 +24,7 @@ require_once dirname( __FILE__ ) . '/src/class-settings.php';
 require_once dirname( __FILE__ ) . '/src/class-data.php';
 require_once dirname( __FILE__ ) . '/src/class-extend-pressbooks-organize.php';
 require_once dirname( __FILE__ ) . '/src/class-extend-pressbooks-toc.php';
+require_once dirname( __FILE__ ) . '/src/class-dashboard-widget.php';
 require_once dirname( __FILE__ ) . '/src/class-hide-h5p-for-anonymous-users.php';
 require_once dirname( __FILE__ ) . '/src/class-save-last-login-user-meta.php';
 

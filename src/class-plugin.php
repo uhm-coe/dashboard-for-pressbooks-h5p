@@ -44,6 +44,11 @@ class Plugin extends Static_Instance {
 		// Add admin styles for the plugin settings page.
 		add_action( 'admin_enqueue_scripts', array( Settings::get_instance(), 'admin_enqueue_scripts' ), 10, 1 );
 
+		// Add dashboard widget and ajax handler.
+		add_action( 'wp_dashboard_setup', array( Dashboard_Widget::get_instance(), 'add_dashboard_widget' ), 10, 1 );
+		add_action( 'wp_ajax_p22d_dashboard_widget_update', array( Dashboard_Widget::get_instance(), 'update' ), 10, 1 );
+		add_action( 'admin_enqueue_scripts', array( Dashboard_Widget::get_instance(), 'admin_enqueue_scripts' ), 10, 1 );
+
 		// Update pressbooks_h5p_dashboard_last_login user meta on login.
 		add_action( 'wp_login', array( Save_Last_Login_User_Meta::get_instance(), 'update' ), 10, 2 );
 
