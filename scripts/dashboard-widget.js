@@ -97,7 +97,7 @@
 		} ).done( function ( response ) {
 			if ( response.success ) {
 				// Render.
-				$( '.users', $widget ).html( response.html );
+				$( '.users', $widget ).replaceWith( response.html );
 				initTooltips();
 			}
 		} ).fail( function () {
