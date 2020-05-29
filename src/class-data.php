@@ -116,14 +116,33 @@ class Data extends Static_Instance {
 	 * @return array Current user's H5P results.
 	 */
 	public function get_my_h5p_results() {
-		$H5P_Plugin_Admin = \H5P_Plugin_Admin::get_instance(); // phpcs:ignore WordPress.NamingConventions.ValidVariableName
 
 		// Return nothing for anonymous users.
 		if ( ! is_user_logged_in() ) {
 			return array();
 		}
 
-		$user_id = get_current_user_id();
+		return $this->get_h5p_results_by_user_id( get_current_user_id() );
+	}
+
+	/**
+	 * Get a user's results on all H5P content they've attempted.
+	 *
+	 * @param  int   $user_id User ID to get results for.
+	 * @return array          User's H5P results.
+	 */
+	public function get_h5p_results_by_user_id( $user_id ) {
+		// Fail gracefully if H5P isn't active.
+		if ( ! class_exists( 'H5P_Plugin_Admin' ) ) {
+			return array();
+		}
+
+		// Fail if current user doesn't have permission to fetch other's results.
+		if ( get_current_user_id() !== $user_id && ! current_user_can( 'list_users' ) ) {
+			return array();
+		}
+
+		$H5P_Plugin_Admin = \H5P_Plugin_Admin::get_instance(); // phpcs:ignore WordPress.NamingConventions.ValidVariableName
 
 		// Return cached value if it exists.
 		if ( isset( $this->h5p_results[ $user_id ] ) ) {
