@@ -413,11 +413,36 @@ class Dashboard_Widget extends Static_Instance {
 					<tr>
 						<td><strong><?php echo esc_html( $data['parent'] ); ?></strong></td>
 						<td><?php echo esc_html( $data['title'] ); ?></td>
-						<td><?php echo esc_html( $data['h5p_passed'] ); ?>/<?php echo esc_html( $data['h5p_total'] ); ?></td>
+						<td><button class="button-primary" data-tippy-content="<div class='dark-mode'><?php echo esc_attr( $this->render_chapter_tooltip( $data['results'], $data['h5p_ids'] ) ); ?></div>"><?php echo esc_html( $data['h5p_passed'] ); ?>/<?php echo esc_html( $data['h5p_total'] ); ?></button></td>
 					</tr>
 				<?php endforeach; ?>
 			</tbody>
 		</table>
+		<?php
+
+		return ob_get_clean();
+	}
+
+
+	public function render_chapter_tooltip( &$results_in_chapter, &$h5p_ids_in_chapter ) {
+		ob_start();
+		?>
+		<h1><?php _e( 'Results', 'p22d' ); ?></h1>
+		<table class='wp-list-table striped'>
+			<thead>
+				<tr>
+					<th><strong><?php _e( 'H5P', 'p22d' ); ?></strong></th>
+					<th><?php _e( 'Score', 'p22d' ); ?></th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php foreach ( $h5p_ids_in_chapter as $h5p_id => $data ) : ?>
+				<tr>
+					<td><?php echo str_replace( '"', "'", $data['title'] ); ?></td>
+					<td><strong><?php echo empty( $results_in_chapter[ $h5p_id ] ) ? '—' : round( $results_in_chapter[ $h5p_id ]['score'] / $results_in_chapter[ $h5p_id ]['max_score'] * 100 ) . '%'; ?></strong></td>
+				</tr>
+			<?php endforeach; ?>
+		</ol>
 		<?php
 
 		return ob_get_clean();

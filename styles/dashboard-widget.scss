@@ -15,9 +15,27 @@
 		margin-left: 9px;
 	}
 
-	// Left align table cells in tooltips.
-	.tippy-content table {
-		text-align: left;
+	.tippy-content {
+		// White text for dark backgrounds.
+		.dark-mode {
+			h1, th, td {
+				color: white;
+			}
+			.striped > tbody > :nth-child(odd) {
+				background-color: #444;
+			}
+		}
+
+		// Left align table cells in tooltips.
+		table {
+			text-align: left;
+		}
+
+		// Hide list numbering for ordered lists in tooltips.
+		ol {
+			margin-left: 0;
+			list-style-type: none;
+		}
 	}
 
 	// Fix search box on top of user list at mobile screen sizes.
