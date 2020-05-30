@@ -74,12 +74,22 @@
 	 * Load tooltips.
 	 */
 	function initTooltips() {
-		tippy('[data-tippy-content]', {
+		tippy( '[data-tippy-content]', {
 			trigger: 'click',
 			allowHTML: true,
 			placement: 'left',
 			theme: 'light-border',
 			interactive: true,
+			onShown( instance ) {
+				// Load any nested tooltips.
+				tippy( '.tippy-content [data-tippy-content]', {
+					trigger: 'click',
+					allowHTML: true,
+					placement: 'left',
+					// theme: 'light-border',
+					interactive: true,
+				} );
+			}
 		} );
 	}
 
