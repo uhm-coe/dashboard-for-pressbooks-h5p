@@ -35,21 +35,7 @@ class Extend_Pressbooks_TOC extends Static_Instance {
 
 		// Fetch current user's results. If there are multiple attempts on any, keep
 		// the higher score.
-		$h5p_results = array();
-		foreach ( $data->get_my_h5p_results() as $result ) {
-			if (
-				! isset( $h5p_results[ $result->content_id ] ) ||
-				$result->score > $h5p_results[ $result->content_id ]['score']
-			) {
-				$h5p_results[ $result->content_id ] = array(
-					'title'     => $result->content_title,
-					'score'     => $result->score,
-					'max_score' => $result->max_score,
-					'finished'  => $result->finished,
-					'duration'  => $result->finished - $result->opened,
-				);
-			}
-		}
+		$h5p_results = $data->get_my_h5p_results();
 
 		// Load tippy.js (tooltips) from CDN.
 		// See: https://atomiks.github.io/tippyjs/v6/getting-started/.

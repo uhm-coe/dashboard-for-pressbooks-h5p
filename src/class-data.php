@@ -120,7 +120,7 @@ class Data extends Static_Instance {
 	/**
 	 * Get the current user's results on all H5P content they've attempted.
 	 *
-	 * @return array Current user's H5P results.
+	 * @return array Array of current user's H5P results indexed by h5p_id.
 	 */
 	public function get_my_h5p_results() {
 
@@ -133,12 +133,55 @@ class Data extends Static_Instance {
 	}
 
 	/**
+	 * Get a user's results on all H5P content they've attempted (only highest
+	 * score is recorded for content with multiple attempts), with the h5p id as
+	 * the array index.
+	 *
+	 * @param  int   $user_id User ID to get results for.
+	 * @return array          Array h5p_id => H5P results.
+	 */
+	public function get_h5p_results_by_user_id( $user_id = 0 ) {
+		$h5p_results_by_chapter = array();
+		foreach ( $this->get_raw_h5p_results_by_user_id( $user_id ) as $result ) {
+			if (
+				! isset( $h5p_results_by_chapter[ $result->content_id ] ) ||
+				$result->score > $h5p_results_by_chapter[ $result->content_id ]['score']
+			) {
+				$h5p_results_by_chapter[ $result->content_id ] = array(
+					'title'     => $result->content_title,
+					'score'     => $result->score,
+					'max_score' => $result->max_score,
+					'finished'  => $result->finished,
+					'duration'  => $result->finished - $result->opened,
+				);
+			}
+		}
+
+		return $h5p_results_by_chapter;
+	}
+
+	/**
+	 * Get the current user's results on all H5P content they've attempted.
+	 *
+	 * @return array Current user's H5P results.
+	 */
+	public function get_my_raw_h5p_results() {
+
+		// Return nothing for anonymous users.
+		if ( ! is_user_logged_in() ) {
+			return array();
+		}
+
+		return $this->get_raw_h5p_results_by_user_id( get_current_user_id() );
+	}
+
+	/**
 	 * Get a user's results on all H5P content they've attempted.
 	 *
 	 * @param  int   $user_id User ID to get results for.
 	 * @return array          User's H5P results.
 	 */
-	public function get_h5p_results_by_user_id( $user_id ) {
+	public function get_raw_h5p_results_by_user_id( $user_id ) {
 		// Fail gracefully if H5P isn't active.
 		if ( ! class_exists( 'H5P_Plugin_Admin' ) ) {
 			return array();

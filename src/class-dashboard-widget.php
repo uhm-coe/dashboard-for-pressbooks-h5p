@@ -332,7 +332,7 @@ class Dashboard_Widget extends Static_Instance {
 				</thead>
 				<tbody>
 					<?php foreach ( $users->results as $user ) : ?>
-						<?php $results = array_filter( $data->get_h5p_results_by_user_id( $user->ID ), function ( $result ) { return $result->score > 0; } ); ?>
+						<?php $results_by_h5p_id = array_filter( $data->get_h5p_results_by_user_id( $user->ID ), function ( $result ) { return $result['score'] > 0; } ); ?>
 						<tr>
 							<td class="column-username">
 								<?php echo get_avatar( $user->ID, 32 ); ?>
@@ -340,7 +340,7 @@ class Dashboard_Widget extends Static_Instance {
 								<?php echo esc_html( $user->user_email ); ?>
 							</td>
 							<td class="column-results num">
-								<button class="button-primary" data-tippy-content="<?php echo esc_attr( $this->render_user_tooltip( $user, $results ) ); ?>"><?php echo esc_html( count( $results ) . ' / ' . $total_h5p ); ?></button>
+								<button class="button-primary" data-tippy-content="<?php echo esc_attr( $this->render_user_tooltip( $user, $results_by_h5p_id ) ); ?>"><?php echo esc_html( count( $results_by_h5p_id ) . ' / ' . $total_h5p ); ?></button>
 							</td>
 						</tr>
 					<?php endforeach; ?>
@@ -357,11 +357,11 @@ class Dashboard_Widget extends Static_Instance {
 	 * Generate the markup for the tippy tooltip for each user in the widget.
 	 *
 	 * @param  WP_User &$user               WP_User object for the user (passed by reference).
-	 * @param  array   &$results            H5P results for the user (passed by reference).
+	 * @param  array   &$results_by_h5p_id  H5P results for the user (passed by reference).
 	 *
 	 * @return string            HTML for the tooltip.
 	 */
-	public function render_user_tooltip( &$user, &$results ) {
+	public function render_user_tooltip( &$user, &$results_by_h5p_id ) {
 		$data               = Data::get_instance();
 		$h5p_ids_by_chapter = $data->get_chapters_with_h5p();
 
@@ -375,17 +375,20 @@ class Dashboard_Widget extends Static_Instance {
 				if ( ! empty( $part['chapters'] ) ) {
 					foreach ( $part['chapters'] as $chapter ) {
 						if ( ! empty( $h5p_ids_by_chapter[ $chapter['ID'] ] ) ) {
-							$h5p_ids = array_keys( $h5p_ids_by_chapter[ $chapter['ID'] ] );
-							$passed  = array_filter(
-								$results,
-								function ( $result ) use ( $h5p_ids ) {
-									return in_array( $result->content_id, $h5p_ids );
-								}
+							$h5p_ids_in_chapter = array_keys( $h5p_ids_by_chapter[ $chapter['ID'] ] );
+							$results_in_chapter = array_filter(
+								$results_by_h5p_id,
+								function ( $h5p_id ) use ( $h5p_ids_in_chapter ) {
+									return in_array( $h5p_id, $h5p_ids_in_chapter );
+								},
+								ARRAY_FILTER_USE_KEY
 							);
 							$chapter_data[ $chapter['ID'] ] = array(
 								'parent'     => $part['post_title'] ?? '—',
 								'title'      => $chapter['post_title'] ?? '—',
-								'h5p_passed' => count( $passed ),
+								'results'    => $results_in_chapter,
+								'h5p_ids'    => $h5p_ids_by_chapter[ $chapter['ID'] ],
+								'h5p_passed' => count( $results_in_chapter ),
 								'h5p_total'  => count( $h5p_ids_by_chapter[ $chapter['ID'] ] ),
 							);
 						}
