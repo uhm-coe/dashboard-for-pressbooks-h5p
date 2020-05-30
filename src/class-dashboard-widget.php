@@ -403,9 +403,9 @@ class Dashboard_Widget extends Static_Instance {
 		<table class="wp-list-table striped">
 			<thead>
 				<tr>
-					<th><strong>Part</strong></th>
-					<th>Chapter</th>
-					<th>Score</th>
+					<th><strong><?php _e( 'Part', 'p22d' ); ?></strong></th>
+					<th><?php _e( 'Chapter', 'p22d' ); ?></th>
+					<th><?php _e( 'Score', 'p22d' ); ?></th>
 				</tr>
 			</thead>
 			<tbody>
