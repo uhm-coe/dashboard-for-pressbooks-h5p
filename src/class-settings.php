@@ -58,6 +58,25 @@ class Settings extends Static_Instance {
 		?>
 		<div class="wrap">
 			<h2><?php esc_html_e( 'Pressbooks H5P Dashboard Settings', 'p22d' ); ?></h2>
+			<p>Plugin features:</p>
+			<ol>
+				<li>
+					<a target="_blank" href="<?php esc_attr_e( admin_url( 'admin.php?page=pb_organize' ) ); ?>"><?php esc_html_e( 'Chapter Badges in Dashboard > Organize', 'p22d' ); ?></a><br>
+					<?php esc_html_e( 'A new column, H5P Content, appears in the Pressbooks Organize dashboard showing which chapters have embedded H5P content.', 'p22d' ); ?>
+				</li>
+				<li>
+					<a target="_blank" href="<?php esc_attr_e( site_url() ); ?>"><?php esc_html_e( 'Chapter Badges in Table of Contents', 'p22d' ); ?></a><br>
+					<?php esc_html_e( 'A new badge appears next to chapters with embedded H5P content in the Table of Contents. For anonymous users, the badge shows the total number of H5P embeds in the Chapter. For logged in users, the badge shows the number of incomplete H5P embeds, or a checkmark if they are all complete. Hovering over the badge reveals a tooltip with details on each H5P embed.', 'p22d' ); ?>
+				</li>
+				<li>
+					<a target="_blank" href="<?php esc_attr_e( admin_url( '#p22d_dashboard_widget' ) ); ?>"><?php esc_html_e( 'Dashboard Widget', 'p22d' ); ?></a><br>
+					<?php esc_html_e( 'A new dashboard widget for instructors showing student progress. Progress can be shown by user and by chapter, and filtered by user role and a range of dates of user registration or last login. Note: last logins are tracked once this plugin is enabled, so there will be no last login times saved from before plugin activation.', 'p22d' ); ?>
+				</li>
+				<li>
+					<a href="<?php esc_attr_e( '#option_hide_h5p_for_anonymous_users' ); ?>"><?php esc_html_e( 'Hide H5P Content For Anonymous Users', 'p22d' ); ?></a><br>
+					<?php esc_html_e( 'A new option (shown below) to prevent anonymous users from seeing H5P Content. Use this to encourage users to log in so their results can be stored.', 'p22d' ); ?>
+				</li>
+			</ol>
 			<form method="post" action="options.php" autocomplete="off">
 				<?php
 				// Render hidden settings fields.
