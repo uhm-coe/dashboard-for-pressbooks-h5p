@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Pressbooks H5P Dashboard\n"
-"POT-Creation-Date: 2020-04-03 10:44-1000\n"
+"POT-Creation-Date: 2020-06-01 09:00-1000\n"
 "PO-Revision-Date: 2020-04-03 10:44-1000\n"
 "Last-Translator: University of Hawaii <dcdc@hawaii.edu>\n"
 "Language-Team: University of Hawaii <dcdc@hawaii.edu>\n"
@@ -20,15 +20,138 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
+#: src/class-dashboard-widget.php:118
+msgid "Registered this week"
+msgstr ""
+
+#: src/class-dashboard-widget.php:123
+msgid "Registered this month"
+msgstr ""
+
+#: src/class-dashboard-widget.php:128
+msgid "Registered this year"
+msgstr ""
+
+#: src/class-dashboard-widget.php:133
+msgid "Registered since January"
+msgstr ""
+
+#: src/class-dashboard-widget.php:138
+msgid "Registered since May"
+msgstr ""
+
+#: src/class-dashboard-widget.php:143
+msgid "Registered since August"
+msgstr ""
+
+#: src/class-dashboard-widget.php:148
+msgid "Signed in this week"
+msgstr ""
+
+#: src/class-dashboard-widget.php:153
+msgid "Signed in this month"
+msgstr ""
+
+#: src/class-dashboard-widget.php:158
+msgid "Signed in this year"
+msgstr ""
+
+#: src/class-dashboard-widget.php:163
+msgid "Signed in since January"
+msgstr ""
+
+#: src/class-dashboard-widget.php:168
+msgid "Signed in since May"
+msgstr ""
+
+#: src/class-dashboard-widget.php:173
+msgid "Signed in since August"
+msgstr ""
+
+#: src/class-dashboard-widget.php:227
+msgid "H5P Results"
+msgstr ""
+
+#: src/class-dashboard-widget.php:249
+msgid "Filter role to..."
+msgstr ""
+
+#: src/class-dashboard-widget.php:253
+msgid "Filter users to..."
+msgstr ""
+
+#: src/class-dashboard-widget.php:406
+msgid "Part"
+msgstr ""
+
+#: src/class-dashboard-widget.php:407
+msgid "Chapter"
+msgstr ""
+
+#: src/class-dashboard-widget.php:408 src/class-dashboard-widget.php:435
+msgid "Score"
+msgstr ""
+
+#: src/class-dashboard-widget.php:430
+msgid "Results"
+msgstr ""
+
+#: src/class-dashboard-widget.php:434 src/class-settings.php:192
+msgid "H5P"
+msgstr ""
+
+#. TRANSLATORS: %s: number of users
+#: src/class-dashboard-widget.php:468
+#, php-format
+msgid "%s user"
+msgid_plural "%s users"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/class-dashboard-widget.php:492
+msgid "First page"
+msgstr ""
+
+#: src/class-dashboard-widget.php:503
+msgid "Previous page"
+msgstr ""
+
+#: src/class-dashboard-widget.php:510 src/class-dashboard-widget.php:514
+msgid "Current Page"
+msgstr ""
+
+#. TRANSLATORS: 1: number of current page 2: number of total pages
+#: src/class-dashboard-widget.php:522
+#, php-format
+msgctxt "paging"
+msgid "%1$s of %2$s"
+msgstr ""
+
+#: src/class-dashboard-widget.php:530
+msgid "Next page"
+msgstr ""
+
+#: src/class-dashboard-widget.php:541
+msgid "Last page"
+msgstr ""
+
+#: src/class-dashboard-widget.php:552
+msgid "Search Users"
+msgstr ""
+
+#: src/class-dashboard-widget.php:554
+msgid "Search"
+msgstr ""
+
 #: src/class-extend-pressbooks-organize.php:50
 msgid "H5P Content"
 msgstr ""
 
-#: src/class-extend-pressbooks-toc.php:71
+#: src/class-extend-pressbooks-toc.php:57
 msgid "Your H5P Results"
 msgstr ""
 
-#: src/class-extend-pressbooks-toc.php:72
+#: src/class-extend-pressbooks-toc.php:58
 msgid "Sign in to see your results"
 msgstr ""
 
@@ -45,20 +168,91 @@ msgstr ""
 msgid "Pressbooks H5P Dashboard"
 msgstr ""
 
-#: src/class-settings.php:99
+#: src/class-settings.php:64
+msgid "Chapter Badges in Dashboard > Organize"
+msgstr ""
+
+#: src/class-settings.php:65
+msgid ""
+"A new column, H5P Content, appears in the Pressbooks Organize dashboard "
+"showing which chapters have embedded H5P content."
+msgstr ""
+
+#: src/class-settings.php:68
+msgid "Chapter Badges in Table of Contents"
+msgstr ""
+
+#: src/class-settings.php:69
+msgid ""
+"A new badge appears next to chapters with embedded H5P content in the Table "
+"of Contents. For anonymous users, the badge shows the total number of H5P "
+"embeds in the Chapter. For logged in users, the badge shows the number of "
+"incomplete H5P embeds, or a checkmark if they are all complete. Hovering "
+"over the badge reveals a tooltip with details on each H5P embed."
+msgstr ""
+
+#: src/class-settings.php:72
+msgid "Dashboard Widget"
+msgstr ""
+
+#: src/class-settings.php:73
+msgid ""
+"A new dashboard widget for instructors showing student progress. Progress "
+"can be shown by user and by chapter, and filtered by user role and a range "
+"of dates of user registration or last login. Note: last logins are tracked "
+"once this plugin is enabled, so there will be no last login times saved from "
+"before plugin activation."
+msgstr ""
+
+#: src/class-settings.php:76
+msgid "#option_hide_h5p_for_anonymous_users"
+msgstr ""
+
+#: src/class-settings.php:76
+msgid "Hide H5P Content For Anonymous Users"
+msgstr ""
+
+#: src/class-settings.php:77
+msgid ""
+"A new option (shown below) to prevent anonymous users from seeing H5P "
+"Content. Use this to encourage users to log in so their results can be "
+"stored."
+msgstr ""
+
+#: src/class-settings.php:118
 msgid "H5P Visibility"
 msgstr ""
 
-#: src/class-settings.php:134
+#: src/class-settings.php:153
 msgid "Hide H5P Content for anonymous users"
 msgstr ""
 
-#: src/class-settings.php:136
+#: src/class-settings.php:155
 msgid ""
 "Note: with this setting enabled, embedded H5P Content will be blurred out on "
 "the page, with a login button in the center. Enable this to discourage users "
 "from interacting with H5P Content anonymously, since no progress or results "
 "are stored for users who are not logged in."
+msgstr ""
+
+#: src/class-settings.php:175
+msgid "Missing Required Dependencies"
+msgstr ""
+
+#: src/class-settings.php:176
+msgid "The following plugins need to be activated for this plugin to work:"
+msgstr ""
+
+#: src/class-settings.php:179
+msgid "https://docs.pressbooks.org/installation/"
+msgstr ""
+
+#: src/class-settings.php:179
+msgid "Pressbooks"
+msgstr ""
+
+#: src/class-settings.php:192
+msgid "https://h5p.org/documentation/setup/wordpress"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
