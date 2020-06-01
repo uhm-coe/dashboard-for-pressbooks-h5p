@@ -18,6 +18,8 @@ class Dashboard_Widget extends Static_Instance {
 
 	/**
 	 * Dashboard widget user options (e.g., filters, users per page).
+	 *
+	 * @var array
 	 */
 	private $options;
 
@@ -53,7 +55,7 @@ class Dashboard_Widget extends Static_Instance {
 	/**
 	 * Save user options to usermeta.
 	 *
-	 * @param  array  $options User options.
+	 * @param  array $options User options.
 	 */
 	public function update_options( $options = array() ) {
 		$this->options = $this->sanitized_defaults( $options );
@@ -74,12 +76,12 @@ class Dashboard_Widget extends Static_Instance {
 		}
 
 		// Role to filter to. Default: all roles.
-		if ( empty( $options['role'] ) || ! in_array( $options['role'], array_keys( get_editable_roles() ) )) {
+		if ( empty( $options['role'] ) || ! in_array( $options['role'], array_keys( get_editable_roles() ), true ) ) {
 			$options['role'] = '';
 		}
 
 		// Usermeta to filter to (e.g., last logged in time). Default: all users.
-		if ( empty( $options['filter'] ) || ! in_array( $options['filter'], array_keys( $this->get_filters() ) ) ) {
+		if ( empty( $options['filter'] ) || ! in_array( $options['filter'], array_keys( $this->get_filters() ), true ) ) {
 			$options['filter'] = '';
 		}
 
@@ -97,20 +99,20 @@ class Dashboard_Widget extends Static_Instance {
 	 */
 	public function get_filters() {
 		$now                = time();
-		$first_day_of_week  = strtotime( '-' . date( 'w' ) . ' days ' );
-		$first_day_of_month = strtotime( '-' . ( date( 'j' ) - 1 ) . ' days ' );
-		$first_day_of_year  = strtotime( '-' . date( 'z' ) . ' days ' );
+		$first_day_of_week  = strtotime( '-' . gmdate( 'w' ) . ' days ' );
+		$first_day_of_month = strtotime( '-' . ( gmdate( 'j' ) - 1 ) . ' days ' );
+		$first_day_of_year  = strtotime( '-' . gmdate( 'z' ) . ' days ' );
 		$last_jan_1         = strtotime( 'first day of January' );
 		$last_may_1         = strtotime( 'first day of May' );
 		$last_aug_1         = strtotime( 'first day of August' );
 		if ( $last_jan_1 > $now ) {
-			$last_jan_1 = strtotime('first day of January ' . ( date( 'Y' ) - 1 ) );
+			$last_jan_1 = strtotime( 'first day of January ' . ( gmdate( 'Y' ) - 1 ) );
 		}
 		if ( $last_may_1 > $now ) {
-			$last_may_1 = strtotime('first day of May ' . ( date( 'Y' ) - 1 ) );
+			$last_may_1 = strtotime( 'first day of May ' . ( gmdate( 'Y' ) - 1 ) );
 		}
 		if ( $last_aug_1 > $now ) {
-			$last_aug_1 = strtotime('first day of August ' . ( date( 'Y' ) - 1 ) );
+			$last_aug_1 = strtotime( 'first day of August ' . ( gmdate( 'Y' ) - 1 ) );
 		}
 
 		return array(
@@ -232,7 +234,7 @@ class Dashboard_Widget extends Static_Instance {
 		global $wp_meta_boxes;
 		$widget = $wp_meta_boxes['dashboard']['normal']['core']['p22d_dashboard_widget'];
 		unset( $wp_meta_boxes['dashboard']['normal']['core']['p22d_dashboard_widget'] );
-		$wp_meta_boxes['dashboard']['side']['high'] = array_merge(
+		$wp_meta_boxes['dashboard']['side']['high'] = array_merge( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 			array( 'p22d_dashboard_widget' => $widget ),
 			$wp_meta_boxes['dashboard']['side']['high']
 		);
@@ -247,17 +249,17 @@ class Dashboard_Widget extends Static_Instance {
 		<div class="filters">
 			<select name="role" class="option">
 				<option value=""><?php esc_html_e( 'Filter role to...', 'p22d' ); ?></option>
-				<?php wp_dropdown_roles( $this->get_option('role') ); ?>
+				<?php wp_dropdown_roles( $this->get_option( 'role' ) ); ?>
 			</select>
 			<select name="filter" class="option">
 				<option value=""><?php esc_html_e( 'Filter users to...', 'p22d' ); ?></option>
 				<?php foreach ( $this->get_filters() as $value => $data ) : ?>
-					<option value="<?php echo esc_attr( $value ); ?>"<?php selected( $value, $this->get_option('filter') ); ?>><?php echo esc_html( $data['label'] ); ?></option>
+					<option value="<?php echo esc_attr( $value ); ?>"<?php selected( $value, $this->get_option( 'filter' ) ); ?>><?php echo esc_html( $data['label'] ); ?></option>
 				<?php endforeach; ?>
 			</select>
 			<select name="per_page" class="option">
 				<?php foreach ( array( 10, 25, 50, 100 ) as $value ) : ?>
-					<option value="<?php echo $value; ?>"<?php selected( $value, $this->get_option( 'per_page' ) ); ?>><?php echo $value; ?> per page</option>
+					<option value="<?php echo esc_attr( $value ); ?>"<?php selected( $value, $this->get_option( 'per_page' ) ); ?>><?php echo esc_html( $value ); ?> per page</option>
 				<?php endforeach; ?>
 			</select>
 			</p>
@@ -267,6 +269,12 @@ class Dashboard_Widget extends Static_Instance {
 	}
 
 
+	/**
+	 * Render the heading, pager, and user table for the dashboard widget.
+	 *
+	 * @param  int    $page   Page of results to display.
+	 * @param  string $search Optional search term to pass to WP_User_Query.
+	 */
 	public function render_users( $page = 1, $search = '' ) {
 		// Build WP_User_Query args.
 		$per_page = $this->get_option( 'per_page' );
@@ -290,18 +298,24 @@ class Dashboard_Widget extends Static_Instance {
 		if ( ! empty( $filters[ $filter ] ) ) {
 			global $wpdb;
 			if ( 'registered' === $filters[ $filter ]['type'] ) {
-				$users_too_old = $wpdb->get_col( $wpdb->prepare(
-					"SELECT ID FROM $wpdb->users WHERE user_registered < FROM_UNIXTIME(%d)",
-					$filters[ $filter ]['time']
-				) );
+				$users_too_old = wp_cache_get( 'users_too_old', 'p22d' );
+				if ( false === $users_too_old ) {
+					$users_too_old = $wpdb->get_col( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
+						$wpdb->prepare(
+							"SELECT ID FROM $wpdb->users WHERE user_registered < FROM_UNIXTIME(%d)",
+							$filters[ $filter ]['time']
+						)
+					);
+					wp_cache_set( 'users_too_old', $users_too_old, 'p22d', 24 * HOUR_IN_SECONDS );
+				}
 				$args['exclude'] = $users_too_old;
 			} elseif ( 'signed_in' === $filters[ $filter ]['type'] ) {
-				$args['meta_query'] = array(
+				$args['meta_query'] = array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
 					array(
-            'key'     => $wpdb->get_blog_prefix() . 'pressbooks_h5p_dashboard_last_login',
-            'value'   => $filters[ $filter ]['time'],
-            'type'    => 'UNSIGNED',
-            'compare' => '>=',
+						'key'     => $wpdb->get_blog_prefix() . 'pressbooks_h5p_dashboard_last_login',
+						'value'   => $filters[ $filter ]['time'],
+						'type'    => 'UNSIGNED',
+						'compare' => '>=',
 					),
 				);
 			}
@@ -312,14 +326,26 @@ class Dashboard_Widget extends Static_Instance {
 
 		// Get total count of H5P content.
 		$data      = Data::get_instance();
-		$total_h5p = array_sum( array_map( function ( $h5p_ids_in_chapter ) {
-			return count( $h5p_ids_in_chapter );
-		}, $data->get_chapters_with_h5p() ) );
+		$total_h5p = array_sum(
+			array_map(
+				function ( $h5p_ids_in_chapter ) {
+					return count( $h5p_ids_in_chapter );
+				},
+				$data->get_chapters_with_h5p()
+			)
+		);
+
+		// Create heading sentence.
+		$heading = 'Showing <strong>' . ( empty( $role ) ? 'all' : $role ) . '</strong> users';
+		if ( ! empty( $filter ) ) {
+			$heading .= ' who <strong>' . lcfirst( $this->get_filters()[ $filter ]['label'] ) . '</strong>';
+		}
+		$heading .= ':';
 
 		?>
 		<div class="users">
 			<div class="heading">
-				<p>Showing <strong><?php echo empty( $role ) ? 'all user' : $role; ?>s</strong><?php if ( $filter = $this->get_option( 'filter' ) ) : ?>	who <strong><?php echo strtolower( $this->get_filters()[ $filter ]['label'] ); ?></strong><?php endif; ?>:</p>
+				<p><?php echo wp_kses_post( $heading ); ?></p>
 			</div>
 
 			<?php $this->render_pager( $page, $per_page, $users->total_users, 'top', $search ); ?>
@@ -332,7 +358,14 @@ class Dashboard_Widget extends Static_Instance {
 				</thead>
 				<tbody>
 					<?php foreach ( $users->results as $user ) : ?>
-						<?php $results_by_h5p_id = array_filter( $data->get_h5p_results_by_user_id( $user->ID ), function ( $result ) { return $result['score'] > 0; } ); ?>
+						<?php
+							$results_by_h5p_id = array_filter(
+								$data->get_h5p_results_by_user_id( $user->ID ),
+								function ( $result ) {
+									return $result['score'] > 0;
+								}
+							);
+						?>
 						<tr>
 							<td class="column-username">
 								<?php echo get_avatar( $user->ID, 32 ); ?>
@@ -340,7 +373,7 @@ class Dashboard_Widget extends Static_Instance {
 								<?php echo esc_html( $user->user_email ); ?>
 							</td>
 							<td class="column-results num">
-								<button class="button-primary" data-tippy-content="<?php echo esc_attr( $this->render_user_tooltip( $user, $results_by_h5p_id ) ); ?>"><?php echo esc_html( count( $results_by_h5p_id ) . ' / ' . $total_h5p ); ?></button>
+								<button class="button-primary" data-tippy-content="<?php echo esc_attr( htmlentities( $this->render_user_tooltip( $user, $results_by_h5p_id ) ) ); ?>"><?php echo esc_html( count( $results_by_h5p_id ) . ' / ' . $total_h5p ); ?></button>
 							</td>
 						</tr>
 					<?php endforeach; ?>
@@ -355,9 +388,11 @@ class Dashboard_Widget extends Static_Instance {
 
 	/**
 	 * Generate the markup for the tippy tooltip for each user in the widget.
+	 * Note: escape with htmlentities() to allow double quotes in the tooltip
+	 * content.
 	 *
-	 * @param  WP_User &$user               WP_User object for the user (passed by reference).
-	 * @param  array   &$results_by_h5p_id  H5P results for the user (passed by reference).
+	 * @param  WP_User $user               WP_User object for the user (passed by reference).
+	 * @param  array   $results_by_h5p_id  H5P results for the user (passed by reference).
 	 *
 	 * @return string            HTML for the tooltip.
 	 */
@@ -379,10 +414,11 @@ class Dashboard_Widget extends Static_Instance {
 							$results_in_chapter = array_filter(
 								$results_by_h5p_id,
 								function ( $h5p_id ) use ( $h5p_ids_in_chapter ) {
-									return in_array( $h5p_id, $h5p_ids_in_chapter );
+									return in_array( $h5p_id, $h5p_ids_in_chapter, true );
 								},
 								ARRAY_FILTER_USE_KEY
 							);
+
 							$chapter_data[ $chapter['ID'] ] = array(
 								'parent'     => $part['post_title'] ?? '—',
 								'title'      => $chapter['post_title'] ?? '—',
@@ -399,13 +435,13 @@ class Dashboard_Widget extends Static_Instance {
 
 		ob_start();
 		?>
-		<h1><?php echo $user->user_nicename; ?></h1>
+		<h1><?php echo esc_html( $user->user_nicename ); ?></h1>
 		<table class="wp-list-table striped">
 			<thead>
 				<tr>
-					<th><strong><?php _e( 'Part', 'p22d' ); ?></strong></th>
-					<th><?php _e( 'Chapter', 'p22d' ); ?></th>
-					<th><?php _e( 'Score', 'p22d' ); ?></th>
+					<th><strong><?php esc_html_e( 'Part', 'p22d' ); ?></strong></th>
+					<th><?php esc_html_e( 'Chapter', 'p22d' ); ?></th>
+					<th><?php esc_html_e( 'Score', 'p22d' ); ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -413,7 +449,7 @@ class Dashboard_Widget extends Static_Instance {
 					<tr>
 						<td><strong><?php echo esc_html( $data['parent'] ); ?></strong></td>
 						<td><?php echo esc_html( $data['title'] ); ?></td>
-						<td><button class="button-primary" data-tippy-content="<div class='dark-mode'><?php echo esc_attr( $this->render_chapter_tooltip( $data['results'], $data['h5p_ids'] ) ); ?></div>"><?php echo esc_html( $data['h5p_passed'] ); ?>/<?php echo esc_html( $data['h5p_total'] ); ?></button></td>
+						<td><button class="button-primary" data-tippy-content="<div class='dark-mode'><?php echo esc_attr( htmlentities( $this->render_chapter_tooltip( $data['results'], $data['h5p_ids'] ) ) ); ?></div>"><?php echo esc_html( $data['h5p_passed'] ); ?>/<?php echo esc_html( $data['h5p_total'] ); ?></button></td>
 					</tr>
 				<?php endforeach; ?>
 			</tbody>
@@ -424,22 +460,30 @@ class Dashboard_Widget extends Static_Instance {
 	}
 
 
+	/**
+	 * Render the markup for the user's results for each chapter.
+
+	 * @param  array $results_in_chapter Array of user's H5P results (passed by reference).
+	 * @param  array $h5p_ids_in_chapter Array of H5P Content in chapter (passed by reference).
+	 *
+	 * @return string            HTML for the tooltip.
+	 */
 	public function render_chapter_tooltip( &$results_in_chapter, &$h5p_ids_in_chapter ) {
 		ob_start();
 		?>
-		<h1><?php _e( 'Results', 'p22d' ); ?></h1>
+		<h1><?php esc_html_e( 'Results', 'p22d' ); ?></h1>
 		<table class='wp-list-table striped'>
 			<thead>
 				<tr>
-					<th><strong><?php _e( 'H5P', 'p22d' ); ?></strong></th>
-					<th><?php _e( 'Score', 'p22d' ); ?></th>
+					<th><strong><?php esc_html_e( 'H5P', 'p22d' ); ?></strong></th>
+					<th><?php esc_html_e( 'Score', 'p22d' ); ?></th>
 				</tr>
 			</thead>
 			<tbody>
 			<?php foreach ( $h5p_ids_in_chapter as $h5p_id => $data ) : ?>
 				<tr>
-					<td><?php echo str_replace( '"', "'", $data['title'] ); ?></td>
-					<td><strong><?php echo empty( $results_in_chapter[ $h5p_id ] ) ? '—' : round( $results_in_chapter[ $h5p_id ]['score'] / $results_in_chapter[ $h5p_id ]['max_score'] * 100 ) . '%'; ?></strong></td>
+					<td><?php echo esc_html( $data['title'] ); ?></td>
+					<td><strong><?php echo empty( $results_in_chapter[ $h5p_id ] ) ? '—' : esc_html( round( $results_in_chapter[ $h5p_id ]['score'] / $results_in_chapter[ $h5p_id ]['max_score'] * 100 ) ) . '%'; ?></strong></td>
 				</tr>
 			<?php endforeach; ?>
 		</ol>
@@ -456,6 +500,8 @@ class Dashboard_Widget extends Static_Instance {
 	 * @param  integer $per_page     How many users to show per page.
 	 * @param  integer $total        Total count of users in list.
 	 * @param  string  $which        Where to render the pager ('top' or 'bottom').
+	 * @param  string  $search       An existing search string to render in the input.
+	 *
 	 * @return void
 	 */
 	public function render_pager( $current_page = 1, $per_page = 10, $total = 0, $which = 'top', $search = '' ) {
@@ -559,8 +605,8 @@ class Dashboard_Widget extends Static_Instance {
 		$output = "<div class='tablenav-pages'>$output</div>";
 		?>
 		<div class="tablenav">
-			<?php echo $output; ?>
-			<?php echo $search_form; ?>
+			<?php echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			<?php echo $search_form; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		</div>
 		<?php
 	}
@@ -583,31 +629,31 @@ class Dashboard_Widget extends Static_Instance {
 		}
 
 		// Build JSON response.
-		$response = [
+		$response = array(
 			'success' => false,
 			'message' => '',
 			'html'    => '',
-		];
+		);
 
 		$options = $this->get_options();
 		$changed = false;
 
 		// Update user's role selection if it's set.
 		if ( isset( $_REQUEST['filters']['role'] ) ) {
-			$options['role'] = $_REQUEST['filters']['role'];
-			$changed = true;
+			$options['role'] = sanitize_text_field( wp_unslash( $_REQUEST['filters']['role'] ) );
+			$changed         = true;
 		}
 
 		// Update user's filter selection if it's set.
 		if ( isset( $_REQUEST['filters']['filter'] ) ) {
-			$options['filter'] = $_REQUEST['filters']['filter'];
-			$changed = true;
+			$options['filter'] = sanitize_text_field( wp_unslash( $_REQUEST['filters']['filter'] ) );
+			$changed           = true;
 		}
 
 		// Update user's users-per-page selection if it's set.
 		if ( isset( $_REQUEST['filters']['per_page'] ) ) {
-			$options['per_page'] = $_REQUEST['filters']['per_page'];
-			$changed = true;
+			$options['per_page'] = intval( wp_unslash( $_REQUEST['filters']['per_page'] ) );
+			$changed             = true;
 		}
 
 		// Update user meta if filters have changed.
@@ -624,7 +670,7 @@ class Dashboard_Widget extends Static_Instance {
 		// Get search term if it's set.
 		$search = '';
 		if ( isset( $_REQUEST['filters']['search'] ) ) {
-			$search = sanitize_text_field( $_REQUEST['filters']['search'] );
+			$search = sanitize_text_field( wp_unslash( $_REQUEST['filters']['search'] ) );
 		}
 
 		// Start output buffering so we can save the output to a string.
@@ -638,7 +684,7 @@ class Dashboard_Widget extends Static_Instance {
 		$response['message'] = 'Rendered user list.';
 
 		// Return results to client.
-		wp_send_json($response);
+		wp_send_json( $response );
 		exit;
 	}
 

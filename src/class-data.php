@@ -137,8 +137,9 @@ class Data extends Static_Instance {
 	 * score is recorded for content with multiple attempts), with the h5p id as
 	 * the array index.
 	 *
-	 * @param  int   $user_id User ID to get results for.
-	 * @return array          Array h5p_id => H5P results.
+	 * @param  int $user_id User ID to get results for.
+	 *
+	 * @return array        Array h5p_id => H5P results.
 	 */
 	public function get_h5p_results_by_user_id( $user_id = 0 ) {
 		$h5p_results_by_chapter = array();
@@ -178,8 +179,9 @@ class Data extends Static_Instance {
 	/**
 	 * Get a user's results on all H5P content they've attempted.
 	 *
-	 * @param  int   $user_id User ID to get results for.
-	 * @return array          User's H5P results.
+	 * @param  int $user_id User ID to get results for.
+	 *
+	 * @return array        User's H5P results.
 	 */
 	public function get_raw_h5p_results_by_user_id( $user_id ) {
 		// Fail gracefully if H5P isn't active.
