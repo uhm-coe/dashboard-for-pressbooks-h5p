@@ -1,40 +1,55 @@
 // Colors.
-$white:      #fff;
-$lightRed:   #dc3545;
-$red:        #c82333;
-$lightGreen: #28a745;
-$green:      #218838;
-$blue:       #0062cc;
-$lightBlue:  #007bff;
+$white:       #fff;
+$light-red:   #dc3545;
+$red:         #c82333;
+$light-green: #28a745;
+$green:       #218838;
+$blue:        #0062cc;
+$light-blue:  #007bff;
 
 // Blur H5P Content for anonymous users, and center the log in button over it.
 .toc {
 	.h5p-results {
 		border-radius: 20px;
-		width: 2rem;
-		height: 2rem;
 		color: $white;
+		height: 2rem;
+		width: 2rem;
 
 		&.done {
-			background-color: $lightGreen;
-			&:hover { background-color: $green; color: $white; }
-		}
-		&.not-done {
-			background-color: $lightRed;
-			&:hover { background-color: $red; color: $white; }
-		}
-		&.anonymous {
-			background-color: $lightBlue;
-			&:hover { background-color: $blue; color: $white; }
+			background-color: $light-green;
+
+			&:hover {
+				background-color: $green;
+				color: $white;
+			}
 		}
 
-		& + div[data-tippy-root] {
+		&.not-done {
+			background-color: $light-red;
+
+			&:hover {
+				background-color: $red;
+				color: $white;
+			}
+		}
+
+		&.anonymous {
+			background-color: $light-blue;
+
+			&:hover {
+				background-color: $blue;
+				color: $white;
+			}
+		}
+
+		& + [data-tippy-root] {
 			.tippy-content > * {
 				padding-left: 25px;
 			}
+
 			ol {
-				margin-left: 0;
 				list-style-type: none;
+				margin-left: 0;
 			}
 		}
 	}

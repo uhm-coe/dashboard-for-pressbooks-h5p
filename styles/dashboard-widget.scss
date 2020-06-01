@@ -1,14 +1,22 @@
+// Colors.
+$white: #fff;
+$grey:  #444;
+
 // Styles for dashboard widget.
 #p22d_dashboard_widget {
 	// Fix spinner alignment.
-	.postbox-title-action .spinner {
-		margin: 0;
+	.postbox-title-action {
+		.spinner {
+			margin: 0;
+		}
 	}
 
 	// Fix alignment of pager page input text.
-	.search-box input,
-	.tablenav-pages input {
-		vertical-align: unset;
+	.search-box,
+	.tablenav-pages {
+		input {
+			vertical-align: unset;
+		}
 	}
 
 	.tablenav-pages {
@@ -18,11 +26,14 @@
 	.tippy-content {
 		// White text for dark backgrounds.
 		.dark-mode {
-			h1, th, td {
-				color: white;
+			h1,
+			th,
+			td {
+				color: $white;
 			}
+
 			.striped > tbody > :nth-child(odd) {
-				background-color: #444;
+				background-color: $grey;
 			}
 		}
 
@@ -33,8 +44,8 @@
 
 		// Hide list numbering for ordered lists in tooltips.
 		ol {
-			margin-left: 0;
 			list-style-type: none;
+			margin-left: 0;
 		}
 	}
 
@@ -43,9 +54,11 @@
 		.tablenav {
 			height: 40px;
 		}
+
 		.users {
 			padding-bottom: 62px;
 		}
+
 		.search-box {
 			height: auto;
 		}

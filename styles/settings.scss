@@ -1,21 +1,27 @@
+// Colors.
+$blue:  #6a737d;
+$green: #2cbe4e;
+$red:   #cb2431;
+$white: #fff;
+
 // Styles for plugin settings page.
-body.settings_page_pressbooks-h5p-dashboard {
+.settings_page_pressbooks-h5p-dashboard {
 	.notice {
 		a {
-			margin-right: 6px;
 			font-weight: 600;
+			margin-right: 6px;
 		}
 	}
 
 	.badge {
+		background-color: $blue;
+		border-radius: 3px;
+		color: $white;
 		display: inline-block;
-		padding: 2px 6px;
 		font-weight: 600;
 		line-height: 20px;
-		color: #fff;
+		padding: 2px 6px;
 		text-align: center;
-		background-color: #6a737d;
-		border-radius: 3px;
 
 		// Collapse left margin of badge with leading icon.
 		& > .dashicons {
@@ -23,11 +29,11 @@ body.settings_page_pressbooks-h5p-dashboard {
 		}
 
 		&.badge-success {
-			background-color: #2cbe4e;
+			background-color: $green;
 		}
 
 		&.badge-warning {
-			background-color: #cb2431;
+			background-color: $red;
 		}
 	}
 }
