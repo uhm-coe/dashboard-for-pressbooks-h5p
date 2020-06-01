@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Pressbooks H5P Dashboard\n"
-"POT-Creation-Date: 2020-06-01 09:00-1000\n"
+"POT-Creation-Date: 2020-06-01 13:29-1000\n"
 "PO-Revision-Date: 2020-04-03 10:44-1000\n"
 "Last-Translator: University of Hawaii <dcdc@hawaii.edu>\n"
 "Language-Team: University of Hawaii <dcdc@hawaii.edu>\n"
@@ -20,126 +20,126 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: src/class-dashboard-widget.php:118
+#: src/class-dashboard-widget.php:120
 msgid "Registered this week"
 msgstr ""
 
-#: src/class-dashboard-widget.php:123
+#: src/class-dashboard-widget.php:125
 msgid "Registered this month"
 msgstr ""
 
-#: src/class-dashboard-widget.php:128
+#: src/class-dashboard-widget.php:130
 msgid "Registered this year"
 msgstr ""
 
-#: src/class-dashboard-widget.php:133
+#: src/class-dashboard-widget.php:135
 msgid "Registered since January"
 msgstr ""
 
-#: src/class-dashboard-widget.php:138
+#: src/class-dashboard-widget.php:140
 msgid "Registered since May"
 msgstr ""
 
-#: src/class-dashboard-widget.php:143
+#: src/class-dashboard-widget.php:145
 msgid "Registered since August"
 msgstr ""
 
-#: src/class-dashboard-widget.php:148
+#: src/class-dashboard-widget.php:150
 msgid "Signed in this week"
 msgstr ""
 
-#: src/class-dashboard-widget.php:153
+#: src/class-dashboard-widget.php:155
 msgid "Signed in this month"
 msgstr ""
 
-#: src/class-dashboard-widget.php:158
+#: src/class-dashboard-widget.php:160
 msgid "Signed in this year"
 msgstr ""
 
-#: src/class-dashboard-widget.php:163
+#: src/class-dashboard-widget.php:165
 msgid "Signed in since January"
 msgstr ""
 
-#: src/class-dashboard-widget.php:168
+#: src/class-dashboard-widget.php:170
 msgid "Signed in since May"
 msgstr ""
 
-#: src/class-dashboard-widget.php:173
+#: src/class-dashboard-widget.php:175
 msgid "Signed in since August"
 msgstr ""
 
-#: src/class-dashboard-widget.php:227
+#: src/class-dashboard-widget.php:229
 msgid "H5P Results"
 msgstr ""
 
-#: src/class-dashboard-widget.php:249
+#: src/class-dashboard-widget.php:251
 msgid "Filter role to..."
 msgstr ""
 
-#: src/class-dashboard-widget.php:253
+#: src/class-dashboard-widget.php:255
 msgid "Filter users to..."
 msgstr ""
 
-#: src/class-dashboard-widget.php:406
+#: src/class-dashboard-widget.php:442
 msgid "Part"
 msgstr ""
 
-#: src/class-dashboard-widget.php:407
+#: src/class-dashboard-widget.php:443
 msgid "Chapter"
 msgstr ""
 
-#: src/class-dashboard-widget.php:408 src/class-dashboard-widget.php:435
+#: src/class-dashboard-widget.php:444 src/class-dashboard-widget.php:479
 msgid "Score"
 msgstr ""
 
-#: src/class-dashboard-widget.php:430
+#: src/class-dashboard-widget.php:474
 msgid "Results"
 msgstr ""
 
-#: src/class-dashboard-widget.php:434 src/class-settings.php:192
+#: src/class-dashboard-widget.php:478 src/class-settings.php:192
 msgid "H5P"
 msgstr ""
 
 #. TRANSLATORS: %s: number of users
-#: src/class-dashboard-widget.php:468
+#: src/class-dashboard-widget.php:514
 #, php-format
 msgid "%s user"
 msgid_plural "%s users"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/class-dashboard-widget.php:492
+#: src/class-dashboard-widget.php:538
 msgid "First page"
 msgstr ""
 
-#: src/class-dashboard-widget.php:503
+#: src/class-dashboard-widget.php:549
 msgid "Previous page"
 msgstr ""
 
-#: src/class-dashboard-widget.php:510 src/class-dashboard-widget.php:514
+#: src/class-dashboard-widget.php:556 src/class-dashboard-widget.php:560
 msgid "Current Page"
 msgstr ""
 
 #. TRANSLATORS: 1: number of current page 2: number of total pages
-#: src/class-dashboard-widget.php:522
+#: src/class-dashboard-widget.php:568
 #, php-format
 msgctxt "paging"
 msgid "%1$s of %2$s"
 msgstr ""
 
-#: src/class-dashboard-widget.php:530
+#: src/class-dashboard-widget.php:576
 msgid "Next page"
 msgstr ""
 
-#: src/class-dashboard-widget.php:541
+#: src/class-dashboard-widget.php:587
 msgid "Last page"
 msgstr ""
 
-#: src/class-dashboard-widget.php:552
+#: src/class-dashboard-widget.php:598
 msgid "Search Users"
 msgstr ""
 
-#: src/class-dashboard-widget.php:554
+#: src/class-dashboard-widget.php:600
 msgid "Search"
 msgstr ""
 
@@ -202,10 +202,6 @@ msgid ""
 "of dates of user registration or last login. Note: last logins are tracked "
 "once this plugin is enabled, so there will be no last login times saved from "
 "before plugin activation."
-msgstr ""
-
-#: src/class-settings.php:76
-msgid "#option_hide_h5p_for_anonymous_users"
 msgstr ""
 
 #: src/class-settings.php:76
