@@ -5,14 +5,14 @@
 /* global Data, tippy, jQuery */
 ( function( $ ) {
 
-	var $widget = $( '#p22d_dashboard_widget' );
+	const $widget = $( '#p22d_dashboard_widget' );
 
 	// Add spinner to far right of widget title.
 	$( 'h2.hndle span', $widget ).after( '<span class="postbox-title-action"><span class="spinner"></span></span>' );
 
 	// Update user list when changing users per page dropdown.
-	$widget.on( 'change', 'select.option', function ( event ) {
-		var toUpdate = {};
+	$widget.on( 'change', 'select.option', function () {
+		const toUpdate = {};
 		toUpdate[ $( this ).attr( 'name' ) ] = $( this ).val();
 		refresh( $( this ), toUpdate );
 	} );
@@ -20,9 +20,9 @@
 	// Wire up pager elements (go to page text input, search text input).
 	$widget.on( 'keydown', '#p22d-current-page-selector, #p22d-user-search-input', function( event ) {
 		if ( event.which === 13 ) { // Enter key
-			var searchTerm  = $( '#p22d-user-search-input' ).val();
-			var currentPage = parseInt( $( this ).val(), 10 ) || 1;
-			var totalPages  = parseInt( $( '.total-pages' ).first().text().replace( /[^0-9]/g, '' ), 10 ) || 1;
+			const searchTerm  = $( '#p22d-user-search-input' ).val();
+			const totalPages  = parseInt( $( '.total-pages' ).first().text().replace( /[^0-9]/g, '' ), 10 ) || 1;
+			let currentPage   = parseInt( $( this ).val(), 10 ) || 1;
 
 			// Make sure current page is between 1 and total pages.
 			if ( currentPage < 1 ) {
@@ -32,7 +32,7 @@
 			}
 
 			// Update user list with users on next page.
-			var filters = {
+			const filters = {
 				page:   currentPage,
 				search: searchTerm,
 			};
@@ -46,15 +46,15 @@
 
 	// Wire up pager buttons (first/last/next/previous and search buttons).
 	$widget.on( 'click', '.tablenav .pagination-links a, .tablenav #p22d-search-submit', function( event ) {
-		var searchTerm  = $( '#p22d-user-search-input' ).val();
-		var currentPage = parseInt( getParameterByName( 'paged', $( this ).attr( 'href' ) ), 10 ) || 1;
-		var totalPages  = parseInt( $( '.total-pages' ).first().text().replace( /[^0-9]/g, '' ), 10 ) || 1;
+		const searchTerm  = $( '#p22d-user-search-input' ).val();
+		const totalPages  = parseInt( $( '.total-pages' ).first().text().replace( /[^0-9]/g, '' ), 10 ) || 1;
+		let currentPage   = parseInt( getParameterByName( 'paged', $( this ).attr( 'href' ) ), 10 ) || 1;
 		if ( currentPage > totalPages ) {
 			currentPage = totalPages;
 		}
 
 		// Update user list with users on next page.
-		var filters = {
+		const filters = {
 			page:   currentPage,
 			search: searchTerm,
 		};
@@ -80,7 +80,7 @@
 			placement: 'left',
 			theme: 'light-border',
 			interactive: true,
-			onShown( instance ) {
+			onShown() {
 				// Load any nested tooltips.
 				tippy( '.tippy-content [data-tippy-content]', {
 					trigger: 'click',
@@ -95,6 +95,9 @@
 
 	/**
 	 * Render the user list.
+	 *
+	 * @param  {Object} $caller jQuery object that triggered this refresh.
+	 * @param  {Object} filters Optional filters for query (page, role, etc.)
 	 */
 	function refresh( $caller, filters = {} ) {
 		$( '.spinner', $widget ).addClass( 'is-active' );
@@ -103,7 +106,7 @@
 			nonce:    Data.nonce,
 			dataType: 'jsonp',
 			action:   'p22d_dashboard_widget_update',
-			filters:  filters,
+			filters,
 		} ).done( function ( response ) {
 			if ( response.success ) {
 				// Render.
@@ -117,16 +120,20 @@
 		} );
 	}
 
-	// Helper function to grab a querystring param value by name
-	function getParameterByName( needle, haystack ) {
+	/**
+	 * Helper function to grab a querystring param value by name.
+	 *
+	 * @param  {string} needle   Param name to find.
+	 * @param  {string} haystack Query string to search.
+	 *
+	 * @return {string}          Param value if found; empty string otherwise.
+	 */
+	function getParameterByName( needle, haystack = '' ) {
 		needle = needle.replace( /[\[]/, '\\\[').replace(/[\]]/, '\\\]' ); // eslint-disable-line no-useless-escape
-		var regex = new RegExp( '[\\?&]' + needle + '=([^&#]*)' );
-		var results = regex.exec( haystack );
-		if ( results === null ) {
-			return '';
-		} else {
-			return decodeURIComponent( results[1].replace( /\+/g, ' ' ) );
-		}
+		const regex = new RegExp( '[\\?&]' + needle + '=([^&#]*)' );
+		const results = regex.exec( haystack );
+
+		return results === null ? '' : decodeURIComponent( results[1].replace( /\+/g, ' ' ) );
 	}
 
 } )( jQuery );
