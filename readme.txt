@@ -36,8 +36,17 @@ View or contribute to the plugin source on Github: [https://github.com/uhm-coe/p
 == Frequently Asked Questions ==
 
 = Where is this plugin used? =
+
 This plugin is developed for Pressbooks textbooks at the [University of Hawaiʻi OER][https://pressbooks.oer.hawaii.edu/] repository, which provides free open educational resources to students.
 
+== Screenshots ==
+
+1. Plugin features and settings.
+2. Dashboard widget.
+3. Chapter badges in the table of contents.
+4. Chapter badges in the Organize dashboard.
+5. Example of hidden content for anonymous users.
+6. Example of table of contents tooltip for anonymous users.
 
 == Changelog ==
 
