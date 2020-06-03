@@ -50,5 +50,8 @@ This plugin is developed for Pressbooks textbooks at the [University of Hawaiʻi
 
 == Changelog ==
 
+= 1.0 =
+* Initial release, Mon Jun 1, 2020.
+
 = 0.1.0 =
 * Initial development build, Wed Mar 4, 2020.

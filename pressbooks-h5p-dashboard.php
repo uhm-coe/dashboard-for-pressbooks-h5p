@@ -7,7 +7,7 @@
  * Text Domain: pressbooks-h5p-dashboard
  * Domain Path: /languages
  * License: GPL3
- * Version: 0.1.0
+ * Version: 1.0
  *
  * @link    https://github.com/uhm-coe/pressbooks-h5p-dashboard
  * @package pressbooks-h5p-dashboard
