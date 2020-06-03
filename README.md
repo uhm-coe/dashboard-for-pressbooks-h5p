@@ -17,14 +17,27 @@
 
 ## Where is this plugin used?
 
-This plugin is developed for Pressbooks textbooks at the [University of Hawaiʻi OER][https://pressbooks.oer.hawaii.edu/] repository, which provides free open educational resources to students.
+This plugin is developed for Pressbooks textbooks at the [University of Hawaiʻi OER](https://pressbooks.oer.hawaii.edu/) repository, which provides free open educational resources to students.
 
 ## Screenshots
 
-![Screenshot of plugin settings page](assets/screenshot-1.png?raw=true "Plugin features and settings.")
-![Screenshot of plugin dashboard widget](assets/screenshot-2.png?raw=true "Dashboard widget.")
-![Screenshot of plugin dashboard widget with tooltips expanded](assets/screenshot-2.png?raw=true "Dashboard widget showing details on a particular user and chapter.")
-![Screenshot of added badges in the table of contents](assets/screenshot-4.png?raw=true "Chapter badges in the table of contents.")
-![Screenshot of added badges in the organize dashboard](assets/screenshot-5.png?raw=true "Chapter badges in the Organize dashboard.")
-![Screenshot of hidden H5P Content for anonymous users](assets/screenshot-6.png?raw=true "Example of hidden content for anonymous users.")
-![Screenshot of tooltips for anonymous users](assets/screenshot-7.png?raw=true "Example of table of contents tooltip for anonymous users.")
+![Screenshot of plugin settings page](assets/screenshot-1.png?raw=true "")
+Plugin features and settings
+
+![Screenshot of plugin dashboard widget](assets/screenshot-2.png?raw=true "")
+Dashboard widget
+
+![Screenshot of plugin dashboard widget with tooltips expanded](assets/screenshot-2.png?raw=true "")
+Dashboard widget showing details on a particular user and chapter
+
+![Screenshot of added badges in the table of contents](assets/screenshot-4.png?raw=true "")
+Chapter badges in the table of contents
+
+![Screenshot of added badges in the organize dashboard](assets/screenshot-5.png?raw=true "")
+Chapter badges in the Organize dashboard
+
+![Screenshot of hidden H5P Content for anonymous users](assets/screenshot-6.png?raw=true "")
+Example of hidden content for anonymous users
+
+![Screenshot of tooltips for anonymous users](assets/screenshot-7.png?raw=true "")
+Example of table of contents tooltip for anonymous users
