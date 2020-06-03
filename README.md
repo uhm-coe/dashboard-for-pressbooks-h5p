@@ -28,7 +28,7 @@ Dashboard widget:
 ![Screenshot of plugin dashboard widget](assets/screenshot-2.png?raw=true "")
 
 Dashboard widget showing details on a particular user and chapter:
-![Screenshot of plugin dashboard widget with tooltips expanded](assets/screenshot-2.png?raw=true "")
+![Screenshot of plugin dashboard widget with tooltips expanded](assets/screenshot-3.png?raw=true "")
 
 Chapter badges in the table of contents:
 ![Screenshot of added badges in the table of contents](assets/screenshot-4.png?raw=true "")
