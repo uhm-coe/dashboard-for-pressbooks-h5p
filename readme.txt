@@ -1,18 +1,18 @@
 === Pressbooks H5P Dashboard ===
 Contributors: figureone
-Tags: pressbooks, h5p, dashboard
+Tags: pressbooks, h5p, dashboard, widget
 Requires at least: 5.3
-Tested up to: 5.3
+Tested up to: 5.4.1
 Requires PHP: 5.6.20
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Generate summaries of H5P content and results in a Pressbooks book.
+Generates summaries of H5P content and results in a Pressbooks book.
 
 == Description ==
 
-Generate summaries of H5P content and results in a Pressbooks book.
+Generates summaries of H5P content and results in a Pressbooks book.
 
 View or contribute to the plugin source on Github: [https://github.com/uhm-coe/pressbooks-h5p-dashboard](https://github.com/uhm-coe/pressbooks-h5p-dashboard)
 
@@ -23,9 +23,10 @@ View or contribute to the plugin source on Github: [https://github.com/uhm-coe/p
 
 *Pressbooks H5P Dashboard* provides the following features:
 
-* For **all users**: annotates the Pressbooks table of contents to show which pages contain H5P content.
-* For **logged in users**: a dashboard showing which H5P content has been completed.
-* For **admin users**: a summary dashboard showing which users have completed H5P content.
+* **Dashboard Widget**: a new dashboard widget for instructors showing student progress. Progress can be shown by user and by chapter, and filtered by user role and a range of dates of user registration or last login. Note: last logins are tracked once this plugin is enabled, so there will be no last login times saved from before plugin activation.
+* **Chapter Badges** in *Table of Contents*: a new badge appears next to chapters with embedded H5P content in the *Table of Contents*. For anonymous users, the badge shows the total number of H5P embeds in the Chapter. For logged in users, the badge shows the number of incomplete H5P embeds, or a checkmark if they are all complete. Hovering over the badge reveals a tooltip with details on each H5P embed.
+* **Chapter Badges** in *Dashboard > Organize*: a new column, H5P Content, appears in the *Pressbooks Organize* dashboard showing which chapters have embedded H5P content.
+* **Hide H5P Content For Anonymous Users**: a new option (shown below) to prevent anonymous users from seeing H5P Content. Use this to encourage users to log in so their results can be stored.
 
 == Installation ==
 
@@ -35,11 +36,10 @@ View or contribute to the plugin source on Github: [https://github.com/uhm-coe/p
 == Frequently Asked Questions ==
 
 = Where is this plugin used? =
+This plugin is developed for Pressbooks textbooks at the [University of Hawaiʻi OER][https://pressbooks.oer.hawaii.edu/] repository, which provides free open educational resources to students.
 
-Pressbooks textbooks at the [University of Hawaiʻi OER][https://pressbooks.oer.hawaii.edu/] repository, which provides free open educational resources to students.
 
 == Changelog ==
 
 = 0.1.0 =
-* Initial development build.
-* Wed Mar 4, 2020
+* Initial development build, Wed Mar 4, 2020.
