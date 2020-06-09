@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Pressbooks H5P Dashboard\n"
-"POT-Creation-Date: 2020-06-01 13:29-1000\n"
+"POT-Creation-Date: 2020-06-09 10:39-1000\n"
 "PO-Revision-Date: 2020-04-03 10:44-1000\n"
 "Last-Translator: University of Hawaii <dcdc@hawaii.edu>\n"
 "Language-Team: University of Hawaii <dcdc@hawaii.edu>\n"
@@ -68,90 +68,90 @@ msgstr ""
 msgid "Signed in since August"
 msgstr ""
 
-#: src/class-dashboard-widget.php:229
+#: src/class-dashboard-widget.php:234
 msgid "H5P Results"
 msgstr ""
 
-#: src/class-dashboard-widget.php:251
+#: src/class-dashboard-widget.php:268
 msgid "Filter role to..."
 msgstr ""
 
-#: src/class-dashboard-widget.php:255
+#: src/class-dashboard-widget.php:272
 msgid "Filter users to..."
 msgstr ""
 
-#: src/class-dashboard-widget.php:442
+#: src/class-dashboard-widget.php:459
 msgid "Part"
 msgstr ""
 
-#: src/class-dashboard-widget.php:443
+#: src/class-dashboard-widget.php:460
 msgid "Chapter"
 msgstr ""
 
-#: src/class-dashboard-widget.php:444 src/class-dashboard-widget.php:479
+#: src/class-dashboard-widget.php:461 src/class-dashboard-widget.php:496
 msgid "Score"
 msgstr ""
 
-#: src/class-dashboard-widget.php:474
+#: src/class-dashboard-widget.php:491
 msgid "Results"
 msgstr ""
 
-#: src/class-dashboard-widget.php:478 src/class-settings.php:192
+#: src/class-dashboard-widget.php:495 src/class-settings.php:206
 msgid "H5P"
 msgstr ""
 
 #. TRANSLATORS: %s: number of users
-#: src/class-dashboard-widget.php:514
+#: src/class-dashboard-widget.php:531
 #, php-format
 msgid "%s user"
 msgid_plural "%s users"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/class-dashboard-widget.php:538
+#: src/class-dashboard-widget.php:555
 msgid "First page"
 msgstr ""
 
-#: src/class-dashboard-widget.php:549
+#: src/class-dashboard-widget.php:566
 msgid "Previous page"
 msgstr ""
 
-#: src/class-dashboard-widget.php:556 src/class-dashboard-widget.php:560
+#: src/class-dashboard-widget.php:573 src/class-dashboard-widget.php:577
 msgid "Current Page"
 msgstr ""
 
 #. TRANSLATORS: 1: number of current page 2: number of total pages
-#: src/class-dashboard-widget.php:568
+#: src/class-dashboard-widget.php:585
 #, php-format
 msgctxt "paging"
 msgid "%1$s of %2$s"
 msgstr ""
 
-#: src/class-dashboard-widget.php:576
+#: src/class-dashboard-widget.php:593
 msgid "Next page"
 msgstr ""
 
-#: src/class-dashboard-widget.php:587
+#: src/class-dashboard-widget.php:604
 msgid "Last page"
 msgstr ""
 
-#: src/class-dashboard-widget.php:598
+#: src/class-dashboard-widget.php:615
 msgid "Search Users"
 msgstr ""
 
-#: src/class-dashboard-widget.php:600
+#: src/class-dashboard-widget.php:617
 msgid "Search"
 msgstr ""
 
-#: src/class-extend-pressbooks-organize.php:50
+#: src/class-extend-pressbooks-organize.php:55
 msgid "H5P Content"
 msgstr ""
 
-#: src/class-extend-pressbooks-toc.php:57
+#: src/class-extend-pressbooks-toc.php:62
 msgid "Your H5P Results"
 msgstr ""
 
-#: src/class-extend-pressbooks-toc.php:58
+#: src/class-extend-pressbooks-toc.php:63
 msgid "Sign in to see your results"
 msgstr ""
 
@@ -159,30 +159,34 @@ msgstr ""
 msgid "Sign in to complete this activity"
 msgstr ""
 
-#: src/class-settings.php:46 src/class-settings.php:60
+#: src/class-settings.php:49
+msgid "Settings"
+msgstr ""
+
+#: src/class-settings.php:60 src/class-settings.php:74
 msgid "Pressbooks H5P Dashboard Settings"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-#: src/class-settings.php:47
+#: src/class-settings.php:61
 msgid "Pressbooks H5P Dashboard"
 msgstr ""
 
-#: src/class-settings.php:64
+#: src/class-settings.php:78
 msgid "Chapter Badges in Dashboard > Organize"
 msgstr ""
 
-#: src/class-settings.php:65
+#: src/class-settings.php:79
 msgid ""
 "A new column, H5P Content, appears in the Pressbooks Organize dashboard "
 "showing which chapters have embedded H5P content."
 msgstr ""
 
-#: src/class-settings.php:68
+#: src/class-settings.php:82
 msgid "Chapter Badges in Table of Contents"
 msgstr ""
 
-#: src/class-settings.php:69
+#: src/class-settings.php:83
 msgid ""
 "A new badge appears next to chapters with embedded H5P content in the Table "
 "of Contents. For anonymous users, the badge shows the total number of H5P "
@@ -191,11 +195,11 @@ msgid ""
 "over the badge reveals a tooltip with details on each H5P embed."
 msgstr ""
 
-#: src/class-settings.php:72
+#: src/class-settings.php:86
 msgid "Dashboard Widget"
 msgstr ""
 
-#: src/class-settings.php:73
+#: src/class-settings.php:87
 msgid ""
 "A new dashboard widget for instructors showing student progress. Progress "
 "can be shown by user and by chapter, and filtered by user role and a range "
@@ -204,26 +208,26 @@ msgid ""
 "before plugin activation."
 msgstr ""
 
-#: src/class-settings.php:76
+#: src/class-settings.php:90
 msgid "Hide H5P Content For Anonymous Users"
 msgstr ""
 
-#: src/class-settings.php:77
+#: src/class-settings.php:91
 msgid ""
 "A new option (shown below) to prevent anonymous users from seeing H5P "
 "Content. Use this to encourage users to log in so their results can be "
 "stored."
 msgstr ""
 
-#: src/class-settings.php:118
+#: src/class-settings.php:132
 msgid "H5P Visibility"
 msgstr ""
 
-#: src/class-settings.php:153
+#: src/class-settings.php:167
 msgid "Hide H5P Content for anonymous users"
 msgstr ""
 
-#: src/class-settings.php:155
+#: src/class-settings.php:169
 msgid ""
 "Note: with this setting enabled, embedded H5P Content will be blurred out on "
 "the page, with a login button in the center. Enable this to discourage users "
@@ -231,23 +235,23 @@ msgid ""
 "are stored for users who are not logged in."
 msgstr ""
 
-#: src/class-settings.php:175
+#: src/class-settings.php:189
 msgid "Missing Required Dependencies"
 msgstr ""
 
-#: src/class-settings.php:176
+#: src/class-settings.php:190
 msgid "The following plugins need to be activated for this plugin to work:"
 msgstr ""
 
-#: src/class-settings.php:179
+#: src/class-settings.php:193
 msgid "https://docs.pressbooks.org/installation/"
 msgstr ""
 
-#: src/class-settings.php:179
+#: src/class-settings.php:193
 msgid "Pressbooks"
 msgstr ""
 
-#: src/class-settings.php:192
+#: src/class-settings.php:206
 msgid "https://h5p.org/documentation/setup/wordpress"
 msgstr ""
 
