@@ -37,6 +37,21 @@ class Settings extends Static_Instance {
 	}
 
 	/**
+	 * Add a link to the settings page from the WordPress Plugins page.
+	 *
+	 * @hook plugin_action_links_pressbooks-h5p-dashboard.php
+	 *
+	 * @param  array $links Admin sidebar links.
+	 * @return array        Admin sidebar links with Authorizer added.
+	 */
+	public function plugin_settings_link( $links ) {
+		$settings_url = admin_url( 'options-general.php?page=pressbooks-h5p-dashboard' );
+		array_unshift( $links, '<a href="' . $settings_url . '">' . __( 'Settings', 'p22d' ) . '</a>' );
+
+		return $links;
+	}
+
+	/**
 	 * Create the options page under Dashboard > Settings.
 	 *
 	 * @hook admin_menu

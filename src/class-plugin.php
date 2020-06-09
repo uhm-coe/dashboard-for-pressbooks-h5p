@@ -38,6 +38,9 @@ class Plugin extends Static_Instance {
 		add_action( 'admin_menu', array( Settings::get_instance(), 'admin_menu__add_options_page' ), 10, 1 );
 		add_action( 'admin_init', array( Settings::get_instance(), 'admin_init__register_settings' ), 10, 1 );
 
+		// Add a link to the settings page from the Plugins page.
+		add_filter( 'plugin_action_links_' . plugin_basename( plugin_root() ), array( Settings::get_instance(), 'plugin_settings_link' ) );
+
 		// Show admin notices on plugin settings page if dependencies are missing.
 		add_action( 'admin_notices', array( Settings::get_instance(), 'admin_notices__dependency_check' ), 10, 1 );
 
