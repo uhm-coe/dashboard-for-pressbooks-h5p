@@ -28,6 +28,11 @@ class Extend_Pressbooks_TOC extends Static_Instance {
 			return;
 		}
 
+		// Do nothing if plugin dependencies are not installed and activated.
+		if ( ! is_plugin_active( 'h5p/h5p.php' ) || ! is_plugin_active( 'pressbooks/pressbooks.php' ) ) {
+			return;
+		}
+
 		$data = Data::get_instance();
 
 		// Fetch embedded H5P shortcodes.

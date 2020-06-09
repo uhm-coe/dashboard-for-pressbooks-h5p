@@ -224,6 +224,11 @@ class Dashboard_Widget extends Static_Instance {
 			return;
 		}
 
+		// Bail if plugin dependencies are not installed and activated.
+		if ( ! is_plugin_active( 'h5p/h5p.php' ) || ! is_plugin_active( 'pressbooks/pressbooks.php' ) ) {
+			return;
+		}
+
 		wp_add_dashboard_widget(
 			'p22d_dashboard_widget', // Widget slug.
 			esc_html__( 'H5P Results', 'p22d' ), // Title.

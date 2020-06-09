@@ -40,6 +40,11 @@ class Data extends Static_Instance {
 	 * @return array Post ID keys with an array of H5P ids under each.
 	 */
 	public function get_chapters_with_h5p() {
+		// Return empty array if H5P is not available.
+		if ( ! class_exists( 'H5P_Plugin' ) ) {
+			return array();
+		}
+
 		// Return cached value if it exists.
 		if ( isset( $this->chapters_with_h5p ) ) {
 			return $this->chapters_with_h5p;

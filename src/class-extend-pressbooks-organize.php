@@ -29,6 +29,11 @@ class Extend_Pressbooks_Organize extends Static_Instance {
 			return;
 		}
 
+		// Do nothing if plugin dependencies are not installed and activated.
+		if ( ! is_plugin_active( 'h5p/h5p.php' ) || ! is_plugin_active( 'pressbooks/pressbooks.php' ) ) {
+			return;
+		}
+
 		// Fetch embedded H5P shortcodes.
 		$data    = Data::get_instance();
 		$h5p_ids = $data->get_chapters_with_h5p();
