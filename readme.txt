@@ -51,6 +51,10 @@ This plugin is developed for Pressbooks textbooks at the [University of Hawaiʻi
 
 == Changelog ==
 
+= 1.0.1 =
+* Fix php warning on dashboard when dependencies missing.
+* Check for dependencies before performing actions.
+
 = 1.0 =
 * Initial release, Mon Jun 1, 2020.
 
