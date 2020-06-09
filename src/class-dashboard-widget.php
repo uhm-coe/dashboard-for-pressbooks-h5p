@@ -230,14 +230,26 @@ class Dashboard_Widget extends Static_Instance {
 			array( $this, 'render' ) // Function that renders the widget.
 		);
 
-		// Move widget to top of right side (only for users that haven't already moved a widget).
+		// Move widget to top of right side (only for users that haven't already
+		// moved a widget). See https://developer.wordpress.org/apis/handbook/dashboard-widgets/#forcing-your-widget-to-the-top
+		// for more details.
+		// phpcs:disable WordPress.WP.GlobalVariablesOverride.Prohibited
 		global $wp_meta_boxes;
-		$widget = $wp_meta_boxes['dashboard']['normal']['core']['p22d_dashboard_widget'];
-		unset( $wp_meta_boxes['dashboard']['normal']['core']['p22d_dashboard_widget'] );
-		$wp_meta_boxes['dashboard']['side']['high'] = array_merge( // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-			array( 'p22d_dashboard_widget' => $widget ),
-			$wp_meta_boxes['dashboard']['side']['high']
-		);
+		if ( isset( $wp_meta_boxes['dashboard']['normal']['core']['p22d_dashboard_widget'] ) ) {
+			$widget = $wp_meta_boxes['dashboard']['normal']['core']['p22d_dashboard_widget'];
+			unset( $wp_meta_boxes['dashboard']['normal']['core']['p22d_dashboard_widget'] );
+			if ( ! isset( $wp_meta_boxes['dashboard']['side'] ) ) {
+				$wp_meta_boxes['dashboard']['side'] = array();
+			}
+			if ( ! isset( $wp_meta_boxes['dashboard']['side']['high'] ) ) {
+				$wp_meta_boxes['dashboard']['side']['high'] = array();
+			}
+			$wp_meta_boxes['dashboard']['side']['high'] = array_merge(
+				array( 'p22d_dashboard_widget' => $widget ),
+				$wp_meta_boxes['dashboard']['side']['high']
+			);
+		}
+		// phpcs:enable WordPress.WP.GlobalVariablesOverride.Prohibited
 	}
 
 
