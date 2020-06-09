@@ -51,6 +51,10 @@ This plugin is developed for Pressbooks textbooks at the [University of Hawaiʻi
 
 == Changelog ==
 
+= 1.0.2 =
+* Add a link to the Settings page from the WordPress Plugins page.
+* Update translatable strings.
+
 = 1.0.1 =
 * Fix php warning on dashboard when dependencies missing.
 * Check for dependencies before performing actions.

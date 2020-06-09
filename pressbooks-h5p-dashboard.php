@@ -7,7 +7,7 @@
  * Text Domain: pressbooks-h5p-dashboard
  * Domain Path: /languages
  * License: GPL3
- * Version: 1.0.1
+ * Version: 1.0.2
  *
  * @link    https://github.com/uhm-coe/pressbooks-h5p-dashboard
  * @package pressbooks-h5p-dashboard
@@ -33,7 +33,7 @@ require_once dirname( __FILE__ ) . '/src/class-save-last-login-user-meta.php';
  * enqueued scripts and styles).
  */
 function plugin_version() {
-	return '1.0.1';
+	return '1.0.2';
 }
 
 /**
