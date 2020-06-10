@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Dashboard for Pressbook and H5P
+ * Plugin Name: Dashboard for Pressbooks and H5P
  * Description: This plugin generates summaries of H5P content and results in a Pressbooks book.
  * Author: Paul Ryan <prar@hawaii.edu>
  * Plugin URI: https://github.com/uhm-coe/dashboard-for-pressbooks-h5p

@@ -1,4 +1,4 @@
-=== Dashboard for Pressbook and H5P ===
+=== Dashboard for Pressbooks and H5P ===
 Contributors: figureone
 Tags: pressbooks, h5p, dashboard, widget
 Requires at least: 5.3
@@ -16,12 +16,12 @@ Generates summaries of H5P content and results in a Pressbooks book.
 
 View or contribute to the plugin source on Github: [https://github.com/uhm-coe/dashboard-for-pressbooks-h5p](https://github.com/uhm-coe/dashboard-for-pressbooks-h5p)
 
-*Dashboard for Pressbook and H5P* requires the following WordPress plugins installed:
+*Dashboard for Pressbooks and H5P* requires the following WordPress plugins installed:
 
 * [Pressbooks](https://docs.pressbooks.org/installation/)
 * [H5P](https://wordpress.org/plugins/h5p/)
 
-*Dashboard for Pressbook and H5P* provides the following features:
+*Dashboard for Pressbooks and H5P* provides the following features:
 
 * **Dashboard Widget**: a new dashboard widget for instructors showing student progress. Progress can be shown by user and by chapter, and filtered by user role and a range of dates of user registration or last login. Note: last logins are tracked once this plugin is enabled, so there will be no last login times saved from before plugin activation.
 * **Chapter Badges** in *Table of Contents*: a new badge appears next to chapters with embedded H5P content in the *Table of Contents*. For anonymous users, the badge shows the total number of H5P embeds in the Chapter. For logged in users, the badge shows the number of incomplete H5P embeds, or a checkmark if they are all complete. Hovering over the badge reveals a tooltip with details on each H5P embed.

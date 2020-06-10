@@ -1,6 +1,6 @@
 <?php
 /**
- * Dashboard for Pressbook and H5P
+ * Dashboard for Pressbooks and H5P
  *
  * @license  GPL-3.0+
  * @link     https://github.com/uhm-coe/dashboard-for-pressbooks-h5p
@@ -58,8 +58,8 @@ class Settings extends Static_Instance {
 	 */
 	public function admin_menu__add_options_page() {
 		add_options_page(
-			__( 'Settings: Dashboard for Pressbook and H5P', 'd4ph' ),
-			__( 'Dashboard for Pressbook and H5P', 'd4ph' ),
+			__( 'Settings: Dashboard for Pressbooks and H5P', 'd4ph' ),
+			__( 'Dashboard for Pressbooks and H5P', 'd4ph' ),
 			'manage_options',
 			'dashboard-for-pressbooks-h5p',
 			array( $this, 'render_settings_page' )
@@ -72,7 +72,7 @@ class Settings extends Static_Instance {
 	public function render_settings_page() {
 		?>
 		<div class="wrap">
-			<h2><?php esc_html_e( 'Settings: Dashboard for Pressbook and H5P', 'd4ph' ); ?></h2>
+			<h2><?php esc_html_e( 'Settings: Dashboard for Pressbooks and H5P', 'd4ph' ); ?></h2>
 			<p>Plugin features:</p>
 			<ol>
 				<li>

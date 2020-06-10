@@ -1,6 +1,6 @@
 <?php // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
 /**
- * Dashboard for Pressbook and H5P
+ * Dashboard for Pressbooks and H5P
  *
  * @license  GPL-3.0+
  * @link     https://github.com/uhm-coe/dashboard-for-pressbooks-h5p
