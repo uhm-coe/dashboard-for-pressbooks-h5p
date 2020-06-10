@@ -193,11 +193,11 @@ class Dashboard_Widget extends Static_Instance {
 			return;
 		}
 
-		// Load tippy.js (tooltips) from CDN.
+		// Load tippy.js (tooltips).
 		// See: https://atomiks.github.io/tippyjs/v6/getting-started/.
-		wp_enqueue_script( '@popperjs/core@2', 'https://unpkg.com/@popperjs/core@2', array(), '2', true );
-		wp_enqueue_script( 'tippy.js@6', 'https://unpkg.com/tippy.js@6', array(), '6', true );
-		wp_enqueue_style( 'tippy.js@6/themes/light-border', 'https://unpkg.com/tippy.js@6/themes/light-border.css', array(), '6', 'all' );
+		wp_enqueue_script( '@popperjs/core@2.4.2', plugins_url( 'vendor/popperjs/core/2.4.2/dist/umd/popper.min.js', plugin_root() ), array(), '2.4.2', true );
+		wp_enqueue_script( 'tippy.js@6.2.3', plugins_url( 'vendor/tippy.js/6.2.3/dist/tippy-bundle.umd.min.js', plugin_root() ), array(), '6.2.3', true );
+		wp_enqueue_style( 'tippy.js@6.2.3/themes/light-border', plugins_url( 'vendor/tippy.js/6.2.3/dist/themes/light-border.css', plugin_root() ), array(), '6.2.3', 'all' );
 
 		wp_enqueue_style( 'd4ph/dashboard-widget', plugins_url( 'styles/dashboard-widget.css', plugin_root() ), array(), plugin_version(), 'all' );
 
