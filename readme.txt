@@ -51,6 +51,9 @@ This plugin is developed for Pressbooks textbooks at the [University of Hawaiʻi
 
 == Changelog ==
 
+= 1.0.4 =
+* Remove CDN dependency for tippy.js; host locally.
+
 = 1.0.3 =
 * Rename to Dashboard for Pressbooks and H5P.
 
