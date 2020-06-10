@@ -1,15 +1,15 @@
 <?php
 /**
- * Pressbook H5P Dashboard
+ * Dashboard for Pressbook and H5P
  *
  * @license  GPL-3.0+
- * @link     https://github.com/uhm-coe/pressbooks-h5p-dashboard
- * @package  pressbooks-h5p-dashboard
+ * @link     https://github.com/uhm-coe/dashboard-for-pressbooks-h5p
+ * @package  dashboard-for-pressbooks-h5p
  */
 
-namespace Pressbooks_H5P_Dashboard;
+namespace Dashboard_For_Pressbooks_H5P;
 
-use Pressbooks_H5P_Dashboard\Data;
+use Dashboard_For_Pressbooks_H5P\Data;
 
 /**
  * Create the plugin dashboard widget.
@@ -31,7 +31,7 @@ class Dashboard_Widget extends Static_Instance {
 	 */
 	public function get_options() {
 		if ( ! isset( $this->options ) ) {
-			$this->options = $this->sanitized_defaults( get_user_option( 'pressbooks_h5p_dashboard', get_current_user_id() ) );
+			$this->options = $this->sanitized_defaults( get_user_option( 'dashboard_for_pressbooks_h5p', get_current_user_id() ) );
 		}
 
 		return $this->options;
@@ -59,7 +59,7 @@ class Dashboard_Widget extends Static_Instance {
 	 */
 	public function update_options( $options = array() ) {
 		$this->options = $this->sanitized_defaults( $options );
-		update_user_option( get_current_user_id(), 'pressbooks_h5p_dashboard', $this->options );
+		update_user_option( get_current_user_id(), 'dashboard_for_pressbooks_h5p', $this->options );
 	}
 
 
@@ -117,62 +117,62 @@ class Dashboard_Widget extends Static_Instance {
 
 		return array(
 			'registered_this_week'  => array(
-				'label' => __( 'Registered this week', 'p22d' ),
+				'label' => __( 'Registered this week', 'd4ph' ),
 				'time'  => $first_day_of_week,
 				'type'  => 'registered',
 			),
 			'registered_this_month' => array(
-				'label' => __( 'Registered this month', 'p22d' ),
+				'label' => __( 'Registered this month', 'd4ph' ),
 				'time'  => $first_day_of_month,
 				'type'  => 'registered',
 			),
 			'registered_this_year'  => array(
-				'label' => __( 'Registered this year', 'p22d' ),
+				'label' => __( 'Registered this year', 'd4ph' ),
 				'time'  => $first_day_of_year,
 				'type'  => 'registered',
 			),
 			'registered_since_jan'  => array(
-				'label' => __( 'Registered since January', 'p22d' ),
+				'label' => __( 'Registered since January', 'd4ph' ),
 				'time'  => $last_jan_1,
 				'type'  => 'registered',
 			),
 			'registered_since_may'  => array(
-				'label' => __( 'Registered since May', 'p22d' ),
+				'label' => __( 'Registered since May', 'd4ph' ),
 				'time'  => $last_may_1,
 				'type'  => 'registered',
 			),
 			'registered_since_aug'  => array(
-				'label' => __( 'Registered since August', 'p22d' ),
+				'label' => __( 'Registered since August', 'd4ph' ),
 				'time'  => $last_aug_1,
 				'type'  => 'registered',
 			),
 			'signed_in_this_week'   => array(
-				'label' => __( 'Signed in this week', 'p22d' ),
+				'label' => __( 'Signed in this week', 'd4ph' ),
 				'time'  => $first_day_of_week,
 				'type'  => 'signed_in',
 			),
 			'signed_in_this_month'  => array(
-				'label' => __( 'Signed in this month', 'p22d' ),
+				'label' => __( 'Signed in this month', 'd4ph' ),
 				'time'  => $first_day_of_month,
 				'type'  => 'signed_in',
 			),
 			'signed_in_this_year'   => array(
-				'label' => __( 'Signed in this year', 'p22d' ),
+				'label' => __( 'Signed in this year', 'd4ph' ),
 				'time'  => $first_day_of_year,
 				'type'  => 'signed_in',
 			),
 			'signed_in_since_jan'   => array(
-				'label' => __( 'Signed in since January', 'p22d' ),
+				'label' => __( 'Signed in since January', 'd4ph' ),
 				'time'  => $last_jan_1,
 				'type'  => 'signed_in',
 			),
 			'signed_in_since_may'   => array(
-				'label' => __( 'Signed in since May', 'p22d' ),
+				'label' => __( 'Signed in since May', 'd4ph' ),
 				'time'  => $last_may_1,
 				'type'  => 'signed_in',
 			),
 			'signed_in_since_aug'   => array(
-				'label' => __( 'Signed in since August', 'p22d' ),
+				'label' => __( 'Signed in since August', 'd4ph' ),
 				'time'  => $last_aug_1,
 				'type'  => 'signed_in',
 			),
@@ -199,15 +199,15 @@ class Dashboard_Widget extends Static_Instance {
 		wp_enqueue_script( 'tippy.js@6', 'https://unpkg.com/tippy.js@6', array(), '6', true );
 		wp_enqueue_style( 'tippy.js@6/themes/light-border', 'https://unpkg.com/tippy.js@6/themes/light-border.css', array(), '6', 'all' );
 
-		wp_enqueue_style( 'p22d/dashboard-widget', plugins_url( 'styles/dashboard-widget.css', plugin_root() ), array(), plugin_version(), 'all' );
+		wp_enqueue_style( 'd4ph/dashboard-widget', plugins_url( 'styles/dashboard-widget.css', plugin_root() ), array(), plugin_version(), 'all' );
 
-		wp_enqueue_script( 'p22d/dashboard-widget', plugins_url( 'scripts/dashboard-widget.js', plugin_root() ), array( 'jquery' ), plugin_version(), true );
+		wp_enqueue_script( 'd4ph/dashboard-widget', plugins_url( 'scripts/dashboard-widget.js', plugin_root() ), array( 'jquery' ), plugin_version(), true );
 		wp_localize_script(
-			'p22d/dashboard-widget',
+			'd4ph/dashboard-widget',
 			'Data',
 			array(
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
-				'nonce'    => wp_create_nonce( 'p22d' ),
+				'nonce'    => wp_create_nonce( 'd4ph' ),
 			)
 		);
 	}
@@ -230,8 +230,8 @@ class Dashboard_Widget extends Static_Instance {
 		}
 
 		wp_add_dashboard_widget(
-			'p22d_dashboard_widget', // Widget slug.
-			esc_html__( 'H5P Results', 'p22d' ), // Title.
+			'd4ph_dashboard_widget', // Widget slug.
+			esc_html__( 'Results for H5P', 'd4ph' ), // Title.
 			array( $this, 'render' ) // Function that renders the widget.
 		);
 
@@ -240,9 +240,9 @@ class Dashboard_Widget extends Static_Instance {
 		// for more details.
 		// phpcs:disable WordPress.WP.GlobalVariablesOverride.Prohibited
 		global $wp_meta_boxes;
-		if ( isset( $wp_meta_boxes['dashboard']['normal']['core']['p22d_dashboard_widget'] ) ) {
-			$widget = $wp_meta_boxes['dashboard']['normal']['core']['p22d_dashboard_widget'];
-			unset( $wp_meta_boxes['dashboard']['normal']['core']['p22d_dashboard_widget'] );
+		if ( isset( $wp_meta_boxes['dashboard']['normal']['core']['d4ph_dashboard_widget'] ) ) {
+			$widget = $wp_meta_boxes['dashboard']['normal']['core']['d4ph_dashboard_widget'];
+			unset( $wp_meta_boxes['dashboard']['normal']['core']['d4ph_dashboard_widget'] );
 			if ( ! isset( $wp_meta_boxes['dashboard']['side'] ) ) {
 				$wp_meta_boxes['dashboard']['side'] = array();
 			}
@@ -250,7 +250,7 @@ class Dashboard_Widget extends Static_Instance {
 				$wp_meta_boxes['dashboard']['side']['high'] = array();
 			}
 			$wp_meta_boxes['dashboard']['side']['high'] = array_merge(
-				array( 'p22d_dashboard_widget' => $widget ),
+				array( 'd4ph_dashboard_widget' => $widget ),
 				$wp_meta_boxes['dashboard']['side']['high']
 			);
 		}
@@ -265,11 +265,11 @@ class Dashboard_Widget extends Static_Instance {
 		?>
 		<div class="filters">
 			<select name="role" class="option">
-				<option value=""><?php esc_html_e( 'Filter role to...', 'p22d' ); ?></option>
+				<option value=""><?php esc_html_e( 'Filter role to...', 'd4ph' ); ?></option>
 				<?php wp_dropdown_roles( $this->get_option( 'role' ) ); ?>
 			</select>
 			<select name="filter" class="option">
-				<option value=""><?php esc_html_e( 'Filter users to...', 'p22d' ); ?></option>
+				<option value=""><?php esc_html_e( 'Filter users to...', 'd4ph' ); ?></option>
 				<?php foreach ( $this->get_filters() as $value => $data ) : ?>
 					<option value="<?php echo esc_attr( $value ); ?>"<?php selected( $value, $this->get_option( 'filter' ) ); ?>><?php echo esc_html( $data['label'] ); ?></option>
 				<?php endforeach; ?>
@@ -315,7 +315,7 @@ class Dashboard_Widget extends Static_Instance {
 		if ( ! empty( $filters[ $filter ] ) ) {
 			global $wpdb;
 			if ( 'registered' === $filters[ $filter ]['type'] ) {
-				$users_too_old = wp_cache_get( 'users_too_old', 'p22d' );
+				$users_too_old = wp_cache_get( 'users_too_old', 'd4ph' );
 				if ( false === $users_too_old ) {
 					$users_too_old = $wpdb->get_col( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
 						$wpdb->prepare(
@@ -323,13 +323,13 @@ class Dashboard_Widget extends Static_Instance {
 							$filters[ $filter ]['time']
 						)
 					);
-					wp_cache_set( 'users_too_old', $users_too_old, 'p22d', 24 * HOUR_IN_SECONDS );
+					wp_cache_set( 'users_too_old', $users_too_old, 'd4ph', 24 * HOUR_IN_SECONDS );
 				}
 				$args['exclude'] = $users_too_old;
 			} elseif ( 'signed_in' === $filters[ $filter ]['type'] ) {
 				$args['meta_query'] = array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
 					array(
-						'key'     => $wpdb->get_blog_prefix() . 'pressbooks_h5p_dashboard_last_login',
+						'key'     => $wpdb->get_blog_prefix() . 'dashboard_for_pressbooks_h5p_last_login',
 						'value'   => $filters[ $filter ]['time'],
 						'type'    => 'UNSIGNED',
 						'compare' => '>=',
@@ -456,9 +456,9 @@ class Dashboard_Widget extends Static_Instance {
 		<table class="wp-list-table striped">
 			<thead>
 				<tr>
-					<th><strong><?php esc_html_e( 'Part', 'p22d' ); ?></strong></th>
-					<th><?php esc_html_e( 'Chapter', 'p22d' ); ?></th>
-					<th><?php esc_html_e( 'Score', 'p22d' ); ?></th>
+					<th><strong><?php esc_html_e( 'Part', 'd4ph' ); ?></strong></th>
+					<th><?php esc_html_e( 'Chapter', 'd4ph' ); ?></th>
+					<th><?php esc_html_e( 'Score', 'd4ph' ); ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -488,12 +488,12 @@ class Dashboard_Widget extends Static_Instance {
 	public function render_chapter_tooltip( &$results_in_chapter, &$h5p_ids_in_chapter ) {
 		ob_start();
 		?>
-		<h1><?php esc_html_e( 'Results', 'p22d' ); ?></h1>
+		<h1><?php esc_html_e( 'Results', 'd4ph' ); ?></h1>
 		<table class='wp-list-table striped'>
 			<thead>
 				<tr>
-					<th><strong><?php esc_html_e( 'H5P', 'p22d' ); ?></strong></th>
-					<th><?php esc_html_e( 'Score', 'p22d' ); ?></th>
+					<th><strong><?php esc_html_e( 'H5P', 'd4ph' ); ?></strong></th>
+					<th><?php esc_html_e( 'Score', 'd4ph' ); ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -528,7 +528,7 @@ class Dashboard_Widget extends Static_Instance {
 		}
 
 		/* TRANSLATORS: %s: number of users */
-		$output = ' <span class="displaying-num">' . sprintf( _n( '%s user', '%s users', $total, 'p22d' ), number_format_i18n( $total ) ) . '</span>';
+		$output = ' <span class="displaying-num">' . sprintf( _n( '%s user', '%s users', $total, 'd4ph' ), number_format_i18n( $total ) ) . '</span>';
 
 		$disable_first = $current_page <= 1;
 		$disable_prev  = $current_page <= 1;
@@ -570,10 +570,10 @@ class Dashboard_Widget extends Static_Instance {
 
 		if ( 'bottom' === $which ) {
 			$html_current_page  = '<span class="current-page-text">' . $current_page . '</span>';
-			$total_pages_before = '<span class="screen-reader-text">' . __( 'Current Page' ) . '</span><span id="p22d-table-paging" class="paging-input"><span class="tablenav-paging-text">';
+			$total_pages_before = '<span class="screen-reader-text">' . __( 'Current Page' ) . '</span><span id="d4ph-table-paging" class="paging-input"><span class="tablenav-paging-text">';
 		} else {
 			$html_current_page = sprintf(
-				"%s<input class='current-page' id='p22d-current-page-selector' type='text' name='paged' value='%s' size='%d' aria-describedby='table-paging' /><span class='tablenav-paging-text'>",
+				"%s<input class='current-page' id='d4ph-current-page-selector' type='text' name='paged' value='%s' size='%d' aria-describedby='table-paging' /><span class='tablenav-paging-text'>",
 				'<label for="current-page-selector" class="screen-reader-text">' . __( 'Current Page' ) . '</label>',
 				$current_page,
 				strlen( $total_pages )
@@ -612,9 +612,9 @@ class Dashboard_Widget extends Static_Instance {
 		$search_form = array();
 		if ( 'top' === $which ) {
 			$search_form[] = '<p class="search-box">';
-			$search_form[] = '<label class="screen-reader-text" for="p22d-user-search-input">' . __( 'Search Users', 'p22d' ) . '</label>';
-			$search_form[] = '<input type="search" id="p22d-user-search-input" name="search" value="' . $search . '">';
-			$search_form[] = '<input type="button" id="p22d-search-submit" class="button" value="' . __( 'Search', 'p22d' ) . '">';
+			$search_form[] = '<label class="screen-reader-text" for="d4ph-user-search-input">' . __( 'Search Users', 'd4ph' ) . '</label>';
+			$search_form[] = '<input type="search" id="d4ph-user-search-input" name="search" value="' . $search . '">';
+			$search_form[] = '<input type="button" id="d4ph-search-submit" class="button" value="' . __( 'Search', 'd4ph' ) . '">';
 			$search_form[] = '</p>';
 		}
 		$search_form = join( "\n", $search_form );
@@ -632,11 +632,11 @@ class Dashboard_Widget extends Static_Instance {
 	/**
 	 * Updates the user's filter choices and re-render the dashboard widget.
 	 *
-	 * Hook: wp_ajax_p22d_dashboard_widget_refresh
+	 * Hook: wp_ajax_d4ph_dashboard_widget_refresh
 	 */
 	public function update() {
 		// Nonce check.
-		if ( empty( $_REQUEST['nonce'] ) || ! wp_verify_nonce( sanitize_key( $_REQUEST['nonce'] ), 'p22d' ) ) {
+		if ( empty( $_REQUEST['nonce'] ) || ! wp_verify_nonce( sanitize_key( $_REQUEST['nonce'] ), 'd4ph' ) ) {
 			die( '' );
 		}
 

@@ -1,13 +1,13 @@
 <?php
 /**
- * Pressbook H5P Dashboard
+ * Dashboard for Pressbook and H5P
  *
  * @license  GPL-3.0+
- * @link     https://github.com/uhm-coe/pressbooks-h5p-dashboard
- * @package  pressbooks-h5p-dashboard
+ * @link     https://github.com/uhm-coe/dashboard-for-pressbooks-h5p
+ * @package  dashboard-for-pressbooks-h5p
  */
 
-namespace Pressbooks_H5P_Dashboard;
+namespace Dashboard_For_Pressbooks_H5P;
 
 /**
  * Create the plugin settings page.
@@ -15,7 +15,7 @@ namespace Pressbooks_H5P_Dashboard;
 class Save_Last_Login_User_Meta extends Static_Instance {
 
 	/**
-	 * Update the pressbook_h5p_dashboard_last_login user meta on login.
+	 * Update the "last login" user meta on login.
 	 *
 	 * @hook wp_login
 	 *
@@ -23,7 +23,7 @@ class Save_Last_Login_User_Meta extends Static_Instance {
 	 * @param  WP_User $user       WP_User object of the logged-in user.
 	 */
 	public function update( $user_login, $user ) {
-		update_user_option( $user->ID, 'pressbooks_h5p_dashboard_last_login', time() );
+		update_user_option( $user->ID, 'dashboard_for_pressbooks_h5p_last_login', time() );
 	}
 
 }

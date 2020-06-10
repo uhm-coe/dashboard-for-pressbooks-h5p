@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Pressbooks H5P Dashboard\n"
-"POT-Creation-Date: 2020-06-09 10:39-1000\n"
+"POT-Creation-Date: 2020-06-09 14:46-1000\n"
 "PO-Revision-Date: 2020-04-03 10:44-1000\n"
 "Last-Translator: University of Hawaii <dcdc@hawaii.edu>\n"
 "Language-Team: University of Hawaii <dcdc@hawaii.edu>\n"
@@ -96,7 +96,7 @@ msgstr ""
 msgid "Results"
 msgstr ""
 
-#: src/class-dashboard-widget.php:495 src/class-settings.php:206
+#: src/class-dashboard-widget.php:495 src/class-settings.php:207
 msgid "H5P"
 msgstr ""
 
@@ -163,30 +163,30 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: src/class-settings.php:60 src/class-settings.php:74
-msgid "Pressbooks H5P Dashboard Settings"
+#: src/class-settings.php:61 src/class-settings.php:75
+msgid "Settings: Dashboard for Pressbook and H5P"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-#: src/class-settings.php:61
-msgid "Pressbooks H5P Dashboard"
-msgstr ""
-
-#: src/class-settings.php:78
-msgid "Chapter Badges in Dashboard > Organize"
+#: src/class-settings.php:62
+msgid "Dashboard for Pressbook and H5P"
 msgstr ""
 
 #: src/class-settings.php:79
+msgid "Chapter Badges in Dashboard > Organize"
+msgstr ""
+
+#: src/class-settings.php:80
 msgid ""
 "A new column, H5P Content, appears in the Pressbooks Organize dashboard "
 "showing which chapters have embedded H5P content."
 msgstr ""
 
-#: src/class-settings.php:82
+#: src/class-settings.php:83
 msgid "Chapter Badges in Table of Contents"
 msgstr ""
 
-#: src/class-settings.php:83
+#: src/class-settings.php:84
 msgid ""
 "A new badge appears next to chapters with embedded H5P content in the Table "
 "of Contents. For anonymous users, the badge shows the total number of H5P "
@@ -195,11 +195,11 @@ msgid ""
 "over the badge reveals a tooltip with details on each H5P embed."
 msgstr ""
 
-#: src/class-settings.php:86
+#: src/class-settings.php:87
 msgid "Dashboard Widget"
 msgstr ""
 
-#: src/class-settings.php:87
+#: src/class-settings.php:88
 msgid ""
 "A new dashboard widget for instructors showing student progress. Progress "
 "can be shown by user and by chapter, and filtered by user role and a range "
@@ -208,26 +208,26 @@ msgid ""
 "before plugin activation."
 msgstr ""
 
-#: src/class-settings.php:90
+#: src/class-settings.php:91
 msgid "Hide H5P Content For Anonymous Users"
 msgstr ""
 
-#: src/class-settings.php:91
+#: src/class-settings.php:92
 msgid ""
 "A new option (shown below) to prevent anonymous users from seeing H5P "
 "Content. Use this to encourage users to log in so their results can be "
 "stored."
 msgstr ""
 
-#: src/class-settings.php:132
+#: src/class-settings.php:133
 msgid "H5P Visibility"
 msgstr ""
 
-#: src/class-settings.php:167
+#: src/class-settings.php:168
 msgid "Hide H5P Content for anonymous users"
 msgstr ""
 
-#: src/class-settings.php:169
+#: src/class-settings.php:170
 msgid ""
 "Note: with this setting enabled, embedded H5P Content will be blurred out on "
 "the page, with a login button in the center. Enable this to discourage users "
@@ -235,28 +235,28 @@ msgid ""
 "are stored for users who are not logged in."
 msgstr ""
 
-#: src/class-settings.php:189
+#: src/class-settings.php:190
 msgid "Missing Required Dependencies"
 msgstr ""
 
-#: src/class-settings.php:190
+#: src/class-settings.php:191
 msgid "The following plugins need to be activated for this plugin to work:"
 msgstr ""
 
-#: src/class-settings.php:193
+#: src/class-settings.php:194
 msgid "https://docs.pressbooks.org/installation/"
 msgstr ""
 
-#: src/class-settings.php:193
+#: src/class-settings.php:194
 msgid "Pressbooks"
 msgstr ""
 
-#: src/class-settings.php:206
+#: src/class-settings.php:207
 msgid "https://h5p.org/documentation/setup/wordpress"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "https://github.com/uhm-coe/pressbooks-h5p-dashboard"
+msgid "https://github.com/uhm-coe/dashboard-for-pressbooks-h5p"
 msgstr ""
 
 #. Description of the plugin/theme

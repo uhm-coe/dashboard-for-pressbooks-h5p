@@ -5,7 +5,7 @@
 /* global Data, tippy, jQuery */
 ( function( $ ) {
 
-	const $widget = $( '#p22d_dashboard_widget' );
+	const $widget = $( '#d4ph_dashboard_widget' );
 
 	// Add spinner to far right of widget title.
 	$( 'h2.hndle span', $widget ).after( '<span class="postbox-title-action"><span class="spinner"></span></span>' );
@@ -18,9 +18,9 @@
 	} );
 
 	// Wire up pager elements (go to page text input, search text input).
-	$widget.on( 'keydown', '#p22d-current-page-selector, #p22d-user-search-input', function( event ) {
+	$widget.on( 'keydown', '#d4ph-current-page-selector, #d4ph-user-search-input', function( event ) {
 		if ( event.which === 13 ) { // Enter key
-			const searchTerm  = $( '#p22d-user-search-input' ).val();
+			const searchTerm  = $( '#d4ph-user-search-input' ).val();
 			const totalPages  = parseInt( $( '.total-pages' ).first().text().replace( /[^0-9]/g, '' ), 10 ) || 1;
 			let currentPage   = parseInt( $( this ).val(), 10 ) || 1;
 
@@ -45,8 +45,8 @@
 	});
 
 	// Wire up pager buttons (first/last/next/previous and search buttons).
-	$widget.on( 'click', '.tablenav .pagination-links a, .tablenav #p22d-search-submit', function( event ) {
-		const searchTerm  = $( '#p22d-user-search-input' ).val();
+	$widget.on( 'click', '.tablenav .pagination-links a, .tablenav #d4ph-search-submit', function( event ) {
+		const searchTerm  = $( '#d4ph-user-search-input' ).val();
 		const totalPages  = parseInt( $( '.total-pages' ).first().text().replace( /[^0-9]/g, '' ), 10 ) || 1;
 		let currentPage   = parseInt( getParameterByName( 'paged', $( this ).attr( 'href' ) ), 10 ) || 1;
 		if ( currentPage > totalPages ) {
@@ -105,7 +105,7 @@
 		$.post( Data.ajax_url, {
 			nonce:    Data.nonce,
 			dataType: 'jsonp',
-			action:   'p22d_dashboard_widget_update',
+			action:   'd4ph_dashboard_widget_update',
 			filters,
 		} ).done( function ( response ) {
 			if ( response.success ) {

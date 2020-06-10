@@ -1,15 +1,15 @@
 <?php
 /**
- * Pressbook H5P Dashboard
+ * Dashboard for Pressbook and H5P
  *
  * @license  GPL-3.0+
- * @link     https://github.com/uhm-coe/pressbooks-h5p-dashboard
- * @package  pressbooks-h5p-dashboard
+ * @link     https://github.com/uhm-coe/dashboard-for-pressbooks-h5p
+ * @package  dashboard-for-pressbooks-h5p
  */
 
-namespace Pressbooks_H5P_Dashboard;
+namespace Dashboard_For_Pressbooks_H5P;
 
-use Pressbooks_H5P_Dashboard\Data;
+use Dashboard_For_Pressbooks_H5P\Data;
 
 /**
  * Contains modifications of the Pressbooks table of contents.
@@ -49,18 +49,18 @@ class Extend_Pressbooks_TOC extends Static_Instance {
 		wp_enqueue_style( 'tippy.js@6/themes/light-border', 'https://unpkg.com/tippy.js@6/themes/light-border.css', array(), '6', 'all' );
 
 		// Load styles and script that appends H5P details to TOC.
-		wp_enqueue_style( 'p22d/extend-pressbooks-toc', plugins_url( '/styles/extend-pressbooks-toc.css', plugin_root() ), array(), plugin_version() );
-		wp_enqueue_script( 'p22d/extend-pressbooks-toc', plugins_url( 'scripts/extend-pressbooks-toc.js', plugin_root() ), array(), plugin_version(), true );
+		wp_enqueue_style( 'd4ph/extend-pressbooks-toc', plugins_url( '/styles/extend-pressbooks-toc.css', plugin_root() ), array(), plugin_version() );
+		wp_enqueue_script( 'd4ph/extend-pressbooks-toc', plugins_url( 'scripts/extend-pressbooks-toc.js', plugin_root() ), array(), plugin_version(), true );
 		wp_localize_script(
-			'p22d/extend-pressbooks-toc',
+			'd4ph/extend-pressbooks-toc',
 			'Data',
 			array(
 				'h5p_ids'           => $h5p_ids,
 				'h5p_results'       => $h5p_results,
 				'isLoggedIn'        => is_user_logged_in(),
 				'loginUrl'          => wp_login_url( get_the_permalink() ),
-				'msgYourH5PResults' => esc_html__( 'Your H5P Results', 'p22d' ),
-				'msgLogInToSee'     => esc_html__( 'Sign in to see your results', 'p22d' ),
+				'msgYourH5PResults' => esc_html__( 'Your H5P Results', 'd4ph' ),
+				'msgLogInToSee'     => esc_html__( 'Sign in to see your results', 'd4ph' ),
 			)
 		);
 	}

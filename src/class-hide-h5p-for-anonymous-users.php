@@ -1,15 +1,15 @@
 <?php
 /**
- * Pressbook H5P Dashboard
+ * Dashboard for Pressbook and H5P
  *
  * @license  GPL-3.0+
- * @link     https://github.com/uhm-coe/pressbooks-h5p-dashboard
- * @package  pressbooks-h5p-dashboard
+ * @link     https://github.com/uhm-coe/dashboard-for-pressbooks-h5p
+ * @package  dashboard-for-pressbooks-h5p
  */
 
-namespace Pressbooks_H5P_Dashboard;
+namespace Dashboard_For_Pressbooks_H5P;
 
-use Pressbooks_H5P_Dashboard\Settings;
+use Dashboard_For_Pressbooks_H5P\Settings;
 
 /**
  * Create the plugin settings page.
@@ -24,14 +24,14 @@ class Hide_H5P_For_Anonymous_Users extends Static_Instance {
 	public function enqueue_scripts() {
 		$settings = Settings::get_instance();
 		if ( ! is_user_logged_in() && $settings->get( 'hide_h5p_for_anonymous_users' ) ) {
-			wp_enqueue_style( 'p22d/hide-h5p-for-anonymous-users', plugins_url( '/styles/hide-h5p-for-anonymous-users.css', plugin_root() ), array(), plugin_version() );
-			wp_enqueue_script( 'p22d/hide-h5p-for-anonymous-users', plugins_url( 'scripts/hide-h5p-for-anonymous-users.js', plugin_root() ), array( 'jquery' ), plugin_version(), true );
+			wp_enqueue_style( 'd4ph/hide-h5p-for-anonymous-users', plugins_url( '/styles/hide-h5p-for-anonymous-users.css', plugin_root() ), array(), plugin_version() );
+			wp_enqueue_script( 'd4ph/hide-h5p-for-anonymous-users', plugins_url( 'scripts/hide-h5p-for-anonymous-users.js', plugin_root() ), array( 'jquery' ), plugin_version(), true );
 			wp_localize_script(
-				'p22d/hide-h5p-for-anonymous-users',
+				'd4ph/hide-h5p-for-anonymous-users',
 				'Data',
 				array(
 					'loginUrl'           => wp_login_url( get_the_permalink() ),
-					'msgLogInToComplete' => esc_html__( 'Sign in to complete this activity', 'p22d' ),
+					'msgLogInToComplete' => esc_html__( 'Sign in to complete this activity', 'd4ph' ),
 				)
 			);
 		}

@@ -1,15 +1,15 @@
 <?php
 /**
- * Pressbook H5P Dashboard
+ * Dashboard for Pressbook and H5P
  *
  * @license  GPL-3.0+
- * @link     https://github.com/uhm-coe/pressbooks-h5p-dashboard
- * @package  pressbooks-h5p-dashboard
+ * @link     https://github.com/uhm-coe/dashboard-for-pressbooks-h5p
+ * @package  dashboard-for-pressbooks-h5p
  */
 
-namespace Pressbooks_H5P_Dashboard;
+namespace Dashboard_For_Pressbooks_H5P;
 
-use Pressbooks_H5P_Dashboard\Data;
+use Dashboard_For_Pressbooks_H5P\Data;
 
 /**
  * Contains modifications of Pressbooks Organize WordPress Dashboard widget.
@@ -45,14 +45,14 @@ class Extend_Pressbooks_Organize extends Static_Instance {
 		wp_enqueue_style( 'tippy.js@6/themes/light-border', 'https://unpkg.com/tippy.js@6/themes/light-border.css', array(), '6', 'all' );
 
 		// Load javascript that creates the H5P Content column.
-		wp_enqueue_script( 'p22d/extend-pressbooks-organize', plugins_url( 'scripts/extend-pressbooks-organize.js', plugin_root() ), array(), plugin_version(), true );
+		wp_enqueue_script( 'd4ph/extend-pressbooks-organize', plugins_url( 'scripts/extend-pressbooks-organize.js', plugin_root() ), array(), plugin_version(), true );
 		wp_localize_script(
-			'p22d/extend-pressbooks-organize',
+			'd4ph/extend-pressbooks-organize',
 			'Data',
 			array(
 				'h5p_url'            => admin_url( 'admin.php?page=h5p&task=show' ),
 				'h5p_ids'            => $h5p_ids,
-				'column_heading_h5p' => esc_html__( 'H5P Content', 'p22d' ),
+				'column_heading_h5p' => esc_html__( 'H5P Content', 'd4ph' ),
 			)
 		);
 	}

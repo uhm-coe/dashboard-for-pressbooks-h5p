@@ -1,7 +1,7 @@
-# Pressbooks H5P Dashboard
+# Dashboard for Pressbook and H5P
 
-* WordPress plugin: [https://wordpress.org/plugins/pressbooks-h5p-dashboard/](https://wordpress.org/plugins/pressbooks-h5p-dashboard/)
-* Changelog: [https://wordpress.org/plugins/pressbooks-h5p-dashboard/#developers](https://wordpress.org/plugins/pressbooks-h5p-dashboard/#developers)
+* WordPress plugin: [https://wordpress.org/plugins/dashboard-for-pressbooks-h5p/](https://wordpress.org/plugins/dashboard-for-pressbooks-h5p/)
+* Changelog: [https://wordpress.org/plugins/dashboard-for-pressbooks-h5p/#developers](https://wordpress.org/plugins/dashboard-for-pressbooks-h5p/#developers)
 
 ## Requirements
 
