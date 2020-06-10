@@ -51,6 +51,9 @@ This plugin is developed for Pressbooks textbooks at the [University of Hawaiʻi
 
 == Changelog ==
 
+= 1.0.3 =
+* Rename to Dashboard for Pressbooks and H5P.
+
 = 1.0.2 =
 * Add a link to the Settings page from the WordPress Plugins page.
 * Update translatable strings.
