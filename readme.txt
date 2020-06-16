@@ -37,7 +37,7 @@ View or contribute to the plugin source on Github: [https://github.com/uhm-coe/d
 
 = Where is this plugin used? =
 
-This plugin is developed for Pressbooks textbooks at the [University of Hawaiʻi OER][https://pressbooks.oer.hawaii.edu/] repository, which provides free open educational resources to students.
+This plugin is developed for Pressbooks textbooks at the [University of Hawaiʻi OER](https://pressbooks.oer.hawaii.edu/) repository, which provides free open educational resources to students.
 
 == Screenshots ==
 
