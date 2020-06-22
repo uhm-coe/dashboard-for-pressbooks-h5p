@@ -14,7 +14,8 @@ $light-blue: #d0ece9;
 		text-align: center;
 		top: 33%;
 		width: 100%;
-		z-index: 1;
+		// Needs to be above h5p.css .h5p-iframe-wrapper iframe.h5p-iframe z-index of 10.
+		z-index: 11;
 
 		a {
 			background-color: $light-blue;
