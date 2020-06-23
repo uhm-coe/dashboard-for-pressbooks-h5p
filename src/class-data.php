@@ -67,16 +67,15 @@ class Data extends Static_Instance {
 			// Get H5P IDs in each chapter (e.g., [h5p id="123"]).
 			preg_match_all( '/\[h5p id="([0-9]*)"/', $chapter->post_content, $matches );
 			foreach ( $matches[1] as $h5p_id ) {
-				if ( ! isset( $h5p_by_chapter[ $chapter->ID ] ) ) {
-					$h5p_by_chapter[ $chapter->ID ] = array();
-				}
+				$h5p_id_key = 'h5p-id-' . $h5p_id;
 
+				// Get H5P content details.
 				$h5p = $H5P_Plugin->get_content( $h5p_id ); // phpcs:ignore WordPress.NamingConventions.ValidVariableName
 				if ( ! empty( $h5p['title'] ) && ! empty( $h5p['library']['name'] ) ) {
 					if ( ! isset( $h5p_by_chapter[ $chapter->ID ] ) ) {
 						$h5p_by_chapter[ $chapter->ID ] = array();
 					}
-					$h5p_by_chapter[ $chapter->ID ][ $h5p_id ] = array(
+					$h5p_by_chapter[ $chapter->ID ][ $h5p_id_key ] = array(
 						'title'   => $h5p['title'],
 						'library' => str_replace( 'H5P.', '', $h5p['library']['name'] ),
 						'passing' => json_decode( $h5p['params'] ?? '{}' )->behaviour->passPercentage ?? 0,
@@ -100,6 +99,7 @@ class Data extends Static_Instance {
 				if ( empty( $h5p_id ) ) {
 					continue;
 				}
+				$h5p_id_key = 'h5p-id-' . $h5p_id;
 
 				// Get H5P content details.
 				$h5p = $H5P_Plugin->get_content( $h5p_id ); // phpcs:ignore WordPress.NamingConventions.ValidVariableName
@@ -107,7 +107,7 @@ class Data extends Static_Instance {
 					if ( ! isset( $h5p_by_chapter[ $chapter->ID ] ) ) {
 						$h5p_by_chapter[ $chapter->ID ] = array();
 					}
-					$h5p_by_chapter[ $chapter->ID ][ $h5p_id ] = array(
+					$h5p_by_chapter[ $chapter->ID ][ $h5p_id_key ] = array(
 						'title'   => $h5p['title'],
 						'library' => str_replace( 'H5P.', '', $h5p['library']['name'] ),
 						'passing' => json_decode( $h5p['params'] ?? '{}' )->behaviour->passPercentage ?? 0,

@@ -104,8 +104,9 @@
 				}
 				tooltip += '<p>' + Data.msgYourH5PResults + ':</p>';
 				tooltip += '<ol>';
-				for ( const h5p_id in Data.h5p_ids[ chapter_id ] ) {
-					const h5p = Data.h5p_ids[ chapter_id ][ h5p_id ];
+				for ( const h5p_id_key in Data.h5p_ids[ chapter_id ] ) {
+					const h5p_id = parseInt( h5p_id_key.replace( 'h5p-id-', '' ) );
+					const h5p    = Data.h5p_ids[ chapter_id ][ h5p_id_key ];
 					// Calculate score; mark completed if result exists and
 					// score > max_score * passing_percentage.
 					let score = '—';

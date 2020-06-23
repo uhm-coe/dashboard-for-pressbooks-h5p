@@ -19,8 +19,9 @@
 		const count  = Data.h5p_ids.hasOwnProperty( chapter_id ) ? Object.keys( Data.h5p_ids[ chapter_id ] ).length : 0;
 		if ( count > 0 ) {
 			let tooltip = '<ol>';
-			for ( const h5p_id in Data.h5p_ids[ chapter_id ] ) {
-				const h5p = Data.h5p_ids[ chapter_id ][ h5p_id ];
+			for ( const h5p_id_key in Data.h5p_ids[ chapter_id ] ) {
+				const h5p_id = parseInt( h5p_id_key.replace( 'h5p-id-', '' ) );
+				const h5p    = Data.h5p_ids[ chapter_id ][ h5p_id_key ];
 				tooltip  += "<li><a target='_blank' href='" + Data.h5p_url + "&id=" + h5p_id + "'>" + h5p.title + ' (' + h5p.library + ")</a></li>";
 			}
 			tooltip += '</ol>';

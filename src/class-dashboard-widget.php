@@ -431,7 +431,8 @@ class Dashboard_Widget extends Static_Instance {
 							$results_in_chapter = array_filter(
 								$results_by_h5p_id,
 								function ( $h5p_id ) use ( $h5p_ids_in_chapter ) {
-									return in_array( $h5p_id, $h5p_ids_in_chapter, true );
+									$h5p_id_key = 'h5p-id-' . $h5p_id;
+									return in_array( $h5p_id_key, $h5p_ids_in_chapter, true );
 								},
 								ARRAY_FILTER_USE_KEY
 							);
@@ -497,7 +498,8 @@ class Dashboard_Widget extends Static_Instance {
 				</tr>
 			</thead>
 			<tbody>
-			<?php foreach ( $h5p_ids_in_chapter as $h5p_id => $data ) : ?>
+			<?php foreach ( $h5p_ids_in_chapter as $h5p_id_key => $data ) : ?>
+				<?php $h5p_id = str_replace( 'h5p-id-', '', $h5p_id_key ); ?>
 				<tr>
 					<td><?php echo esc_html( $data['title'] ); ?></td>
 					<td><strong><?php echo empty( $results_in_chapter[ $h5p_id ] ) ? '—' : esc_html( round( $results_in_chapter[ $h5p_id ]['score'] / $results_in_chapter[ $h5p_id ]['max_score'] * 100 ) ) . '%'; ?></strong></td>
