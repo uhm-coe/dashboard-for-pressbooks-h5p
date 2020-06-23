@@ -51,6 +51,10 @@ This plugin is developed for Pressbooks textbooks at the [University of Hawaiʻi
 
 == Changelog ==
 
+= 1.0.5 =
+* Fix sign in link missing over hidden H5P on Firefox. Props @beckej for the report!
+* Fix hidden H5P only working on H5P Content Types in iframes.
+
 = 1.0.4 =
 * Remove CDN dependency for tippy.js; host locally.
 
