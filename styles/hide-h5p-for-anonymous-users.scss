@@ -42,5 +42,6 @@ $light-blue: #d0ece9;
 	.h5p-actions {
 		filter: blur(5px);
 		pointer-events: none;
+		z-index: 0;
 	}
 }
