@@ -51,6 +51,10 @@ $light-blue:  #007bff;
 				list-style-type: none;
 				margin-left: 0;
 			}
+
+			.hidden {
+				visibility: hidden;
+			}
 		}
 	}
 }

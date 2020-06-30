@@ -69,7 +69,7 @@
 				if ( Data.h5p_results.hasOwnProperty( h5p_id ) ) {
 					Data.h5p_results[ h5p_id ].score = score;
 				} else {
-					Data.h5p_results[ h5p_id] = {
+					Data.h5p_results[ h5p_id ] = {
 						title,
 						score,
 						max_score,
@@ -109,15 +109,17 @@
 					const h5p    = Data.h5p_ids[ chapter_id ][ h5p_id_key ];
 					// Calculate score; mark completed if result exists and
 					// score > max_score * passing_percentage.
-					let score = '—';
+					let score          = '—';
+					let checkmarkClass = 'checkmark hidden';
 					if ( Data.h5p_results.hasOwnProperty( h5p_id ) ) {
 						const result = Data.h5p_results[ h5p_id ];
 						score = Math.round( result.score / result.max_score * 100 ) + '%';
 						if ( result.score >= result.max_score * h5p.passing / 100 ) {
+							checkmarkClass = 'checkmark';
 							completed++;
 						}
 					}
-					tooltip += "<li data-h5p-id='" + h5p_id + "'>" + h5p.title + ': ' + score + "</li>";
+					tooltip += "<li data-h5p-id='" + h5p_id + "'><span class='" + checkmarkClass + "'>&#10004;</span>&nbsp; " + h5p.title + ': ' + score + "</li>";
 				}
 				tooltip += '</ol>';
 
