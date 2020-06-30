@@ -51,6 +51,11 @@ This plugin is developed for Pressbooks textbooks at the [University of Hawaiʻi
 
 == Changelog ==
 
+= 1.1.1 =
+* Fix inconsistent passed/failed reporting (some question types have a concept of "pass percentage" while others don't).
+* Add "Default pass percentage" plugin option to set a threshold for whether an H5P result is successful or not. Defaults to 100%.
+* Render a checkmark next to passed H5P elements in the Table of Contents tooltips.
+
 = 1.1.0 =
 * Update TOC badges as H5P content is completed (instead of only on page load).
 * Fix H5P content possibly out of order in badge tooltips.
