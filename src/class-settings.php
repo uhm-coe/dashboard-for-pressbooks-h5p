@@ -135,6 +135,14 @@ class Settings extends Static_Instance {
 			'dashboard-for-pressbooks-h5p',
 			'dashboard-for-pressbooks-h5p-options'
 		);
+
+		add_settings_field(
+			'default-pass-percentage',
+			__( 'Default Pass Percentage', 'd4ph' ),
+			array( $this, 'render_option_default_pass_percentage' ),
+			'dashboard-for-pressbooks-h5p',
+			'dashboard-for-pressbooks-h5p-options'
+		);
 	}
 
 	/**
@@ -147,6 +155,15 @@ class Settings extends Static_Instance {
 	public function sanitized_defaults( $options = array() ) {
 		// hide_h5p_for_anonymous_users: bool; default to false.
 		$options['hide_h5p_for_anonymous_users'] = ! empty( $options['hide_h5p_for_anonymous_users'] );
+
+		// default_pass_percentage: int (0-100); default to 0.
+		if ( ! isset( $options['default_pass_percentage'] ) || intval( $options['default_pass_percentage'] ) < 0 ) {
+			$options['default_pass_percentage'] = 0;
+		} elseif ( intval( $options['default_pass_percentage'] ) > 100 ) {
+			$options['default_pass_percentage'] = 100;
+		} else {
+			$options['default_pass_percentage'] = intval( $options['default_pass_percentage'] );
+		}
 
 		return $options;
 	}
@@ -168,6 +185,28 @@ class Settings extends Static_Instance {
 			<?php esc_html_e( 'Hide H5P Content for anonymous users', 'd4ph' ); ?>
 		</label>
 		<p class="description"><?php esc_html_e( 'Note: with this setting enabled, embedded H5P Content will be blurred out on the page, with a login button in the center. Enable this to discourage users from interacting with H5P Content anonymously, since no progress or results are stored for users who are not logged in.', 'd4ph' ); ?></p>
+		<?php
+	}
+
+	/**
+	 * Render plugin option: Default pass percentage.
+	 */
+	public function render_option_default_pass_percentage() {
+		$option = 'default_pass_percentage';
+		$value  = $this->get( $option ) ?? 100;
+		?>
+		<label>
+			<input
+				type="number"
+				id="option_<?php echo esc_attr( $option ); ?>"
+				name="dashboard_for_pressbooks_h5p[<?php echo esc_attr( $option ); ?>]"
+				value="<?php echo esc_attr( $value ); ?>"
+				min="0"
+				max="100"
+			/>
+			<?php esc_html_e( 'Default pass percentage (0–100)', 'd4ph' ); ?>
+		</label>
+		<p class="description"><?php esc_html_e( 'Note: some H5P question types, like Multiple Choice, allow you to specify a "pass percentage," the percentage of the total score required for success. For all other question types, specify the value to use here determining success (i.e., whether the Chapter Badges report the H5P Content as complete).', 'd4ph' ); ?></p>
 		<?php
 	}
 

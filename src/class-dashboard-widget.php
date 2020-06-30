@@ -376,10 +376,11 @@ class Dashboard_Widget extends Static_Instance {
 				<tbody>
 					<?php foreach ( $users->results as $user ) : ?>
 						<?php
-							$results_by_h5p_id = array_filter(
+							$results_by_h5p_id = $data->get_h5p_results_by_user_id( $user->ID );
+							$results_passed    = array_filter(
 								$data->get_h5p_results_by_user_id( $user->ID ),
 								function ( $result ) {
-									return $result['score'] > 0;
+									return $result['passed'];
 								}
 							);
 						?>
@@ -390,7 +391,7 @@ class Dashboard_Widget extends Static_Instance {
 								<?php echo esc_html( $user->user_email ); ?>
 							</td>
 							<td class="column-results num">
-								<button class="button-primary" data-tippy-content="<?php echo esc_attr( htmlentities( $this->render_user_tooltip( $user, $results_by_h5p_id ) ) ); ?>"><?php echo esc_html( count( $results_by_h5p_id ) . ' / ' . $total_h5p ); ?></button>
+								<button class="button-primary" data-tippy-content="<?php echo esc_attr( htmlentities( $this->render_user_tooltip( $user, $results_by_h5p_id ) ) ); ?>"><?php echo esc_html( count( $results_passed ) . ' / ' . $total_h5p ); ?></button>
 							</td>
 						</tr>
 					<?php endforeach; ?>
@@ -436,13 +437,19 @@ class Dashboard_Widget extends Static_Instance {
 								},
 								ARRAY_FILTER_USE_KEY
 							);
+							$results_passed     = array_filter(
+								$results_in_chapter,
+								function ( $result ) {
+									return $result['passed'];
+								}
+							);
 
 							$chapter_data[ $chapter['ID'] ] = array(
 								'parent'     => $part['post_title'] ?? '—',
 								'title'      => $chapter['post_title'] ?? '—',
 								'results'    => $results_in_chapter,
 								'h5p_ids'    => $h5p_ids_by_chapter[ $chapter['ID'] ],
-								'h5p_passed' => count( $results_in_chapter ),
+								'h5p_passed' => count( $results_passed ),
 								'h5p_total'  => count( $h5p_ids_by_chapter[ $chapter['ID'] ] ),
 							);
 						}
@@ -467,7 +474,7 @@ class Dashboard_Widget extends Static_Instance {
 					<tr>
 						<td><strong><?php echo esc_html( $data['parent'] ); ?></strong></td>
 						<td><?php echo esc_html( $data['title'] ); ?></td>
-						<td><button class="button-primary" data-tippy-content="<div class='dark-mode'><?php echo esc_attr( htmlentities( $this->render_chapter_tooltip( $data['results'], $data['h5p_ids'] ) ) ); ?></div>"><?php echo esc_html( $data['h5p_passed'] ); ?>/<?php echo esc_html( $data['h5p_total'] ); ?></button></td>
+						<td><button class="button-primary" data-tippy-content="<div class='dark-mode'><?php echo esc_attr( htmlentities( $this->render_chapter_tooltip( $data['results'], $data['h5p_ids'] ) ) ); ?></div>"><?php echo esc_html( $data['h5p_passed'] ); ?> / <?php echo esc_html( $data['h5p_total'] ); ?></button></td>
 					</tr>
 				<?php endforeach; ?>
 			</tbody>
@@ -493,16 +500,22 @@ class Dashboard_Widget extends Static_Instance {
 		<table class='wp-list-table striped'>
 			<thead>
 				<tr>
+					<th></th>
 					<th><strong><?php esc_html_e( 'H5P', 'd4ph' ); ?></strong></th>
 					<th><?php esc_html_e( 'Score', 'd4ph' ); ?></th>
 				</tr>
 			</thead>
 			<tbody>
 			<?php foreach ( $h5p_ids_in_chapter as $h5p_id_key => $data ) : ?>
-				<?php $h5p_id = str_replace( 'h5p-id-', '', $h5p_id_key ); ?>
+				<?php
+					$h5p_id = str_replace( 'h5p-id-', '', $h5p_id_key );
+					$score  = empty( $results_in_chapter[ $h5p_id ] ) ? '—' : round( $results_in_chapter[ $h5p_id ]['score'] / $results_in_chapter[ $h5p_id ]['max_score'] * 100 ) . '%';
+					$passed = empty( $results_in_chapter[ $h5p_id ] ) || empty( $results_in_chapter[ $h5p_id ]['passed'] ) ? '' : '<span class="dashicons dashicons-yes-alt"></span>';
+				?>
 				<tr>
+					<td><?php echo wp_kses_post( $passed ); ?></td>
 					<td><?php echo esc_html( $data['title'] ); ?></td>
-					<td><strong><?php echo empty( $results_in_chapter[ $h5p_id ] ) ? '—' : esc_html( round( $results_in_chapter[ $h5p_id ]['score'] / $results_in_chapter[ $h5p_id ]['max_score'] * 100 ) ) . '%'; ?></strong></td>
+					<td><strong><?php echo esc_html( $score ); ?></strong></td>
 				</tr>
 			<?php endforeach; ?>
 		</ol>

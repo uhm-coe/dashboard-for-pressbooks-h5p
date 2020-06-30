@@ -50,6 +50,10 @@ class Data extends Static_Instance {
 			return $this->chapters_with_h5p;
 		}
 
+		// Get default passing percentage (for question types that don't specify it).
+		$settings                = Settings::get_instance();
+		$default_pass_percentage = $settings->get( 'default_pass_percentage' ) ?? 100;
+
 		global $wpdb;
 		$H5P_Plugin = \H5P_Plugin::get_instance(); // phpcs:ignore WordPress.NamingConventions.ValidVariableName
 
@@ -78,7 +82,7 @@ class Data extends Static_Instance {
 					$h5p_by_chapter[ $chapter->ID ][ $h5p_id_key ] = array(
 						'title'   => $h5p['title'],
 						'library' => str_replace( 'H5P.', '', $h5p['library']['name'] ),
-						'passing' => json_decode( $h5p['params'] ?? '{}' )->behaviour->passPercentage ?? 0,
+						'passing' => json_decode( $h5p['params'] ?? '{}' )->behaviour->passPercentage ?? $default_pass_percentage,
 					);
 				}
 			}
@@ -110,7 +114,7 @@ class Data extends Static_Instance {
 					$h5p_by_chapter[ $chapter->ID ][ $h5p_id_key ] = array(
 						'title'   => $h5p['title'],
 						'library' => str_replace( 'H5P.', '', $h5p['library']['name'] ),
-						'passing' => json_decode( $h5p['params'] ?? '{}' )->behaviour->passPercentage ?? 0,
+						'passing' => json_decode( $h5p['params'] ?? '{}' )->behaviour->passPercentage ?? $default_pass_percentage,
 					);
 				}
 			}
@@ -147,23 +151,37 @@ class Data extends Static_Instance {
 	 * @return array        Array h5p_id => H5P results.
 	 */
 	public function get_h5p_results_by_user_id( $user_id = 0 ) {
-		$h5p_results_by_chapter = array();
+		// Get info about all H5P elements in the book to determine the pass
+		// percentage each one requires (covert multidimensional array by chapter
+		// to just an array with H5P IDs as keys).
+		$h5p_ids = array_merge( ...$this->get_chapters_with_h5p() );
+
+		// Get default pass percentage (for H5P elements that don't have it set).
+		$settings                = Settings::get_instance();
+		$default_pass_percentage = $settings->get( 'default_pass_percentage' ) ?? 100;
+
+		// Build array of user results by chapter.
+		$h5p_results_by_h5p_id = array();
 		foreach ( $this->get_raw_h5p_results_by_user_id( $user_id ) as $result ) {
+			// Add the result if it's not already there, or if the score is bigger
+			// than the existing one (overwrite it).
 			if (
-				! isset( $h5p_results_by_chapter[ $result->content_id ] ) ||
-				$result->score > $h5p_results_by_chapter[ $result->content_id ]['score']
+				! isset( $h5p_results_by_h5p_id[ $result->content_id ] ) ||
+				$result->score > $h5p_results_by_h5p_id[ $result->content_id ]['score']
 			) {
-				$h5p_results_by_chapter[ $result->content_id ] = array(
+				$pass_percentage = $h5p_ids['h5p-id-' . $result->content_id ]['passing'] ?? $default_pass_percentage;
+				$h5p_results_by_h5p_id[ $result->content_id ] = array(
 					'title'     => $result->content_title,
 					'score'     => $result->score,
 					'max_score' => $result->max_score,
 					'finished'  => $result->finished,
 					'duration'  => $result->finished - $result->opened,
+					'passed'    => empty( $result->max_score ) || round( $result->score / $result->max_score * 100 ) >= $pass_percentage,
 				);
 			}
 		}
 
-		return $h5p_results_by_chapter;
+		return $h5p_results_by_h5p_id;
 	}
 
 	/**
