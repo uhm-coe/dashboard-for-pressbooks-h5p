@@ -14,7 +14,7 @@ use Dashboard_For_Pressbooks_H5P\Data;
 /**
  * Contains modifications of the Pressbooks table of contents.
  */
-class Extend_Pressbooks_TOC extends Static_Instance {
+class Extend_Pressbooks_TOC extends Singleton {
 	/**
 	 * Load the javascript that annotates the Pressbooks table of contents with
 	 * embedded H5P details.

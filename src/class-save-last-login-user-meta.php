@@ -12,7 +12,7 @@ namespace Dashboard_For_Pressbooks_H5P;
 /**
  * Create the plugin settings page.
  */
-class Save_Last_Login_User_Meta extends Static_Instance {
+class Save_Last_Login_User_Meta extends Singleton {
 
 	/**
 	 * Update the "last login" user meta on login.

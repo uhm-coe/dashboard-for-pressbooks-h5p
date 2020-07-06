@@ -14,7 +14,7 @@ use Dashboard_For_Pressbooks_H5P\Settings;
 /**
  * Create the plugin settings page.
  */
-class Hide_H5P_For_Anonymous_Users extends Static_Instance {
+class Hide_H5P_For_Anonymous_Users extends Singleton {
 
 	/**
 	 * If the option is enabled, load the assets for hiding H5P Content.

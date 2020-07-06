@@ -34,7 +34,7 @@ function plugin_root() {
 /**
  * Include dependencies.
  */
-require_once dirname( __FILE__ ) . '/src/abstract-class-static-instance.php';
+require_once dirname( __FILE__ ) . '/src/abstract-class-singleton.php';
 require_once dirname( __FILE__ ) . '/src/class-plugin.php';
 require_once dirname( __FILE__ ) . '/src/class-settings.php';
 require_once dirname( __FILE__ ) . '/src/class-data.php';

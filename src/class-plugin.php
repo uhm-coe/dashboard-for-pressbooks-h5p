@@ -12,7 +12,7 @@ namespace Dashboard_For_Pressbooks_H5P;
 /**
  * Main plugin class. Activates/deactivates the plugin, and registers all hooks.
  */
-class Plugin extends Static_Instance {
+class Plugin extends Singleton {
 	/**
 	 * Constructor.
 	 */

@@ -12,7 +12,7 @@ namespace Dashboard_For_Pressbooks_H5P;
 /**
  * Create the plugin settings page.
  */
-class Settings extends Static_Instance {
+class Settings extends Singleton {
 
 	/**
 	 * Stores all plugin options from the WordPress database.

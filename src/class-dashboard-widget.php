@@ -14,7 +14,7 @@ use Dashboard_For_Pressbooks_H5P\Data;
 /**
  * Create the plugin dashboard widget.
  */
-class Dashboard_Widget extends Static_Instance {
+class Dashboard_Widget extends Singleton {
 
 	/**
 	 * Dashboard widget user options (e.g., filters, users per page).

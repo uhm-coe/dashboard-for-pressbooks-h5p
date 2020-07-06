@@ -14,7 +14,7 @@ use Dashboard_For_Pressbooks_H5P\Data;
 /**
  * Contains modifications of Pressbooks Organize WordPress Dashboard widget.
  */
-class Extend_Pressbooks_Organize extends Static_Instance {
+class Extend_Pressbooks_Organize extends Singleton {
 	/**
 	 * Load the javascript that annotates the Pressbooks Organize page with
 	 * embedded H5P details.

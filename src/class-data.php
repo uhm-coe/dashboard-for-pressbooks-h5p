@@ -12,7 +12,7 @@ namespace Dashboard_For_Pressbooks_H5P;
 /**
  * Contains features added in the WordPress Dashboard.
  */
-class Data extends Static_Instance {
+class Data extends Singleton {
 	/**
 	 * Cached value of get_chapters_with_h5p().
 	 *
