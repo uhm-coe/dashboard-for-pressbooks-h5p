@@ -156,9 +156,9 @@ class Settings extends Singleton {
 		// hide_h5p_for_anonymous_users: bool; default to false.
 		$options['hide_h5p_for_anonymous_users'] = ! empty( $options['hide_h5p_for_anonymous_users'] );
 
-		// default_pass_percentage: int (0-100); default to 0.
+		// default_pass_percentage: int (0-100); default to 100.
 		if ( ! isset( $options['default_pass_percentage'] ) || intval( $options['default_pass_percentage'] ) < 0 ) {
-			$options['default_pass_percentage'] = 0;
+			$options['default_pass_percentage'] = 100;
 		} elseif ( intval( $options['default_pass_percentage'] ) > 100 ) {
 			$options['default_pass_percentage'] = 100;
 		} else {
@@ -193,7 +193,7 @@ class Settings extends Singleton {
 	 */
 	public function render_option_default_pass_percentage() {
 		$option = 'default_pass_percentage';
-		$value  = $this->get( $option ) ?? 100;
+		$value  = $this->get( $option );
 		?>
 		<label>
 			<input

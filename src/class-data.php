@@ -52,7 +52,7 @@ class Data extends Singleton {
 
 		// Get default passing percentage (for question types that don't specify it).
 		$settings                = Settings::get_instance();
-		$default_pass_percentage = $settings->get( 'default_pass_percentage' ) ?? 100;
+		$default_pass_percentage = $settings->get( 'default_pass_percentage' );
 
 		global $wpdb;
 		$H5P_Plugin = \H5P_Plugin::get_instance(); // phpcs:ignore WordPress.NamingConventions.ValidVariableName
@@ -158,7 +158,7 @@ class Data extends Singleton {
 
 		// Get default pass percentage (for H5P elements that don't have it set).
 		$settings                = Settings::get_instance();
-		$default_pass_percentage = $settings->get( 'default_pass_percentage' ) ?? 100;
+		$default_pass_percentage = $settings->get( 'default_pass_percentage' );
 
 		// Build array of user results by chapter.
 		$h5p_results_by_h5p_id = array();
