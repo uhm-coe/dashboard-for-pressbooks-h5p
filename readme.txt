@@ -54,6 +54,11 @@ This plugin was developed by the College of Education at the University of Hawai
 
 == Changelog ==
 
+= 1.1.2 =
+* Fix default pass percentage initializing to 100% (instead of 0%).
+* Bump lodash from 4.17.15 to 4.17.19 (dev dependency only).
+* Tested up to WordPress 5.4.2.
+
 = 1.1.1 =
 * Fix inconsistent passed/failed reporting (some question types have a concept of "pass percentage" while others don't).
 * Add "Default pass percentage" plugin option to set a threshold for whether an H5P result is successful or not. Defaults to 100%.
