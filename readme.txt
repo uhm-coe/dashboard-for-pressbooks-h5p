@@ -1,5 +1,6 @@
 === Dashboard for Pressbooks and H5P ===
 Contributors: figureone
+Donate link: https://giving.uhfoundation.org/give-now?school_code=EDUC
 Tags: pressbooks, h5p, dashboard, widget
 Requires at least: 5.3
 Tested up to: 5.4.1
@@ -28,6 +29,8 @@ View or contribute to the plugin source on Github: [https://github.com/uhm-coe/d
 * **Chapter Badges** in *Dashboard > Organize*: a new column, H5P Content, appears in the *Pressbooks Organize* dashboard showing which chapters have embedded H5P content.
 * **Hide H5P Content For Anonymous Users**: a new option (shown below) to prevent anonymous users from seeing H5P Content. Use this to encourage users to log in so their results can be stored.
 
+This project was funded by the *Hubert V. Everly Endowed Scholar* fund and the College of Education at the University of Hawaiʻi at Mānoa.
+
 == Installation ==
 
 1. Upload the `dashboard-for-pressbooks-h5p` directory to the `/wp-content/plugins/` directory
@@ -37,7 +40,7 @@ View or contribute to the plugin source on Github: [https://github.com/uhm-coe/d
 
 = Where is this plugin used? =
 
-This plugin is developed for Pressbooks textbooks at the [University of Hawaiʻi OER](https://pressbooks.oer.hawaii.edu/) repository, which provides free open educational resources to students.
+This plugin was developed by the College of Education at the University of Hawaiʻi at Mānoa and is used in Pressbooks textbooks at the [University of Hawaiʻi OER](https://pressbooks.oer.hawaii.edu/) repository, which provides free open educational resources to students.
 
 == Screenshots ==
 

@@ -17,7 +17,7 @@
 
 ## Where is this plugin used?
 
-This plugin is developed for Pressbooks textbooks at the [University of Hawaiʻi OER](https://pressbooks.oer.hawaii.edu/) repository, which provides free open educational resources to students.
+This plugin was developed by the College of Education at the University of Hawaiʻi at Mānoa and is used in Pressbooks textbooks at the [University of Hawaiʻi OER](https://pressbooks.oer.hawaii.edu/) repository, which provides free open educational resources to students.
 
 ## Screenshots
 
@@ -41,3 +41,8 @@ Example of hidden content for anonymous users:
 
 Example of table of contents tooltip for anonymous users:
 ![Screenshot of tooltips for anonymous users](assets/screenshot-7.png?raw=true "")
+
+## Acknowledgments
+
+This project was funded by the *Hubert Everly Endowed Scholar* fund and the University of Hawaiʻi at Mānoa, College of Education.
+
