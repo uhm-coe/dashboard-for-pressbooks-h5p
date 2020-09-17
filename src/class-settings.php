@@ -72,8 +72,11 @@ class Settings extends Singleton {
 	public function render_settings_page() {
 		?>
 		<div class="wrap">
+			<div class="banner">
+				<img src="<?php echo esc_attr( plugins_url( 'images/banner-772x250.png', plugin_root() ) ); ?>" srcset="<?php echo esc_attr( plugins_url( 'images/banner-772x250.png', plugin_root() ) ); ?> 1x, <?php echo esc_attr( plugins_url( 'images/banner-1544x500.png', plugin_root() ) ); ?> 2x" alt="Banner image illustrating plugin features" />
+			</div>
 			<h2><?php esc_html_e( 'Settings: Dashboard for Pressbooks and H5P', 'd4ph' ); ?></h2>
-			<p>Plugin features:</p>
+			<p><?php esc_html_e( 'Plugin features', 'd4ph' ); ?>:</p>
 			<ol>
 				<li>
 					<a target="_blank" href="<?php echo esc_attr( admin_url( 'admin.php?page=pb_organize' ) ); ?>"><?php esc_html_e( 'Chapter Badges in Dashboard > Organize', 'd4ph' ); ?></a><br>

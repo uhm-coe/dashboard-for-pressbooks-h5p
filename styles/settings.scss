@@ -36,4 +36,13 @@ $white: #fff;
 			background-color: $red;
 		}
 	}
+
+	.banner {
+		max-height: 250px;
+		overflow: hidden;
+
+		img {
+			width: 100%;
+		}
+	}
 }
