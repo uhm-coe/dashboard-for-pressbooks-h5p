@@ -54,6 +54,12 @@ This plugin was developed by the College of Education at the University of Hawai
 
 == Changelog ==
 
+= 1.1.3 =
+* Tested up to WordPress 5.5.1.
+* Compatibility verified with core Pressbooks themes: McLuhan (the default theme), Austen Classic, Donham, Fitzgerald, and Jacobs. Pressbooks themes are found [here](https://github.com/search?q=topic:book-theme%20org:pressbooks&amp;type=Repositories).
+* Fix default styles overriding link color on "Sign in" button on H5P content for anonymous users.
+* Add banner image to plugin settings page.
+
 = 1.1.2 =
 * Fix default pass percentage initializing to 100% (instead of 0%).
 * Bump lodash from 4.17.15 to 4.17.19 (dev dependency only).

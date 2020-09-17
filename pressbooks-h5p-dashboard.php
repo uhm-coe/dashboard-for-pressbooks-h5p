@@ -7,7 +7,7 @@
  * Text Domain: dashboard-for-pressbooks-h5p
  * Domain Path: /languages
  * License: GPL3
- * Version: 1.1.2
+ * Version: 1.1.3
  *
  * @link    https://github.com/uhm-coe/dashboard-for-pressbooks-h5p
  * @package dashboard-for-pressbooks-h5p
@@ -20,7 +20,7 @@ namespace Dashboard_For_Pressbooks_H5P;
  * enqueued scripts and styles).
  */
 function plugin_version() {
-	return '1.1.2';
+	return '1.1.3';
 }
 
 /**
