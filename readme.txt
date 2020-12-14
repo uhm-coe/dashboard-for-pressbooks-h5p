@@ -54,6 +54,11 @@ This plugin was developed by the College of Education at the University of Hawai
 
 == Changelog ==
 
+= 1.1.4 =
+* Tested up to WordPress 5.6.
+* Tested up to PHP 8.0.0.
+* Fix warning on PHP 8: magic method __wakeup() must have public visibility.
+
 = 1.1.3 =
 * Tested up to WordPress 5.5.1.
 * Compatibility verified with core Pressbooks themes: McLuhan (the default theme), Austen Classic, Donham, Fitzgerald, and Jacobs. Pressbooks themes are found [here](https://github.com/search?q=topic:book-theme%20org:pressbooks&amp;type=Repositories).
