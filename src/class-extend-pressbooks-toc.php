@@ -42,8 +42,13 @@ class Extend_Pressbooks_TOC extends Singleton {
 		// the higher score.
 		$h5p_results = $data->get_my_h5p_results();
 
-		// Load tippy.js (tooltips).
+		// Load tippy.js (tooltips). Note: also run a preflight script checking for
+		// any old Popper v1 (as of this writing, used by Pressbooks v5.19.1 on the
+		// frontend to render Glossary Term shortcode tooltips). If found, stash it,
+		// and then restore it in extend-pressbooks-toc.js with the v2 createPopper
+		// function added as a property of the v1 function window.Popper.
 		// See: https://atomiks.github.io/tippyjs/v6/getting-started/.
+		wp_enqueue_script( 'd4ph/stash-pressbooks-popper', plugins_url( 'scripts/stash-pressbooks-popper.js', plugin_root() ), array(), plugin_version(), true );
 		wp_enqueue_script( '@popperjs/core@2.4.2', plugins_url( 'vendor/popperjs/core/2.4.2/dist/umd/popper.min.js', plugin_root() ), array(), '2.4.2', true );
 		wp_enqueue_script( 'tippy.js@6.2.3', plugins_url( 'vendor/tippy.js/6.2.3/dist/tippy-bundle.umd.min.js', plugin_root() ), array(), '6.2.3', true );
 		wp_enqueue_style( 'tippy.js@6.2.3/themes/light-border', plugins_url( 'vendor/tippy.js/6.2.3/dist/themes/light-border.css', plugin_root() ), array(), '6.2.3', 'all' );

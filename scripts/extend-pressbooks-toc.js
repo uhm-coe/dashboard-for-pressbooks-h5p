@@ -4,6 +4,21 @@
 
 /* global Data, tippy, jQuery, H5P */
 ( function( $ ) {
+	// Look for stashed Pressbooks Popper created from stash-pressbooks-popper.js;
+	// if found, move the createPopper function from our Popper (v2) to a property
+	// of the pressbooks Popper (v1), so both v1 and v2 can work concurrently.
+	// Note: since we are only restoring createPopper() from v2, it's possible
+	// that some more advanced features from v2 will be broken.
+	if (
+		window.hasOwnProperty( 'pressbooks_Popper' ) &&
+		'function' === typeof window.pressbooks_Popper &&
+		window.hasOwnProperty( 'Popper' ) &&
+		'object' === typeof window.Popper
+	) {
+		window.pressbooks_Popper.createPopper = window.Popper.createPopper;
+		window.Popper = window.pressbooks_Popper;
+	}
+
 	// Render badges on page load.
 	render_badges();
 
