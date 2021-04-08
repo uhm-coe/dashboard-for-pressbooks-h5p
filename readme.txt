@@ -54,6 +54,9 @@ This plugin was developed by the College of Education at the University of Hawai
 
 == Changelog ==
 
+= 1.1.5 =
+* Fix conflict with Pressbooks Glossary Term tooltip dependency (Popper v1).
+
 = 1.1.4 =
 * Tested up to WordPress 5.6.
 * Tested up to PHP 8.0.0.
