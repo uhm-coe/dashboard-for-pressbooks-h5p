@@ -2,7 +2,7 @@
 Contributors: figureone
 Donate link: https://giving.uhfoundation.org/give-now?school_code=EDUC
 Tags: pressbooks, h5p, dashboard, widget
-Tested up to: 5.7
+Tested up to: 5.8.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
