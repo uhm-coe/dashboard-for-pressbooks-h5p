@@ -52,6 +52,9 @@ This plugin was developed by the College of Education at the University of Hawai
 
 == Changelog ==
 
+= 1.1.6 =
+* Fix error on Posts (front end) when Pressbooks isn't installed.
+
 = 1.1.5 =
 * Fix conflict with Pressbooks Glossary Term tooltip dependency (Popper v1).
 
