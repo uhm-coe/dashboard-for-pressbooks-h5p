@@ -29,7 +29,7 @@ class Extend_Pressbooks_TOC extends Singleton {
 		}
 
 		// Do nothing if plugin dependencies are not installed and activated.
-		if ( ! is_plugin_active( 'h5p/h5p.php' ) || ! is_plugin_active( 'pressbooks/pressbooks.php' ) ) {
+		if ( ! $this->is_plugin_active( 'h5p/h5p.php' ) || ! $this->is_plugin_active( 'pressbooks/pressbooks.php' ) ) {
 			return;
 		}
 
@@ -68,5 +68,40 @@ class Extend_Pressbooks_TOC extends Singleton {
 				'msgLogInToSee'     => esc_html__( 'Sign in to see your results', 'd4ph' ),
 			)
 		);
+	}
+
+	/**
+	 * Determines whether a plugin is active. Copied here from core for front end
+	 * use.
+	 *
+	 * @see https://developer.wordpress.org/reference/functions/is_plugin_active/
+	 *
+	 * @param string $plugin Path to the plugin file relative to the plugins directory.
+	 * @return bool True, if in the active plugins list. False, not in the list.
+	 */
+	private function is_plugin_active( $plugin ) {
+		return in_array( $plugin, (array) get_option( 'active_plugins', array() ), true ) || $this->is_plugin_active_for_network( $plugin );
+	}
+
+	/**
+	 * Determines whether the plugin is active for the entire network. Copied here
+	 * from core for front end use.
+	 *
+	 * @see https://developer.wordpress.org/reference/functions/is_plugin_active_for_network/
+	 *
+	 * @param string $plugin Path to the plugin file relative to the plugins directory.
+	 * @return bool True if active for the network, otherwise false.
+	 */
+	private function is_plugin_active_for_network( $plugin ) {
+		if ( ! is_multisite() ) {
+			return false;
+		}
+
+		$plugins = get_site_option( 'active_sitewide_plugins' );
+		if ( isset( $plugins[ $plugin ] ) ) {
+			return true;
+		}
+
+		return false;
 	}
 }
