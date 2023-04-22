@@ -3,3 +3,6 @@
 
 # npm/yarn
 node_modules
+
+# Vagrant
+*console.log
