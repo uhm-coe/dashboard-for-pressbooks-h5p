@@ -3,6 +3,8 @@
 
 # npm/yarn
 node_modules
+yarn.lock
+package-lock.json
 
 # Vagrant
 *console.log
