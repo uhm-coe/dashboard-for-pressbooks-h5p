@@ -3,7 +3,7 @@ Contributors: figureone
 Donate link: https://giving.uhfoundation.org/give-now?school_code=EDUC
 Tags: pressbooks, h5p, dashboard, widget
 Tested up to: 6.9
-Stable tag: 1.1.6
+Stable tag: 1.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,6 +51,10 @@ This plugin was developed by the College of Education at the University of Hawai
 7. Example of table of contents tooltip for anonymous users.
 
 == Changelog ==
+
+= 1.1.7 =
+* Tested up to WordPress 6.9.
+* Enable plugin release confirmations (security).
 
 = 1.1.6 =
 * Fix error on Posts (front end) when Pressbooks isn't installed.
