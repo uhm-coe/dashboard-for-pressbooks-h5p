@@ -9,7 +9,7 @@
  * License: GPL3
  * Requires at least: 5.3
  * Requires PHP: 5.6.20
- * Version: 1.1.7
+ * Version: 1.1.8
  *
  * @link    https://github.com/uhm-coe/dashboard-for-pressbooks-h5p
  * @package dashboard-for-pressbooks-h5p
